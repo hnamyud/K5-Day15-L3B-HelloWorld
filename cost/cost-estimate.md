@@ -6,15 +6,16 @@
 
 ## 1. Đầu vào
 
-- **Persona** (`cost/personas.yaml`): ≥3 kiểu — tỉ lệ, số phiên / người / tháng, số lượt hỏi / phiên. Nguồn: __
-- **Số người dùng thật** 3 kịch bản: thấp __ · cơ sở __ · cao __. Nguồn: __
-- **Giá** ≥2 mức model (từ `further-reading/model-prices.md` của repo đề, có link + ngày xem): __ · __
-- **Tỉ lệ đạt** dùng để tính: __/__ (__%) — lượt `run-__` (lượt 2)
-- Đo token trên model __, tính giá model __ và __
+- **Persona** (`cost/personas.yaml`): dùng ít **42,2% · 2 phiên/tháng · 3 lượt/phiên**, dùng vừa **39,7% · 5 · 6**, dùng nhiều **18,1% · 10 · 10**. Tỷ trọng lấy từ `evidence/data-mining.md`. Tần suất và số lượt là tự ước tính cho bài mẫu ba ý.
+- **Quy mô người dùng/tháng:** thấp **250** *(tự ước tính)*, cơ sở **436** và cao **721** *(kịch bản lấy mốc từ dữ liệu pre-class, xem `spec.md` §8)*.
+- **Giá Standard trả phí (USD / 1 triệu token vào / ra):** `gemini-3.1-flash-lite` **0,25 / 1,50**, `gemini-4-hydrogen` **1,50 / 7,50**. [Bảng giá Gemini API, xem 27/11/2026](https://aistudio.google.com/docs/pricing).
+- **Tỉ lệ đạt và model đo token:** Chờ lượt 2 đã chấm và mô phỏng chạy bằng model thật. Nếu áp giá của model khác lên token đã đo, ghi rõ hai model trong báo cáo.
 
 ## 2. Kết quả mô phỏng
 
-Lượt mô phỏng: `cost/simulate-__.csv` · run ID __ · __ phiên · seed __
+Kế hoạch: **50 phiên, seed 42**. Chưa có lượt mô phỏng bằng model thật.
+
+Khung lấy từng lượt độc lập từ benchmark. Khi luồng ôn nhiều ý đã chạy, đo thêm một phiên xuyên suốt để đối chiếu số lượt và token thực tế.
 
 *(dán bảng từ `cost/simulate-N-summary.md`)*
 
@@ -27,9 +28,9 @@ Chi phí / task thành công = chi phí trung bình mỗi phiên ÷ tỉ lệ đ
 
 ## 3. So với impact
 
-- Impact / người / tháng (`spec.md` §2): __
-- Chi phí / người / tháng (cơ sở, model __): __
-- **Kết luận một dòng — đáng làm không:** __
+- Impact (`spec.md` §2): khoảng **60 phút mất thêm/người/tháng** *(tự ước tính trong nhóm khảo sát gặp vấn đề)*.
+- Chi phí / người / tháng ở kịch bản cơ sở: chờ mô phỏng bằng model thật.
+- **Kết luận:** Đáng thử. Quyết định triển khai dựa trên kết quả §7, chi phí đo được và thời gian học viên thực sự tiết kiệm khi ôn trước lab.
 
 ## 4. *(Muốn sâu hơn, không bắt buộc)*
 
