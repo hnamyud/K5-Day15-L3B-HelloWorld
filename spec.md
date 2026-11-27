@@ -21,11 +21,14 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
+| A4 — Phát hiện sớm cách hiểu sai một khái niệm pre-class trước khi làm lab | **14/22 phiếu L3** cho biết họ từng nghĩ mình đã hiểu đủ để áp dụng trước lần phát hiện hiểu sai trong lab (mẫu khảo sát). | **3 lần/người/tháng** *(tự ước tính)*. Trong 14 phiếu, 9 chọn “Dưới 5”, 3 chọn “Trên 5”, 2 chọn “Không nhớ” khi được hỏi số lab phát hiện hiểu sai sau khi bắt đầu trong 30 ngày qua. | Trung vị **20 phút/lần** để xem lại kiến thức hoặc sửa lab (15–60 phút, 13/14 phiếu trên có số phút tự báo cáo trong khảo sát). | **840 phút/tháng (14 giờ/tháng)** trong nhóm 14 phiếu *(tự ước tính)* |  | Có |
 |  |  |  |  |  |  |  |
 |  |  |  |  |  |  |  |
 
-- **Impact / tháng** của hướng chọn = __ người × __ lần × __ phút = __ — nguồn từng thừa số: __ (không có nguồn thì ghi rõ *(tự ước tính)*)
+- **Impact / tháng** của hướng chọn = **14 người × 3 lần/người/tháng × 20 phút/lần = 840 phút/tháng (14 giờ/tháng)** trong mẫu khảo sát *(tự ước tính)*.
+  - **14 người** là số phiếu L3 chọn “Nghĩ mình hiểu đủ để áp dụng” ở lần phát hiện hiểu sai được hỏi. **20 phút/lần** là trung vị của 13 phiếu trong nhóm có số phút.
+  - **3 lần/người/tháng** *(tự ước tính)* lấy từ `(9 × 2 + 3 × 6) / 12 = 3`. Giả định “Dưới 5” là 2 lần (điểm giữa 0–4), “Trên 5” là 6 lần (mức nguyên thấp nhất), và gán 3 lần cho mỗi phiếu “Không nhớ” theo trung bình của 12 phiếu còn lại.
+  - Phép tính dùng toàn bộ số lab phát hiện hiểu sai sau khi bắt đầu trong nhóm 14 phiếu để xấp xỉ tần suất A4. Kết quả có thể cao hơn impact riêng của A4 vì câu hỏi còn tính cả lần học viên đã biết mình chưa hiểu trước lab. Kết quả áp dụng trong mẫu khảo sát.
 - Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):
 - Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8):
 
