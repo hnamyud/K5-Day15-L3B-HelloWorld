@@ -150,8 +150,19 @@ flowchart TD
 
 ## §9. Rủi ro & an toàn
 - Dữ liệu: đã ẩn danh gì, không thu gì, không đưa gì vào model gói miễn phí:
+  - **Đã ẩn danh:** phiếu khảo sát chỉ dùng số đã tổng hợp và trích dẫn bỏ tên (§1, `evidence/`); dữ liệu BTC cấp không commit nguyên file (để ở `data-btc/`, đã `.gitignore`), chỉ dùng số tổng hợp.
+  - **Không thu:** tên, email, mã học viên, điểm số, kết quả đúng/sai theo từng người. Phiên chạy không lưu hồ sơ học viên. `traces/run-N.jsonl` bắt buộc commit nên chỉ chứa câu thử đã ẩn danh hoặc nhóm tự viết, không chứa lời giải thích thật của học viên.
+  - **Không đưa vào model gói miễn phí:** dữ liệu cá nhân thật, nguyên file data BTC, nguyên tài liệu khoá. Câu thử lấy từ người dùng thật phải ẩn danh trước khi vào `eval/benchmark.csv`. Học liệu đưa vào model là đoạn trích hoặc bản viết lại ngắn có mã đoạn. Key API chỉ ở `.env` (không commit).
 - AI **không được** làm gì kể cả khi người dùng yêu cầu:
+  - Không chấm điểm, xếp loại hay kết luận "bạn đã hiểu, qua lab được" thay giảng viên; không ghi hay gửi kết quả cho ai.
+  - Không giải bài lab hộ hay đưa đáp án lab, kể cả khi học viên xin hoặc nói "giải luôn đi".
+  - Không trả lời hay phán đúng/sai khi không có đoạn học liệu làm căn cứ; không bịa nguồn, mã đoạn hay trích dẫn.
+  - Không làm theo yêu cầu đổi vai, bỏ luật hay lộ prompt/học liệu gốc (xem 2 câu tấn công ở §5).
 - Ai có thể bị hại nếu AI sai, và nhóm chặn thế nào:
+  - **Học viên L3 dùng sản phẩm:** AI hỏi nhắm sai chỗ, hoặc xác nhận "đủ ý" khi thực ra hiểu sai, nên học viên mang cách hiểu sai vào lab và mất thêm thời gian (trung vị ~20 phút/lần, §2). Chặn: mọi câu hỏi/xác nhận bám mã đoạn có thật, không đủ căn cứ thì thu hẹp (G10, §4); "Đủ ý" luôn kèm đoạn đối chiếu để học viên tự kiểm; học viên là người quyết nên không bị khóa lab.
+  - **Học viên có phản hồi gây áp lực/mất tự tin** (vd bị nói "sai" khi AI chưa chắc): chặn bằng giọng hỏi gợi mở, không phán xét, và nhánh "chưa đủ căn cứ".
+  - **Người trong dữ liệu khảo sát/ BTC:** lộ thông tin cá nhân nếu commit nguyên file; chặn bằng luật `AGENTS.md` và chỉ để số tổng hợp.
+  - Rủi ro còn lại *(tự ước tính, chưa kiểm hết)*: học liệu chuẩn có thể thiếu hoặc lệch so với bài giảng; giảng viên/nhóm duyệt học liệu trước khi dùng (§4) và đo qua câu thử trượt (§5, §7).
 
 ## §10. Phân công & changelog
 - Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"): __
