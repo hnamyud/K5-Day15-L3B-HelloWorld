@@ -40,50 +40,66 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
 - Điểm khác của HelloWorld: Khi học viên giải thích thiếu ý, AI hỏi làm rõ. Khi có chỗ hiểu sai, AI hỏi gợi mở dựa trên học liệu. Nếu học viên vẫn vướng hoặc chọn Xem lại kiến thức, AI giải thích ngắn phần đó và mời học viên thử giải thích lại.
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
-- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): Học viên AI20K L3 vừa xong pre-class, trước khi làm lab, tự giải thích một khái niệm; AI đối chiếu với học liệu chuẩn và chọn đúng một kiểu phản hồi (hỏi làm rõ, hỏi gợi mở hoặc xác nhận ngắn); học viên tự sửa lời giải thích và quyết định sang lab hay ôn thêm.
+- **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): Sau pre-class và trước lab, học viên AI20K L3 tự giải thích và kiểm tra lại từng ý cốt lõi của một bài với phản hồi do AI chọn dựa trên học liệu chuẩn, rồi tự nhắc lại ngắn để quyết định phần nào cần ôn thêm trước khi sang lab.
 - Không làm (≥3 điều):
   - Không xen vào khi học viên đang xem video pre-class; học viên chủ động bắt đầu sau pre-class (§3).
   - Không chấm điểm, không xếp hạng, không ghi kết quả vào hồ sơ hay gửi cho giảng viên.
   - Không dạy kiến thức ngoài học liệu chuẩn; không có căn cứ thì nói không có.
-  - Không làm hộ hay chấm lab; mỗi phiên chỉ một khái niệm.
-- **Sơ đồ** (Excalidraw; bản Mermaid tương đương bên dưới, dán vào GitHub/VS Code để xem):
+  - Không làm hộ hay chấm lab. Mỗi phiên ôn một bài pre-class và xử lý một ý cốt lõi tại một thời điểm.
+- **Sơ đồ** (Mermaid):
 
 ```mermaid
 flowchart TD
-  A["1. Học viên chọn khái niệm + viết lời giải thích"] --> B["2. Tra học liệu chuẩn<br/>search_lesson · get_key_points"]
-  B --> C["3. AI đối chiếu với học liệu<br/>(1 lần gọi model)"]
-  C --> D{"Có đoạn học liệu<br/>làm căn cứ?"}
-  D -- Không --> R["Nói rõ không đủ căn cứ,<br/>mời xem lại học liệu"]
-  D -- Có --> O1["Thiếu ý: hỏi làm rõ"]
-  D -- Có --> O2["Hiểu sai: hỏi gợi mở bám đoạn học liệu"]
-  D -- Có --> O3["Đủ ý: xác nhận ngắn + đoạn đối chiếu"]
-  O1 --> S["4. Học viên trả lời hoặc bấm 'Xem lại kiến thức'"]
-  O2 --> S
-  S --> X["5. AI giải thích ngắn đúng đoạn đó,<br/>mời giải thích lại (tối đa 2 vòng)"]
-  X --> E["Học viên tự quyết: sang lab hay ôn thêm"]
-  O3 --> E
+  A["Học viên chọn bài pre-class"] --> B["Tải danh sách ý cốt lõi theo thứ tự"]
+  B --> C["Học viên tự giải thích ý hiện tại"]
+  C --> D{"Có căn cứ từ học liệu?"}
+  D -- Không --> R["Báo thiếu căn cứ<br/>Ghi Chưa kiểm tra"]
+  D -- Có --> H{"AI đối chiếu từng điểm cốt lõi<br/>Đủ, thiếu hay hiểu sai?"}
+  H -- Đủ ý --> O["Xác nhận ngắn<br/>Ghi Đã giải thích được"]
+  H -- Còn thiếu hoặc sai --> L{"Đã xem lại kiến thức?"}
+  L -- Có --> N["Chỉ rõ phần cần ôn<br/>Ghi Nên ôn lại"]
+  L -- Chưa --> Q{"Còn lượt hỏi?"}
+  Q -- Có --> G["Hỏi một câu về điểm còn vướng<br/>Ưu tiên chỗ hiểu sai ảnh hưởng đến lab"]
+  Q -- Hết --> X["Hiện giải thích chuẩn hoặc đáp án gốc nếu có<br/>Kèm đoạn học liệu và lời mời tự diễn đạt lại"]
+  G -- Thử giải thích lại --> C
+  G -- Xem lại kiến thức --> X
+  G -- Để ôn sau --> N
+  G -- Kết thúc phiên --> E
+  X -- Thử giải thích lại --> C
+  X -- Để ôn sau --> N
+  X -- Kết thúc phiên --> E
+  C -- Kết thúc phiên --> E
+  O --> T{"Còn ý trong bài?"}
+  N --> T
+  R --> T
+  T -- Có --> C
+  T -- Hết --> F["Mời học viên tự nhắc lại ngắn<br/>và nêu cách áp dụng trước khi xem tổng hợp"]
+  F --> E["Tổng hợp từng ý và phần cần ôn<br/>Học viên chọn ôn thêm hay sang lab"]
 ```
 
-- **Hình dạng:** [x] workflow cố định · [ ] một agent · [ ] nhiều agent — Đường đi biết trước (tra học liệu → đối chiếu → phản hồi → tối đa 2 vòng) và chỉ có một quyết định cần AI (chọn kiểu phản hồi), nên mã cố định điều khiển các bước, model chỉ quyết ở bước 3 và viết lời giải thích ở bước 5.
-  - Không chọn một agent hay nhiều agent vì không có bước nào cần AI tự chọn công cụ hay chia việc; vòng tự do làm khó kiểm thử, tốn token (§8) và dễ trôi khỏi học liệu.
+- **Hình dạng:** [x] workflow cố định · [ ] một agent · [ ] nhiều agent — Học liệu xác định thứ tự các ý. Workflow giữ ý hiện tại, đếm lượt hỏi, ghi kết quả và chuyển ý. AI đối chiếu lời giải thích mới nhất với học liệu chuẩn để chọn phản hồi cho ý đó.
+  - Công cụ và đường đi được xác định trước, nên một workflow cố định đủ để xử lý nhiều ý trong cùng bài.
+- **Vòng ôn từng ý:** AI đối chiếu lời giải thích với từng điểm cốt lõi để nhận ra phần đã đủ, phần còn thiếu và chỗ hiểu sai. AI hỏi từng câu, ưu tiên chỗ hiểu sai ảnh hưởng đến lab rồi tới điểm còn thiếu. Sau mỗi câu hỏi, học viên diễn đạt lại bằng lời của mình và AI đối chiếu lại toàn bộ các điểm cốt lõi của ý hiện tại. Nếu đã đủ, AI xác nhận cụ thể điểm học viên đã làm rõ. Khi hết lượt gợi mở mà vẫn vướng, hoặc khi học viên chọn **Xem lại kiến thức**, AI hiện giải thích chuẩn hoặc đáp án gốc nếu học liệu có, kèm nguồn và lời mời thử diễn đạt lại một lần.
+- **Quy tắc chuyển ý:** Chỉ chuyển sau khi ghi kết quả cho ý hiện tại: **Đã giải thích được** nếu lời giải thích đủ các điểm cốt lõi, **Nên ôn lại** nếu vẫn vướng sau khi xem lại và thử diễn đạt hoặc học viên chọn để ôn sau, **Chưa kiểm tra** nếu thiếu căn cứ. Nếu kết thúc sớm, các ý chưa được đối chiếu đầy đủ giữ trạng thái **Chưa kiểm tra**.
+- **Cuối phiên:** Sau ý cuối, mời học viên đóng gợi ý và tự trả lời ngắn “Ý nào bạn vừa sửa được? Bạn sẽ áp dụng nó thế nào trong lab?”. Nếu từng có chỗ hiểu sai, có thể dùng một câu vận dụng ngắn về đúng điểm đó. Học viên có thể bỏ qua bước này. Sau đó, hiện trạng thái từng ý và đường dẫn tới phần cần ôn để học viên tự quyết trước khi sang lab.
 - **AI dựa vào đâu** — mỗi công cụ (khớp `codebase/tools.py`):
 
   | Công cụ | Input | Output | Tác động ra ngoài? |
   |---|---|---|---|
-  | `search_lesson` | tên khái niệm + lời giải thích của học viên (str) | danh sách đoạn học liệu `{"code", "text"}`; rỗng nếu không có đoạn khớp | Không (chỉ đọc) |
-  | `get_key_points` | mã khái niệm (str) | các ý chính chuẩn của khái niệm, mỗi ý kèm mã đoạn `{"code", "point"}` | Không (chỉ đọc) |
+  | `search_lesson` | mã bài và mã ý hiện tại | danh sách đoạn học liệu `{"code", "text"}`; rỗng nếu không có đoạn khớp | Không (chỉ đọc) |
+  | `get_key_points` | mã bài (str) | danh sách ý cốt lõi theo thứ tự, mỗi ý có mã ý, nội dung chuẩn và mã đoạn học liệu | Không (chỉ đọc) |
 
-- **Mức tự động:** [x] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — AI chỉ chọn câu hỏi và giải thích ngắn; học viên tự sửa và tự quyết sang lab. Sai thì học viên chịu: thêm bối rối hoặc mang cách hiểu sai vào lab (mất vài phút đến ~20 phút, §2). Sửa rẻ: học viên bỏ qua câu hỏi hoặc bấm Xem lại, không có điểm số hay hậu quả chính thức nào.
-- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì): Rủi ro lớn nhất là AI hỏi nhắm sai chỗ hoặc kết luận đúng/sai mà không có căn cứ. Chặn ở bước 3 bằng quy tắc trong prompt và kiểm trong `agent.py`: mỗi câu hỏi hay xác nhận phải trích mã đoạn có thật do `search_lesson` trả về; `search_lesson` rỗng hoặc mã không có trong kết quả thì thay bằng câu "chưa đủ căn cứ" và mời xem lại học liệu (nhánh Không trên sơ đồ).
+- **Mức tự động:** [x] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — AI phản hồi từng ý. Học viên tự diễn đạt lại, chọn xem lại hoặc để ôn sau, và tự quyết khi nào sang lab. Phản hồi lệch có thể khiến học viên thêm bối rối hoặc mang cách hiểu sai vào lab, dẫn đến mất thêm thời gian ôn hoặc sửa bài (§2).
+- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì): Rủi ro lớn nhất là AI hỏi lệch ý hoặc xác nhận lời giải thích thiếu căn cứ. Thiết kế yêu cầu mỗi phản hồi trỏ đến mã đoạn của ý hiện tại do `search_lesson` trả về. `agent.py` sẽ kiểm mã trước khi hiện phản hồi. Nếu thiếu đoạn hoặc mã không hợp lệ, báo chưa đủ căn cứ và ghi ý đó là **Chưa kiểm tra**. Khi thử, cần có cả trường hợp dẫn mã hợp lệ nhưng câu hỏi lệch nội dung.
 - **Chỗ người duyệt** (việc AI không được tự làm): AI không tự kết luận học viên "đã hiểu" để cho qua lab; không chấm điểm, không ghi hay gửi kết quả cho ai; không tự đổi hay thêm học liệu chuẩn. Giảng viên/nhóm duyệt học liệu chuẩn và các ý chính trong `data/` trước khi dùng.
 - **Nguyên tắc thiết kế** (≥3, bắt buộc G10):
 
   | Nguyên tắc | Chỗ cụ thể trên sơ đồ / trong bản chạy thử |
   |---|---|
-  | G10 — thu hẹp phạm vi khi không chắc | Nhánh Không ở ô "Có đoạn học liệu làm căn cứ?": không đủ căn cứ thì không phán đúng/sai, chỉ hỏi lại hoặc mời xem lại học liệu. |
-  | Bám nguồn | Mọi câu hỏi và lời giải thích kèm mã đoạn từ `search_lesson`; `agent.py` loại đầu ra có mã không tồn tại. |
-  | Người quyết | Bước 4 và ô cuối: học viên chọn trả lời, Xem lại kiến thức, và sang lab hay ôn thêm; AI không chặn học viên làm lab. |
-  | Giới hạn vòng | Bước 5 tối đa 2 vòng (`MAX_STEPS`), hết vòng chỉ gợi ý đoạn cần xem lại, không hỏi mãi. |
+  | G10 — thu hẹp phạm vi khi không chắc | Có học liệu nhưng lời giải thích còn mơ hồ thì hỏi làm rõ. Thiếu căn cứ thì báo giới hạn và ghi **Chưa kiểm tra**. |
+  | Bám nguồn | Mỗi câu hỏi, xác nhận và lời giải thích trỏ về đoạn học liệu của ý đang ôn. |
+  | Người quyết | Học viên có thể xem lại, để ôn sau hoặc kết thúc phiên. Bản tổng hợp giữ trạng thái của từng ý để học viên tự quyết khi nào sang lab. |
+  | Giới hạn lượt hỏi | Tối đa 2 câu làm rõ hoặc gợi mở mỗi ý. Nếu trả lời lại vẫn vướng sau câu thứ hai, hiện phần xem lại. Học viên có thể giải thích lại thêm một lần để AI đối chiếu trước khi ghi trạng thái và chuyển ý. |
 
 - Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…) — ghi rõ, không giả làm thật: Công cụ `search_lesson` và `get_key_points` đã cài đặt thật trong `codebase/tools.py`, đọc từ tập học liệu tóm tắt tự biên soạn `data/sample_lessons.json` (6 khái niệm cốt lõi L3, 12 đoạn học liệu có mã đoạn, mô tả ở `data/DATA_CARD.md`, không commit nguyên tài liệu khoá). Model AI hiện chạy ở **chế độ giả** (`MODEL_PROVIDER=fake`) để luồng chạy hết tại CP2, sẽ nối model thật qua `.env` trước CP3 (`docs/connect-model.md`).
 
