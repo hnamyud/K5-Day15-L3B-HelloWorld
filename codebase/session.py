@@ -3,15 +3,12 @@
 import re
 from dataclasses import dataclass
 
+from guardrails import ENOUGH, NEEDS_WORK, NO_SOURCE, OUT_OF_SCOPE
 from tools import get_key_points, list_concept_titles
 
 EXPLAINED = "Đã giải thích được"
 REVISIT = "Nên ôn lại"
 UNCHECKED = "Chưa kiểm tra"
-_ENOUGH = "[ĐỦ Ý]"
-_NEEDS_WORK = ("[THIẾU Ý]", "[HIỂU SAI]")
-_NO_SOURCE = "[CHƯA ĐỦ CĂN CỨ]"
-_OUT_OF_SCOPE = "[NGOÀI PHẠM VI]"
 _UNVERIFIED = (
     "[CHƯA ĐỦ CĂN CỨ] Chưa nhận được phản hồi đối chiếu hợp lệ cho ý đang ôn."
 )
@@ -73,24 +70,19 @@ class StudySession:
     def explain(self, text, answer):
         """Đối chiếu lời giải thích mới rồi cập nhật đúng mục hiện tại."""
         item = self.current
-        query = f"Ý đang ôn: {item.concept_id}\nLời giải thích: {text}"
-        output = answer(query)["output"].strip()
-        if output.startswith(_OUT_OF_SCOPE):
+        output = answer(text, concept_id=item.concept_id)["output"].strip()
+        if output.startswith((OUT_OF_SCOPE, NO_SOURCE)):
             return f"{output}\nMời bạn tiếp tục với ý đang ôn: {item.title}."
         if output.startswith("[câu trả lời giả"):
             return f"{output}\nHãy chọn xem lại hoặc để ôn sau để tiếp tục dùng thử."
-        if output.startswith(_NO_SOURCE):
-            self._advance(UNCHECKED)
-            return output
 
         cited = set(_SOURCE_CODE.findall(output))
         if not cited or cited.difference(item.source_codes):
-            self._advance(UNCHECKED)
             return _UNVERIFIED
-        if output.startswith(_ENOUGH):
+        if output.startswith(ENOUGH):
             self._advance(EXPLAINED)
             return output
-        if output.startswith(_NEEDS_WORK):
+        if output.startswith(NEEDS_WORK):
             if self.reviewed:
                 self._advance(REVISIT)
                 return "Ý này vẫn còn điểm cần ôn. Xem mã đoạn ở phần tổng hợp."
@@ -98,8 +90,4 @@ class StudySession:
                 return self.review()
             self.hints += 1
             return output
-        if output.startswith("[XEM LẠI KIẾN THỨC]") and not self.reviewed:
-            return self.review()
-
-        self._advance(UNCHECKED)
         return _UNVERIFIED

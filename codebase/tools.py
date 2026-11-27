@@ -6,6 +6,8 @@ Khung tự ghi mỗi lần gọi công cụ vào trace (tên, input, output rút
 
 Dữ liệu công cụ đọc: data/sample_lessons.json (mô tả tại data/DATA_CARD.md).
 """
+from __future__ import annotations
+
 import json
 import os
 import re
@@ -137,9 +139,18 @@ def resolve_concept_id(query: str) -> str:
 
 
 @tool
-def search_lesson(query: str) -> list:
-    """search_lesson · Input: tên khái niệm + lời giải thích của học viên (str) · Output: danh sách đoạn học liệu {"code", "text"}, rỗng nếu không có đoạn khớp · Tác động ra ngoài: Không (chỉ đọc)."""
+def search_lesson(query: str, *, concept_id: str | None = None) -> list:
+    """search_lesson · Input: lời giải thích và mã ý đã chọn nếu có.
+    Output: danh sách đoạn học liệu có mã và nội dung, rỗng nếu thiếu.
+    Tác động ra ngoài: Không (chỉ đọc).
+    """
     data = _load_lessons()
+    if concept_id is not None:
+        for concept in data.get("concepts", []):
+            if concept["concept_id"] == concept_id:
+                return [{"code": p["code"], "text": p["text"]} for p in concept["passages"]]
+        return []
+
     scored = []
     for concept in data.get("concepts", []):
         s = _score_concept(query, concept)
