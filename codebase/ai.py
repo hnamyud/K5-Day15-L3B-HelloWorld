@@ -10,7 +10,7 @@ Hợp đồng (giữ nguyên để khung đo được token):
 Hỗ trợ sẵn (thuần thư viện chuẩn Python, không cần pip install):
     MODEL_PROVIDER=fake       chế độ giả mặc định khi chưa điền .env
     MODEL_PROVIDER=gemini     Google Gemini API (generativelanguage.googleapis.com)
-    MODEL_PROVIDER=openai     OpenAI API hoặc nhà cung cấp tương thích (đặt thêm API_BASE_URL nếu khác OpenAI)
+    MODEL_PROVIDER=openai     OpenAI API hoặc nhà cung cấp tương thích (cấu hình MODEL_BASE_URL)
     MODEL_PROVIDER=anthropic  Anthropic Claude API
     MODEL_PROVIDER=ollama     Ollama chạy cục bộ (http://localhost:11434/api/chat)
 
@@ -46,6 +46,7 @@ MODEL_PROVIDER = (os.environ.get("MODEL_PROVIDER") or "fake").strip().lower()
 MODEL_NAME = (os.environ.get("MODEL_NAME") or "").strip()
 API_KEY = (os.environ.get("API_KEY") or "").strip()
 API_BASE_URL = (os.environ.get("API_BASE_URL") or "").strip()
+MODEL_BASE_URL = (os.environ.get("MODEL_BASE_URL") or "").strip().rstrip("/")
 
 URL_OPENAI = "https://api.openai.com/v1/chat/completions"
 URL_CLAUDE = "https://api.anthropic.com/v1/messages"
@@ -64,17 +65,20 @@ def post_json(url: str, headers: dict, body: dict, timeout: int = 60) -> dict:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             data = json.loads(r.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
-        detail = e.read().decode("utf-8", "replace")[:400]
-        raise RuntimeError("HTTP %d: %s" % (e.code, detail))
+        with e:
+            detail = e.read().decode("utf-8", "replace")
+        if API_KEY:
+            detail = detail.replace(API_KEY, "[redacted]")
+        raise RuntimeError("HTTP %d: %s" % (e.code, detail[:400])) from None
     if SHOW_RAW:
         print(json.dumps(data, ensure_ascii=False, indent=2)[:3000])
     return data
 
 
-def _require_key_and_model():
+def _require_key_and_model(*, key_required=True):
     if not MODEL_NAME:
         raise RuntimeError("Thiếu MODEL_NAME trong .env (ví dụ gemini-3.1-flash-lite hoặc gpt-5.4-nano).")
-    if MODEL_PROVIDER != "ollama" and not API_KEY:
+    if key_required and not API_KEY:
         raise RuntimeError("Thiếu API_KEY trong .env cho MODEL_PROVIDER=%s." % MODEL_PROVIDER)
 
 
@@ -103,20 +107,22 @@ def call_gemini(system: str, user: str) -> dict:
 
 
 def call_openai(system: str, user: str) -> dict:
-    _require_key_and_model()
-    url = API_BASE_URL or URL_OPENAI
+    _require_key_and_model(key_required=not MODEL_BASE_URL)
+    url = f"{MODEL_BASE_URL}/chat/completions" if MODEL_BASE_URL else API_BASE_URL or URL_OPENAI
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
-    data = post_json(
-        url,
-        {"Authorization": "Bearer " + API_KEY},
-        {"model": MODEL_NAME, "messages": messages, "temperature": 0.2},
-    )
-    usage = data.get("usage") or {}
-    text = data["choices"][0]["message"]["content"]
+    headers = {"Authorization": f"Bearer {API_KEY}"} if API_KEY else {}
+    data = post_json(url, headers, {"model": MODEL_NAME, "messages": messages})
+    usage = data.get("usage")
+    if not isinstance(usage, dict) or "prompt_tokens" not in usage or "completion_tokens" not in usage:
+        raise RuntimeError("Provider phải trả usage.prompt_tokens và usage.completion_tokens")
+    choices = data.get("choices") or []
+    text = choices[0].get("message", {}).get("content") if choices else None
+    if not isinstance(text, str) or not text.strip():
+        raise RuntimeError("Provider OpenAI-compatible không trả về văn bản")
     return {
         "text": text,
-        "tokens_in": int(usage.get("prompt_tokens", 0)),
-        "tokens_out": int(usage.get("completion_tokens", 0)),
+        "tokens_in": usage["prompt_tokens"],
+        "tokens_out": usage["completion_tokens"],
     }
 
 
@@ -144,7 +150,7 @@ def call_claude(system: str, user: str) -> dict:
 
 
 def call_ollama(system: str, user: str) -> dict:
-    _require_key_and_model()
+    _require_key_and_model(key_required=False)
     url = API_BASE_URL or URL_OLLAMA
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
     data = post_json(url, {}, {"model": MODEL_NAME, "messages": messages, "stream": False}, timeout=300)

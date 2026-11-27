@@ -62,10 +62,10 @@ _REVIEW_PATTERNS = [
     r"xem lai kien thuc",
     r"giai thich lai giup",
     r"cho (toi|minh|em) xem lai",
-    r"da dung (2|hai) (cau|luot)",
-    r"het (2|hai) (cau|luot)",
-    r"sau (2|hai) (cau|luot)",
 ]
+_FINAL_ROUND_RE = re.compile(
+    r"\b(?:da dung|da het|het|sau) (?:2|hai) (?:cau|luot) (?:hoi )?(?:goi mo|lam ro)\b"
+)
 
 
 def _norm_ascii(text: str) -> str:
@@ -86,6 +86,8 @@ def _detect_mode_and_round(text: str) -> tuple:
     m = re.search(r"vong\s*(\d+)", norm)
     if m:
         round_num = int(m.group(1))
+    if _FINAL_ROUND_RE.search(norm):
+        round_num = max(round_num, MAX_STEPS)
     is_review = any(re.search(pat, norm) for pat in _REVIEW_PATTERNS)
     if is_review or round_num >= MAX_STEPS:
         return "review_or_final", round_num
