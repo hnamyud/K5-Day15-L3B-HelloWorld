@@ -192,14 +192,18 @@ flowchart TD
   - *Chặng CP1–CP2 (Khám phá & Thiết kế, 27/11):*
     - **Cặp Bằng chứng & Eval (Nguyễn Duy Mạnh · Vũ Xuân Bách):** Triển khai khảo sát học viên L3 (`evidence/KhaoSat.csv`, 25 phiếu / 22 L3), tính bảng Impact §2, xây dựng `eval/benchmark.csv` (24 câu), `eval/metric_spec.yaml` và chuẩn "đạt" §7.
     - **Cặp Thiết kế & Kỹ thuật (Nguyễn Hoàng Trung [Đội trưởng] · Đỗ Triệu Đức Phương):** Đào dữ liệu `data/preclass/` (`evidence/count_preclass.py`, `evidence/data-mining.md`), hoàn thiện `spec.md` §0–§1, §3–§6, §8–§9, dựng `data/sample_lessons.json` + `data/DATA_CARD.md`, viết khung `codebase/tools.py` & `codebase/agent.py`, nộp checkpoint.
-  - *Chặng CP3 (Build & Lượt 1, tối 27/11 → 10:00 28/11):*
-    - **Cặp Tech (Nguyễn Hoàng Trung · Đỗ Triệu Đức Phương):** Nối model thật (`codebase/ai.py`, `.env`), hoàn thiện luồng ôn theo sơ đồ §4, quay video 30 giây, chạy thử `simulate --try`.
-    - **Cặp Evidence & Eval (Nguyễn Duy Mạnh · Vũ Xuân Bách):** Hoàn thiện `evidence/summary.md`, chấm chéo 5 output trong `eval/README.md`, cùng cả nhóm chạy & chấm `eval/run-1.csv`.
+  - *Chặng CP3 (Build & Lượt 1, tối 27/11 → 10:00 28/11 — đã hoán đổi vai Trung ↔ Mạnh):*
+    - **Nguyễn Duy Mạnh:** Nối model thật (`codebase/ai.py`, `.env`), hoàn thiện `codebase/agent.py` & `codebase/tools.py`, chạy `eval` sinh `eval/run-1.csv` + `traces/run-1.jsonl`.
+    - **Nguyễn Hoàng Trung (Đội trưởng):** Hoàn thiện báo cáo khảo sát `evidence/survey/report.md`, bổ sung ảnh chụp `preclass-online.com` (§0), chấm chéo 5 output với Bách, giữ quyền gộp `spec.md` (§7 KQ, §10 changelog) và nộp CP3.
+    - **Vũ Xuân Bách:** Chấm chéo 5 output với Trung, chấm trọn bộ `eval/run-1.csv`, chạy `score`, cập nhật `eval/README.md`.
+    - **Đỗ Triệu Đức Phương:** Xây luồng ôn nhiều ý (`codebase/session.py`, `codebase/app.py`), chạy `simulate --try`, quay video 30 giây.
   - *Chặng CP4 & Demo (Đo, Chi phí & Slide, 10:00 → 14:30 28/11):*
-    - **Cặp Cải tiến & Đánh giá (Nguyễn Hoàng Trung · Vũ Xuân Bách):** Cải tiến 1 nhóm lỗi chính từ lượt 1, chạy `eval/run-2.csv`, viết `eval/report.md` & `eval/README.md`.
-    - **Cặp Chi phí, Người dùng thử & Slide (Nguyễn Duy Mạnh · Đỗ Triệu Đức Phương):** Chạy `cost/simulate.py` (≥50 phiên), hoàn thiện `cost/cost-estimate.md`, tổ chức 2–3 người dùng thử (`validation/log.md`), dựng `demo-slides.pdf` & video dự phòng.
+    - **Nguyễn Duy Mạnh:** Cải tiến 1 nhóm lỗi chính từ lượt 1 (`codebase/agent.py`/`tools.py`), chạy `eval/run-2.csv`, cập nhật `README.md` & `docs/ai-usage.md`, chuẩn bị live demo.
+    - **Nguyễn Hoàng Trung (Đội trưởng):** Dựng `slides/outline.md` → `demo-slides.pdf` (thư mục gốc), cập nhật số đo thật vào `spec.md` §7–§8 & §10, nộp CP4.
+    - **Vũ Xuân Bách:** Chấm `eval/run-2.csv`, viết `eval/report.md` (gồm phiên kiểm thử nhiều ý) & hoàn thiện `eval/README.md`.
+    - **Đỗ Triệu Đức Phương:** Chạy `cost/simulate.py` (≥50 phiên) → `cost/cost-estimate.md`, tổ chức 2–3 người dùng thử (`validation/log.md` — đo luôn chỉ số về học A4), quay video demo dự phòng.
 - **Dùng AI vào việc gì (chi tiết tại `docs/ai-usage.md`):**
-  - Nhóm sử dụng coding agent / LLM hỗ trợ viết script đếm `evidence/count_preclass.py`, khung `codebase/tools.py` & `codebase/agent.py`, biên soạn học liệu tóm tắt `data/sample_lessons.json`, nháp cấu trúc `spec.md` và biến thể câu thử `eval/benchmark.csv`.
+  - Nhóm sử dụng coding agent / LLM hỗ trợ viết script đếm `evidence/count_preclass.py`, khung `codebase/ai.py`, `codebase/tools.py` & `codebase/agent.py`, biên soạn học liệu tóm tắt `data/sample_lessons.json`, nháp cấu trúc `spec.md` và biến thể câu thử `eval/benchmark.csv`.
   - Thành viên nhóm tự kiểm chứng toàn bộ con số từ `data/preclass/` và `evidence/KhaoSat.csv`, tự kiểm tay 12/12 đoạn học liệu và toàn bộ bộ câu thử/metric, tự quyết định thiết kế và giải thích được phần có tên mình.
   - Không dùng AI để bịa phiếu khảo sát, trích dẫn, câu trả lời người dùng hay sửa kết quả các lượt đánh giá/mô phỏng đã chạy.
 - **Nhật ký thay đổi — mọi thay đổi sau CP2 19:30 Thứ Sáu 27/11 phải có dòng ở đây:**
@@ -209,6 +213,9 @@ flowchart TD
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
 | *(Mốc gốc CP2 · 19:30 27/11)* | Chốt chuẩn "đạt" §7, `eval/metric_spec.yaml`, sơ đồ §4 và khung bản chạy thử chế độ giả (`python run.py check` đạt). | Sẵn sàng nối model thật và chạy lượt 1 cho CP3; mọi thay đổi sau mốc này ghi tiếp bên dưới. |
+| 27/11 22:45 | Hoán đổi toàn bộ phần việc từ CP3–CP4 giữa Nguyễn Hoàng Trung (bằng chứng, giữ `spec.md`, slide) và Nguyễn Duy Mạnh (nối API, cải tiến `codebase/`, chạy `eval`). | Tối ưu thế mạnh từng thành viên và tách rõ file sở hữu để tránh xung đột Git. |
+| 27/11 22:50 | Cài sẵn hàm gọi API thật thuần `urllib` (`gemini`, `openai`, `anthropic`, `ollama`) trong `codebase/ai.py`; fix nhận diện giới hạn 2 câu hỏi (`B22`), bỏ chặn nhầm từ `"system prompt"` (`B01`) trong `codebase/agent.py`, và loại từ khoá chung chung (`mo hinh`, `llm`, `du lieu`) khỏi `codebase/tools.py` + `aliases` của `chatbot_vs_model`. | Kiểm tra định tuyến trước khi nối model thật phát hiện chặn nhầm `B01`, bỏ sót chế độ vòng cuối ở `B22`, và khớp nhầm khái niệm ngoài học liệu (`B09`, `B13`, `B25`–`B30`). Không thay đổi `eval/benchmark.csv`, `eval/metric_spec.yaml` hay chuẩn "đạt" §7. |
+| 27/11 22:50 | Bổ sung báo cáo khảo sát `evidence/survey/report.md`, cập nhật link `evidence/summary.md`, điền quy ước nhóm trong `AGENTS.md`. | Đủ hồ sơ nguồn khảo sát 25 phiếu / 22 L3 cho Rubric R1 (đối chiếu `evidence/KhaoSat.csv`). |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

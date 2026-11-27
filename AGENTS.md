@@ -40,6 +40,6 @@ Khung chỉ dùng thư viện chuẩn của Python. Thêm thư viện thì ghi v
 
 ## Quy ước của nhóm
 
-- Ngôn ngữ trả lời người dùng: __
-- Phong cách code / đặt tên: __
-- Ai duyệt thay đổi do agent tạo trước khi commit: __
+- Ngôn ngữ trả lời người dùng: Tiếng Việt ngắn gọn, tôn trọng, bám mã đoạn học liệu `[DXX-PYY]`.
+- Phong cách code / đặt tên: Python chuẩn (PEP 8), ưu tiên thư viện chuẩn; tên hàm/biến tiếng Anh rõ nghĩa, docstring và ghi chú tiếng Việt.
+- Ai duyệt thay đổi do agent tạo trước khi commit: Thành viên sở hữu phần việc tương ứng kiểm chạy thử; riêng `spec.md` do Nguyễn Hoàng Trung (Đội trưởng) duyệt và gộp từ sau CP2.

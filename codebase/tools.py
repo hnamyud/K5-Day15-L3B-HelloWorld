@@ -24,7 +24,18 @@ _STOPWORDS = {
     "hoc", "lab", "pre", "class", "preclass", "xem", "lai", "kien", "thuc",
     "chi", "can", "phai", "neu", "vi", "nen", "se", "da", "dang", "con",
     "dung", "sai", "ro", "hon", "them", "nua", "vong", "cau", "tra", "loi",
+    # Từ vựng ML/AI quá chung chung — không tự đại diện riêng cho một khái niệm cụ thể
+    "ai", "llm", "model", "mo", "hinh", "ngon", "ngu", "du", "lieu", "dau",
+    "vao", "ra", "ham", "so", "ket", "qua", "phan", "tich", "huan", "luyen",
+    "tap", "chay", "cach", "he", "thong", "danh", "gia", "tham", "truoc",
+    "sau", "moi", "tinh", "toan", "su", "biet", "hieu", "nham", "tuong",
+    "nghi", "thu", "kiem", "chinh", "xac", "tot", "hon", "gioi", "han",
 }
+
+_TOPIC_PREFIX_RE = re.compile(
+    r"^(?:y\s+dang\s+on|khai\s+niem|chu\s+de|tinh\s+huong\s+kiem\s+thu\s*:\s*y\s+dang\s+on\s+la)\s*[:\-]?\s*([^\.\n;]+)",
+    re.IGNORECASE,
+)
 
 _CACHE = None
 
@@ -50,32 +61,60 @@ def _tokens(text: str) -> set:
     return {t for t in _normalize(text).split() if len(t) >= 2 and t not in _STOPWORDS}
 
 
-def _score_concept(query: str, concept: dict) -> float:
-    q_norm = _normalize(query)
-    if not q_norm:
-        return 0.0
-    q_toks = _tokens(query)
-    score = 0.0
+def _extract_declared_topic(query: str) -> str:
+    """Tách tên khái niệm nếu đầu vào ghi rõ tiêu đề (vd 'Ý đang ôn: ...' hoặc '<Khái niệm>: ...')."""
+    norm_raw = query.replace("đ", "d").replace("Đ", "D")
+    norm_raw = "".join(ch for ch in unicodedata.normalize("NFKD", norm_raw) if not unicodedata.combining(ch))
+    m = _TOPIC_PREFIX_RE.match(norm_raw.strip())
+    if m:
+        return m.group(1).strip()
+    if ":" in norm_raw:
+        head = norm_raw.split(":", 1)[0].strip()
+        if 2 <= len(head) <= 45 and len(head.split()) <= 7:
+            return head
+    return ""
 
+
+def _alias_score(text_norm: str, concept: dict) -> float:
+    score = 0.0
     cid_norm = _normalize(concept["concept_id"].replace("_", " "))
-    if concept["concept_id"].lower() in q_norm or (cid_norm and cid_norm in q_norm):
+    if concept["concept_id"].lower() in text_norm or (cid_norm and f" {cid_norm} " in f" {text_norm} "):
         score += 10.0
 
     for alias in concept.get("aliases", []):
         a_norm = _normalize(alias)
         if not a_norm:
             continue
-        if f" {a_norm} " in f" {q_norm} ":
-            score += 6.0 if " " in a_norm else 4.5
+        if f" {a_norm} " in f" {text_norm} ":
+            score += 6.0 if " " in a_norm else 5.0
+    return score
 
+
+def _score_concept(query: str, concept: dict) -> float:
+    q_norm = _normalize(query)
+    if not q_norm:
+        return 0.0
+
+    # 1. Điểm khớp từ khoá đặc trưng (concept_id / aliases) trong toàn văn bản
+    base_alias = _alias_score(q_norm, concept)
+
+    # 2. Nếu người học ghi rõ tiêu đề khái niệm ở đầu câu (vd "Ý đang ôn: RAG..."), ưu tiên cao hơn
+    declared = _extract_declared_topic(query)
+    declared_bonus = 0.0
+    if declared:
+        d_norm = _normalize(declared)
+        declared_bonus = 1.5 * _alias_score(d_norm, concept)
+
+    # 3. Nếu không có bất kỳ từ khoá đặc trưng nào của khái niệm khớp, không cộng điểm nhiễu từ nội dung chung
+    if base_alias == 0.0 and declared_bonus == 0.0:
+        return 0.0
+
+    q_toks = _tokens(query)
     title_toks = _tokens(concept.get("title", ""))
-    score += 2.0 * len(q_toks & title_toks)
-
     passage_text = " ".join(p["text"] for p in concept.get("passages", []))
     passage_toks = _tokens(passage_text)
-    score += 0.6 * len(q_toks & passage_toks)
 
-    return score
+    return base_alias + declared_bonus + 1.5 * len(q_toks & title_toks) + 0.4 * len(q_toks & passage_toks)
 
 
 def list_concept_titles() -> list:
@@ -94,7 +133,7 @@ def resolve_concept_id(query: str) -> str:
         if s > best_score:
             best_score = s
             best_id = concept["concept_id"]
-    return best_id if best_score >= 3.5 else ""
+    return best_id if best_score >= 4.5 else ""
 
 
 @tool
@@ -104,12 +143,12 @@ def search_lesson(query: str) -> list:
     scored = []
     for concept in data.get("concepts", []):
         s = _score_concept(query, concept)
-        if s >= 3.5:
+        if s >= 4.5:
             scored.append((s, concept))
     if not scored:
         return []
     scored.sort(key=lambda item: item[0], reverse=True)
-    # Lấy các đoạn học liệu của khái niệm khớp nhất (mỗi phiên 1 khái niệm theo spec.md §4)
+    # Lấy các đoạn học liệu của khái niệm khớp nhất (mỗi phiên 1 ý cốt lõi theo spec.md §4)
     top_concept = scored[0][1]
     return [{"code": p["code"], "text": p["text"]} for p in top_concept.get("passages", [])]
 
@@ -124,7 +163,6 @@ def get_key_points(concept_code: str) -> list:
     for concept in data.get("concepts", []):
         if concept["concept_id"].lower() == target:
             return [{"code": kp["code"], "point": kp["point"]} for kp in concept.get("key_points", [])]
-    # Dự phòng: nếu truyền tên khái niệm tự do thay vì mã chuẩn
     resolved = resolve_concept_id(concept_code)
     if resolved:
         for concept in data.get("concepts", []):

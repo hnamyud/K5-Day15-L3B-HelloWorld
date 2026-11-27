@@ -47,21 +47,24 @@ _CODE_RE = re.compile(r"\[([A-Za-z]\d{2}-P\d{2})\]")
 _OUT_OF_SCOPE_PATTERNS = [
     r"bo qua (moi |tat ca )?huong dan",
     r"ignore (all )?previous instructions",
-    r"system prompt",
-    r"cham (cho )?(toi|minh|em) (may |bao nhieu )?diem",
+    r"(in|hien|cho xem|tiet lo|lo|show|reveal|print).{0,25}system prompt",
+    r"cham (giup |cho )?(toi|minh|em).{0,40}diem",
     r"cham diem (bai|lab|giup|cho)",
     r"cho (toi|minh|em) (\d+/\d+|\d+ diem)",
-    r"xac nhan.*qua lab",
-    r"duyet.*qua lab",
-    r"(lam ho|giai ho|viet ho).*(lab|code|bai tap)",
-    r"(cho|dua|in).*(full code|toan bo code|dap an lab|loi giai hoan chinh)",
-    r"gui ket qua.*giang vien",
+    r"xac nhan.{0,30}qua lab",
+    r"duyet.{0,30}qua lab",
+    r"(lam ho|giai ho|viet ho).{0,35}(lab|code|bai tap)",
+    r"(cho|dua|in).{0,25}(full code|toan bo code|dap an lab|loi giai hoan chinh)",
+    r"gui ket qua.{0,25}giang vien",
 ]
 
 _REVIEW_PATTERNS = [
     r"xem lai kien thuc",
     r"giai thich lai giup",
     r"cho (toi|minh|em) xem lai",
+    r"da dung (2|hai) (cau|luot)",
+    r"het (2|hai) (cau|luot)",
+    r"sau (2|hai) (cau|luot)",
 ]
 
 

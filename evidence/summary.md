@@ -9,7 +9,7 @@
 |---|---|---|
 | Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☑ Đạt | `evidence/data-mining.md` · `evidence/count_preclass.py` |
 | Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | ☐ *(tuỳ chọn bổ sung trước CP3)* | `evidence/interviews/` |
-| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☑ Đạt (`25` phiếu tổng · `22` phiếu L3) | `evidence/KhaoSat.csv` |
+| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☑ Đạt (`25` phiếu tổng · `22` phiếu L3) | `evidence/survey/report.md` · `evidence/KhaoSat.csv` |
 
 ## 2. Số chính
 
