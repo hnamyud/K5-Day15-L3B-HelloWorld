@@ -1,23 +1,35 @@
-# Dàn slide → lấy số từ file nào
+# Dàn slide — HelloWorld (Track A · A4) → xuất `demo-slides.pdf` ở thư mục gốc repo
 
 > Làm ở guide bước 5.1. Luật: **không có bằng chứng thì không có slide** — mỗi trang ≥1 con số / trích dẫn có nguồn / kết quả đo.
-> Xuất PDF thành `demo-slides.pdf` ở thư mục gốc repo, nộp tại CP4 14:30 Thứ Bảy 28/11. Định dạng nào cũng được (PDF, PPTX, HTML…); hoặc nộp link slide (Drive, Canva, Google Slides…) ở form CP4, để ai có link cũng xem được.
+> Xuất PDF thành `demo-slides.pdf` ở thư mục gốc repo, nộp tại **CP4 14:30 Thứ Bảy 28/11**.
 
-| # | Trang | Có gì | Số lấy từ | Xong |
+## Tổng quan 8 trang & nguồn số liệu
+
+| # | Trang | Nội dung cốt lõi + Số liệu / Trích dẫn có nguồn | Nguồn file | Trạng thái |
 |---|---|---|---|---|
-| 1 | Người dùng & pain | Ai · việc gì · chỗ đau + số và trích dẫn | `evidence/summary.md` | ☐ |
-| 2 | Vì sao chọn bài này | Bảng impact rút gọn + hướng bị loại | `spec.md` §2 | ☐ |
-| 3 | Giải pháp | Lát cắt một câu · sơ đồ · AI tự làm đến đâu, vì sao | `spec.md` §4 | ☐ |
-| 4 | Demo live | 1 trường hợp thường + 1 trường hợp khó (lấy từ bộ câu thử); mạng hỏng → video dự phòng | `eval/benchmark.csv` | ☐ |
-| 5 | **Đánh giá thế nào** | Dataset · bộ câu thử · metric · lượt 1 → lượt 2 so với chuẩn "đạt" (kèm run ID) · lỗi chính | `eval/README.md`, `eval/report.md` | ☐ |
-| 6 | **Chi phí khi dùng thật** | Chi phí / task thành công · 3 kịch bản · so với impact | `cost/cost-estimate.md` | ☐ |
-| 7 | Kết luận | Go / iterate / stop — dẫn số ở trang 1, 5, 6 | — | ☐ |
-| 8 | Nếu có thêm 1 tuần | 2–3 việc, trỏ về lỗi còn lại / phản hồi người dùng | `eval/report.md` mục 4 · `validation/log.md` | ☐ |
+| **1** | **Người dùng & Pain** | **Người dùng:** Học viên AI20K L3 (`L3A`, `L3B`) vừa xong pre-class, chuẩn bị làm lab.<br/>**Pain (ảo tưởng hiểu bài):** Đọc lướt slide (`13/22 = 59.1%`) thấy quen nên tưởng đã hiểu đủ, tới lúc code lab mới lộ sai bản chất.<br/>**2 nguồn kiểm chéo:**<br/>• *Khảo sát (`n=22` L3 / 25 phiếu):* **`14/22 (63.6%)`** nghĩ mình hiểu đủ nhưng vào lab mới phát hiện sai; mất trung vị **`20 phút/lần`** (`15–60 phút`). Trích dẫn #21 L3B: *"đọc slide thấy quen nên chủ quan, lúc code CrossEntropyLoss lỡ cho qua softmax trước nên kết quả lệch hẳn"*.<br/>• *Data thật `data/preclass/` (`436` HV hoạt động):* **`98.9%`** lời bạn học AI xen giữa video bị phớt lờ (`151/13.975 = 1.1%` phản hồi); **`69/77 (89.6%)`** HV làm `pre_post_post` sai lần đầu (`399/1.968 = 20.3%`); chỉ **`18/436 (4.1%)`** tự giải thích. | `evidence/summary.md`, `evidence/survey/report.md`, `evidence/data-mining.md` | ☑ Đủ số thật |
+| **2** | **Vì sao chọn bài này (Impact)** | **Hướng chọn (A4 tự giải thích trước lab):** `14 người × 3 lần/tháng × 20 phút/lần = 840 phút/tháng (14 giờ/tháng)` trong mẫu khảo sát (`~60 phút/người/tháng`, ước tính ~277 giờ/tháng nếu áp tỷ lệ lên 436 HV hoạt động *(tự ước tính)*).<br/>**2 hướng ĐÃ LOẠI (có số):**<br/>• *Can thiệp khi bỏ qua quiz giữa video:* chỉ **`21/2.153 (1.0%)`** lượt bỏ qua (`0/4.322` tua vượt) → bác bỏ giả thuyết ban đầu.<br/>• *Nhiều bạn học AI xen giữa video:* **`98.9%`** bị phớt lờ, `0/228` thưởng `phan_hoi_xay_dung`, tốn token nhân theo số vai và không kịp 10 giờ. | `spec.md` §2 | ☑ Đủ số thật |
+| **3** | **Giải pháp AI** | **Lát cắt 1 câu:** Sau pre-class và trước lab, học viên L3 tự giải thích từng ý cốt lõi; AI đối chiếu học liệu chuẩn và chọn 1 phản hồi (hỏi làm rõ / hỏi gợi mở / xác nhận ngắn); học viên tự sửa và tự quyết sang lab hay ôn thêm.<br/>**Hình dạng:** **Workflow cố định** (1 lần gọi model/lượt, không dùng agent tự do vì luồng rõ, rẻ và dễ kiểm soát).<br/>**2 công cụ chỉ đọc:** `search_lesson` · `get_key_points` (`data/sample_lessons.json`: 6 khái niệm, 12 đoạn).<br/>**Mức tự động:** **AI gợi ý, người quyết** (không chấm điểm, không chặn lab).<br/>**Chỗ chặn rủi ro & 4 nguyên tắc:** G10 (thiếu căn cứ → `[CHƯA ĐỦ CĂN CỨ]` bằng code) · Bám nguồn (hậu kiểm mã `[DXX-PYY]`) · Người quyết (*Xem lại kiến thức*) · Giới hạn tối đa 2 lượt hỏi/ý. | `spec.md` §4, `codebase/` | ☑ Đủ thiết kế |
+| **4** | **Demo live** | **Kịch bản demo 2 phút (`python run.py`):**<br/>1. *Trường hợp thường (`B17` hoặc `B01`):* giải thích Chatbot vs LLM → AI đối chiếu `[D01-P01]/[D01-P02]`, hỏi làm rõ hoặc xác nhận ngắn.<br/>2. *Trường hợp khó Lớp 4 (`B05` hoặc `B11`):* nói tự tin nhưng sai bản chất (*"RAG cập nhật trọng số"* / *"Temperature cao tăng chính xác"*) → AI bắt đúng `[HIỂU SAI]` kèm mã đoạn, không khen nhầm.<br/>3. *Chặn rủi ro Lớp 1 / Tấn công (`B12` hoặc `B25`):* từ chối prompt injection `[NGOÀI PHẠM VI]` hoặc khái niệm ngoài học liệu `[CHƯA ĐỦ CĂN CỨ]` (0 token).<br/>• **Link video dự phòng:** `[Điền link Drive/YouTube mở ẩn danh của Phương trước CP4]` | `eval/benchmark.csv`, `codebase/app.py` | ☐ Chờ link video dự phòng |
+| **5** | **Đánh giá thế nào** | **Dataset & Bộ câu thử:** `data/sample_lessons.json` (6 khái niệm, 12 đoạn) + **30 câu thử** (`12 thuong · 14 kho · 4 tu_choi`, `10/30 = 33.3%` nguồn thật `data_that` & `nguoi_dung`).<br/>**4 metric (chốt trước CP2):** `bam_nguon_hoc_lieu` · `bat_dung_lo_hong_hieu_bai` · `giu_ranh_gioi_va_gioi_han_vong` · `tu_giai_thich_lai_duoc_sau_goi_mo` *(chỉ số về học A4 ≥ 75%)*.<br/>**Chuẩn "đạt":** ≥ 80% câu qua + đạt cả 4 metric (`0` bịa mã, `0` xác nhận nhầm Lớp 4, `100%` `tu_choi`).<br/>**Kết quả:**<br/>• Lượt 1 (`run-1@20261127-230315`, `cx/gpt-6-luna`): **`[__ / 30 (__%)]`** *(chấm chéo Trung–Bách: `[__/5]`)*<br/>• Lượt 2 (`[run-2@…]`): **`[__ / 30 (__%)]`** sau 1 lần cải tiến nhắm nhóm lỗi chính (`[tên nhóm lỗi, vd lộ đáp án khi gợi mở]`).<br/>• Phiên kiểm thử nhiều ý & người dùng thử (`validation/log.md`): **`[__ / __ phiên tự giải thích lại đúng]`**. | `eval/README.md`, `eval/report.md`, `validation/log.md` | ☐ Chờ số chấm Lượt 1 & 2 từ Bách |
+| **6** | **Chi phí khi dùng thật** | **Mô phỏng:** `cost/personas.yaml` — **50 phiên, seed 42**, 3 persona từ `data/preclass/` (`42.2%` ít · `39.7%` vừa · `18.1%` nhiều; TB `4.64` phiên/HV/tháng).<br/>**2 mức giá trả phí (xem 27/11/2026):** `gemini-3.1-flash-lite` (`$0.25/$1.50`) và `gemini-4-hydrogen` (`$1.50/$7.50`).<br/>**Kết quả đo thật (`cost/simulate-1-summary.md`, dùng tỉ lệ đạt Lượt 2):**<br/>• Chi phí / task thành công: **`[$__ Flash-Lite · $__ Hydrogen]`**<br/>• Chi phí / tháng (3 kịch bản `250 / 436 / 721` HV): **Thấp `$__` · Cơ sở `$__` · Cao `$__`**<br/>• **So với impact:** `[$__/người/tháng]` vs tiết kiệm hướng tới **`~60 phút/người/tháng`** (§2). | `cost/cost-estimate.md`, `cost/simulate-1-summary.md` | ☐ Chờ bảng từ Phương |
+| **7** | **Kết luận (Go / Iterate / Stop)** | **Quyết định đề xuất:** `[GO có điều kiện / ITERATE]` — dẫn trực tiếp 3 con số chốt:<br/>1. *Pain & Impact (Trang 1–2):* `14/22 (63.6%)` ảo tưởng hiểu bài, mất `~60 phút/người/tháng`.<br/>2. *Chất lượng (Trang 5):* Lượt 1 → Lượt 2 `[__% → __%]`, `0` bịa mã, `0` khen nhầm Lớp 4, người dùng thử `[__/3]` tự sửa được.<br/>3. *Kinh tế (Trang 6):* `[$__/người/tháng]` ở kịch bản cơ sở 436 HV — rất rẻ so với thời gian sửa lab. | Trang 1, 5, 6 | ☐ Chốt lúc 13:15 |
+| **8** | **Nếu có thêm 1 tuần** | 1. Mở rộng học liệu chuẩn từ 6 khái niệm mẫu lên trọn bộ 15 ngày L3 (do giảng viên/Day Lead duyệt) để giảm nhánh `[CHƯA ĐỦ CĂN CỨ]` trên các chủ đề như `CrossEntropyLoss`, `fit_transform`, `time series` (`B25`–`B30`).<br/>2. Xử lý nốt lỗi còn lại từ `eval/report.md` mục 4 và góp ý từ người dùng thử `validation/log.md`.<br/>3. Thử nghiệm A/B nhóm nhỏ 20–30 học viên L3 trước buổi lab thật để đo trực tiếp thời gian sửa lab giảm bao nhiêu phút. | `eval/report.md` mục 4, `validation/log.md` | ☐ Cập nhật chi tiết lúc 13:15 |
 
-**Trước khi lên:** tải repo về một máy khác (hoặc thư mục mới), chạy theo mục "Chạy trong 3 phút" của `README.md` · `.env` có trên máy demo, đã gọi thử 1 câu trong vòng 1 giờ trước giờ demo · video dự phòng mở được bằng cửa sổ ẩn danh · biết bản chạy thử sẽ làm gì với **1 câu thử lạ** của giám khảo.
+---
 
-Ai nói trang nào (mỗi người ≥1 phần):
+## Checklist trước khi lên demo (guide 5.2 & 5.3)
+- [ ] Tải repo về thư mục sạch, chạy theo `README.md` trong 3 phút; `.env` trên máy demo đã test gọi thật trong vòng 1 giờ trước demo.
+- [ ] Video demo dự phòng mở được bằng cửa sổ ẩn danh.
+- [ ] Kiểm `demo-slides.pdf` nằm ở **thư mục gốc repo** (`K5-Day15-L3B-HelloWorld/demo-slides.pdf`).
+- [ ] Không có API key / `.env` / dữ liệu cá nhân thật trong repo.
+- [ ] Cả 4 thành viên trả lời trôi chảy 4 câu hỏi giám khảo: *(1) Vì sao chọn workflow cố định? (2) Lỗi nguy hiểm nhất là gì? (3) Chi phí / task thành công tính thế nào? (4) Phần bạn làm là gì?*
 
-| Trang | Người nói |
-|---|---|
-| | |
+## Phân công thuyết trình (mỗi thành viên trình bày 2 trang)
+
+| Trang | Nội dung | Người trình bày |
+|---|---|---|
+| **Trang 1–2** | Người dùng, Pain (2 nguồn) & Bảng Impact / Hướng loại | **Nguyễn Hoàng Trung** |
+| **Trang 3–4** | Giải pháp AI (sơ đồ, công cụ, chặn rủi ro) & **Demo live** | **Nguyễn Duy Mạnh** |
+| **Trang 5** | Đánh giá: Dataset, 30 câu thử, 4 metric, Lượt 1 → Lượt 2 & Lỗi chính | **Vũ Xuân Bách** |
+| **Trang 6–8** | Mô phỏng chi phí 3 kịch bản, Người dùng thử, Kết luận & Kế hoạch 1 tuần | **Đỗ Triệu Đức Phương** |
