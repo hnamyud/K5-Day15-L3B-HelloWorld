@@ -11,7 +11,12 @@ Data BTC cấp đã dùng (không commit nguyên file): `data/preclass/` (`learn
   2. Sau khi học xong pre-class và trước khi vào làm lab thực hành, học viên tự ôn nhanh bằng cách đọc lại slide/học liệu (`13/22` phiếu L3), làm bài thử (`8/22`), tự giải thích nhẩm (`7/22`), hỏi công cụ ngoài (`6/22`) hoặc hỏi bạn/trợ giảng (`5/22`) *(nguồn: `evidence/KhaoSat.csv`)*.
   3. Khi bắt đầu viết/chạy bài lab, học viên mới gặp lỗi logic, lỗi kích thước/rò dữ liệu hoặc lệch kết quả test mẫu nên nhận ra mình đã hiểu sai khái niệm cốt lõi ngay từ bước pre-class.
   4. Học viên phải dừng mạch làm lab để quay lại xem học liệu (`7/22`), sửa bài lab (`6/22`), hỏi người khác (`5/22`), hỏi công cụ ngoài (`3/22`) hoặc tạm dừng lab (`1/22`), mất trung vị `20 phút/lần` *(nguồn: `evidence/KhaoSat.csv`)*.
-  *(Ảnh chụp luồng `preclass-online.com` đã che thông tin tài khoản: bổ sung trước CP3).*
+
+  *Ảnh chụp luồng thực tế trên `preclass-online.com` (tài khoản thành viên nhóm, đã che tên tài khoản góc trên phải, chụp ngày 27/11/2026):*
+
+  ![Preclass Online — màn hình xem video kèm khung Tương tác lớp học và Sổ hiểu bài](assets/preclass-video-ai.png)
+
+  ![Preclass Online — màn hình Ôn tập cuối ngày dạng trắc nghiệm chọn đáp án](assets/preclass-ontap.png)
 - **Công cụ / AI đang được dùng cho việc này + nguồn:**
   - Trên `preclass-online.com` đã có **trợ giảng AI** (`teaching_assistant`, khung hỏi dưới video), **lớp học AI** với các bạn học AI tự động xen vào giữa video (`director_decided` xen vào `385/761 = 50.6%` đoạn bài giảng, tạo `13.975` lượt `agent_message_shown`), và **Sổ hiểu bài** *(nguồn: `tracks/track-a-edtech.md`, `data/preclass/README.md`, `evidence/data-mining.md`)*. Tuy nhiên `98.9%` lượt bạn học AI xen vào bị phớt lờ (`151/13.975 = 1.1%` phản hồi) và chưa có bước chủ động tự kiểm tra từng khái niệm ngay sau pre-class, trước giờ làm lab.
   - Ngoài hệ thống khoá, `6/22 (27.3%)` học viên L3 trong khảo sát dùng **công cụ AI bên ngoài** (như ChatGPT) để tự kiểm tra trước lab, và `3/22` hỏi công cụ AI sau khi phát hiện sai trong lab *(nguồn: `evidence/KhaoSat.csv`)*; các công cụ ngoài này không bám trực tiếp học liệu chuẩn của khoá.
@@ -217,7 +222,7 @@ flowchart TD
 | 27/11 22:50 | Cài sẵn hàm gọi API thật thuần `urllib` (`gemini`, `openai`, `anthropic`, `ollama`) trong `codebase/ai.py`; fix nhận diện giới hạn 2 câu hỏi (`B22`), bỏ chặn nhầm từ `"system prompt"` (`B01`) trong `codebase/agent.py`, và loại từ khoá chung chung (`mo hinh`, `llm`, `du lieu`) khỏi `codebase/tools.py` + `aliases` của `chatbot_vs_model`. | Kiểm tra định tuyến trước khi nối model thật phát hiện chặn nhầm `B01`, bỏ sót chế độ vòng cuối ở `B22`, và khớp nhầm khái niệm ngoài học liệu (`B09`, `B13`, `B25`–`B30`). Không thay đổi `eval/benchmark.csv`, `eval/metric_spec.yaml` hay chuẩn "đạt" §7. |
 | 27/11 22:50 | Bổ sung báo cáo khảo sát `evidence/survey/report.md`, cập nhật link `evidence/summary.md`, điền quy ước nhóm trong `AGENTS.md`. | Đủ hồ sơ nguồn khảo sát 25 phiếu / 22 L3 cho Rubric R1 (đối chiếu `evidence/KhaoSat.csv`). |
 | 27/11 23:05 | Mạnh hoàn tất nối API OpenAI-compatible (`MODEL_BASE_URL`, ẩn `API_KEY` khi lỗi HTTP, kiểm chặt trường `usage`) trong `codebase/ai.py`, siết `_FINAL_ROUND_RE` trong `codebase/agent.py` và chạy trọn bộ lượt 1 (`eval/run-1.csv`, `traces/run-1.jsonl`, commit `246dc63`). | Đạt điều kiện bản chạy thử gọi AI thật (`cx/gpt-6-luna`, 30/30 câu không lỗi kỹ thuật) cho CP3. |
-| 27/11 23:18 | Trung lập bảng chấm chéo độc lập 5 mẫu (`eval/cross-check-trung.md`), cập nhật trạng thái model thật (§4, §7 KQ) và dựng khung 8 trang slide (`slides/outline.md`). | Chuẩn bị chấm chéo ≥4/5 với Bách (Rubric R4) và giữ tiến độ CP3–CP4; không sửa chuẩn "đạt" §7 hay `eval/metric_spec.yaml`. |
+| 27/11 23:18 | Trung lập bảng chấm chéo độc lập 5 mẫu (`eval/cross-check-trung.md`), cập nhật trạng thái model thật (§4, §7 KQ), bổ sung 2 ảnh chụp `preclass-online.com` đã che tên (`assets/preclass-video-ai.png`, `assets/preclass-ontap.png` vào §0) và dựng khung 8 trang slide (`slides/outline.md`). | Chuẩn bị chấm chéo ≥4/5 với Bách (Rubric R4), đủ nguồn ảnh cho §0 và giữ tiến độ CP3–CP4; không sửa chuẩn "đạt" §7 hay `eval/metric_spec.yaml`. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
