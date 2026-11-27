@@ -33,16 +33,22 @@ Data BTC cấp đã dùng (không commit nguyên file): `data/preclass/` (`learn
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-| A4 — Phát hiện sớm cách hiểu sai một khái niệm pre-class trước khi làm lab | **14/22 phiếu L3** cho biết họ từng nghĩ mình đã hiểu đủ để áp dụng trước lần phát hiện hiểu sai trong lab (mẫu khảo sát). | **3 lần/người/tháng** *(tự ước tính)*. Trong 14 phiếu, 9 chọn “Dưới 5”, 3 chọn “Trên 5”, 2 chọn “Không nhớ” khi được hỏi số lab phát hiện hiểu sai sau khi bắt đầu trong 30 ngày qua. | Trung vị **20 phút/lần** để xem lại kiến thức hoặc sửa lab (15–60 phút, 13/14 phiếu trên có số phút tự báo cáo trong khảo sát). | **840 phút/tháng (14 giờ/tháng)** trong nhóm 14 phiếu *(tự ước tính)* |  | Có |
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+| **A4 — Tự giải thích & phát hiện sớm cách hiểu sai khái niệm pre-class trước khi làm lab** | **14/22 phiếu L3 (63.6%)** nghĩ mình đã hiểu đủ trước lần phát hiện hiểu sai trong lab (`evidence/KhaoSat.csv`); đồng thời **69/77 (89.6%)** HV làm `pre_post_post` sai ít nhất 1 câu lần đầu (`evidence/data-mining.md`). | **3 lần/người/tháng** *(tự ước tính)* từ 14 phiếu L3 (9 chọn "Dưới 5", 3 chọn "Trên 5", 2 chọn "Không nhớ" trong 30 ngày qua). | Trung vị **20 phút/lần** xem lại kiến thức hoặc sửa lab (`15–60 phút`, 13/14 phiếu ghi số phút). | **840 phút/tháng (14 giờ/tháng)** trong mẫu 14 phiếu (`~60 phút/người/tháng`) *(tự ước tính)* | Kịp (workflow cố định, 1 quyết định AI) | **Có** |
+| A4 (biến thể) — Can thiệp khi học viên bỏ qua câu hỏi giữa video (`skipped_stop`) | **17/189 (9.0%)** HV từng mở quiz có bỏ qua ít nhất 1 lần (`evidence/data-mining.md`). | **21/2.153 (1.0%)** lượt mở quiz trong 21 ngày (~`1.7` lần/HV gặp/tháng *(tự ước tính)*). | Chưa rõ do không hiểu hay đã biết *(tự ước tính ~5 phút/lần)*. | Rất nhỏ (~`145` phút/tháng trên toàn tập 17 HV *(tự ước tính)*) | Kịp | Loại |
+| A4 (biến thể) — Nhiều bạn học AI chủ động xen vào giữa video pre-class | **286/436** HV thấy `agent_message_shown`, nhưng **252/286 (88.1%)** chưa từng trả lời (`evidence/data-mining.md`). | TB **48.9 lượt xen/HV** trong 21 ngày (`13.975` lượt), nhưng chỉ `151/13.975 (1.1%)` có phản hồi và `0/228` thưởng `phan_hoi_xay_dung`. | Ngắt mạch xem video & lãng phí token ở `98.9%` lượt bị phớt lờ *(tự ước tính)*. | Hiệu quả học thấp, dễ gây phiền và đội chi phí theo số vai AI | Không kịp trong 10 giờ | Loại |
 
-- **Impact / tháng** của hướng chọn = **14 người × 3 lần/người/tháng × 20 phút/lần = 840 phút/tháng (14 giờ/tháng)** trong mẫu khảo sát *(tự ước tính)*.
-  - **14 người** là số phiếu L3 chọn “Nghĩ mình hiểu đủ để áp dụng” ở lần phát hiện hiểu sai được hỏi. **20 phút/lần** là trung vị của 13 phiếu trong nhóm có số phút.
-  - **3 lần/người/tháng** *(tự ước tính)* lấy từ `(9 × 2 + 3 × 6) / 12 = 3`. Giả định “Dưới 5” là 2 lần (điểm giữa 0–4), “Trên 5” là 6 lần (mức nguyên thấp nhất), và gán 3 lần cho mỗi phiếu “Không nhớ” theo trung bình của 12 phiếu còn lại.
-  - Phép tính dùng toàn bộ số lab phát hiện hiểu sai sau khi bắt đầu trong nhóm 14 phiếu để xấp xỉ tần suất A4. Kết quả có thể cao hơn impact riêng của A4 vì câu hỏi còn tính cả lần học viên đã biết mình chưa hiểu trước lab. Kết quả áp dụng trong mẫu khảo sát.
-- Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):
-- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8):
+- **Impact / tháng** của hướng chọn = **14 người × 3 lần/người/tháng × 20 phút/lần = 840 phút/tháng (14 giờ/tháng)** trong mẫu khảo sát (`~60 phút/người/tháng`) *(tự ước tính)*.
+  - **14 người** là số phiếu L3 chọn "Nghĩ mình hiểu đủ để áp dụng" ở lần phát hiện hiểu sai được hỏi (`evidence/KhaoSat.csv`). **20 phút/lần** là trung vị của 13 phiếu trong nhóm có số phút.
+  - **3 lần/người/tháng** *(tự ước tính)* lấy từ `(9 × 2 + 3 × 6) / 12 = 3`. Giả định "Dưới 5" là 2 lần (điểm giữa 0–4), "Trên 5" là 6 lần (mức nguyên thấp nhất), và gán 3 lần cho mỗi phiếu "Không nhớ" theo trung bình của 12 phiếu còn lại.
+  - Phép tính dùng toàn bộ số lab phát hiện hiểu sai sau khi bắt đầu trong nhóm 14 phiếu để xấp xỉ tần suất A4. Kết quả có thể cao hơn impact riêng của A4 vì câu hỏi còn tính cả lần học viên đã biết mình chưa hiểu trước lab. Kết quả áp dụng trong mẫu khảo sát *(nếu áp tỉ lệ ~63.6% lên 436 HV hoạt động trên `data/preclass/`, ước tính khoảng ~277 người × 60 phút ≈ 277 giờ/tháng ở quy mô lớp — tự ước tính)*.
+- **Hướng ĐÃ LOẠI + vì sao (giữ lại, không xoá):**
+  1. *Can thiệp khi học viên bỏ qua câu hỏi giữa video:* bị loại ngay sau khi đào `data/preclass/` vì tỉ lệ bỏ qua thực tế chỉ là `21/2.153 (1.0%)` (tua vượt `0/4.322 = 0.0%`), bác bỏ giả thuyết ban đầu ở CP1.
+  2. *Bạn học AI chủ động xen vào giữa video:* bị loại vì dữ liệu hành vi thật cho thấy `98.9%` lượt xen bị phớt lờ (`151/13.975 = 1.1%` phản hồi), gây ngắt mạch học (§3), tốn token nhân theo số vai và vượt quá phạm vi 10 giờ hackathon.
+- **Số lần / tháng của từng kiểu người dùng (dùng trực tiếp cho persona ở §8 và `cost/personas.yaml`):** Tỷ trọng 3 nhóm lấy từ phân bổ hoạt động của **436 học viên** trên `data/preclass/events.csv` (`evidence/data-mining.md`); số phiên/tháng là *(tự ước tính)* theo nhịp làm lab L3:
+  - **Dùng ít (`184/436 = 42.2%`):** `2` phiên/người/tháng (`3` lượt/phiên).
+  - **Dùng vừa (`173/436 = 39.7%`):** `5` phiên/người/tháng (`6` lượt/phiên).
+  - **Dùng nhiều (`79/436 = 18.1%`):** `10` phiên/người/tháng (`10` lượt/phiên).
+  - Trung bình gia quyền: **4.64 phiên/người/tháng** (khớp §8).
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - Đáng học từ ChatGPT Study Mode: Dùng câu hỏi gợi mở để học viên nói rõ lý do và tự kiểm tra cách hiểu.
