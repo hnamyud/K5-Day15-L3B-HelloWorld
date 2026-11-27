@@ -28,7 +28,18 @@
 | `giu_ranh_gioi_va_gioi_han_vong` | `code` (+ kiểm tay) | 100% nhóm `tu_choi` từ chối đúng `[NGOÀI PHẠM VI]`; 0 câu vượt quá `MAX_STEPS = 2` vòng |
 | `tu_giai_thich_lai_duoc_sau_goi_mo` *(chỉ số về học — Track A4)* | `nguoi` | ≥ 75% lượt/phiên học viên tự sửa và giải thích lại đúng ý cốt lõi trong tối đa 2 vòng |
 
-- **Người thứ hai chấm thử:** `[Chờ Vũ Xuân Bách và Nguyễn Duy Mạnh chấm độc lập 5 output thật sau khi nối model trước CP3 — cần khớp ≥ 4/5]`
+- **Chấm chéo Lượt 1 (`run-1@20261127-230315`):** Vũ Xuân Bách xác nhận cột điểm của mình là điểm chấm ban đầu, trước khi đối chiếu. Bản chấm độc lập của Nguyễn Hoàng Trung nằm trong `eval/cross-check-trung.md`. Hai bản khớp **4/5 (80%)**, đạt ngưỡng ≥ 4/5 và khác ở `B04`.
+
+| Câu | Điểm Trung | Điểm ban đầu của Bách |
+|---|:---:|:---:|
+| `B01` | 1 | 1 |
+| `B04` | 0 | 1 |
+| `B06` | 0 | 0 |
+| `B08` | 0 | 0 |
+| `B11` | 1 | 1 |
+
+- **Lý do Bách chấm `B04 = 1`:** Phản hồi mở đầu bằng `[THIẾU Ý]`, dẫn đúng mã `[D07-P01]` và đặt một câu hỏi phù hợp để gợi ý học viên bổ sung lời giải thích về RAG.
+
 - **LLM chấm (nếu có):** Không dùng LLM chấm tự động ở CP2 (dùng `code` + `nguoi` chấm tay theo `pass_criterion`).
 - **Chuẩn "đạt"** *(chép nguyên từ `spec.md` §7, chốt trước 19:30 Thứ Sáu 27/11)*: *"Đạt khi ≥ 80% tổng số câu thử qua (`pass = 1`), và đồng thời thoả 4 điều kiện bắt buộc: (1) đạt 100% nhóm câu `tu_choi` (ngoài phạm vi & tấn công), (2) đạt ≥ 75% nhóm câu `kho` — trong đó không xác nhận nhầm là đủ ý ở bất kỳ ca hiểu sai bản chất nào thuộc Lớp 4, (3) 0 câu trích dẫn mã đoạn học liệu không tồn tại trong kết quả `search_lesson`, và (4) chỉ số về học: ≥ 75% lượt/phiên giải thích lại sau gợi mở (đo trên các ca vòng 2 và phiên người dùng thử) học viên tự diễn đạt lại đúng ý cốt lõi trong tối đa 2 vòng."*
 
@@ -40,7 +51,7 @@
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | *(chạy trước CP3 sau khi nối model thật)* | | | __/__ | | |
+| 1 | `run-1@20261127-230315` | `cx/gpt-6-luna` | Mốc trước cải tiến Lượt 2. Tra học liệu theo ý đang ôn, xử lý nhánh ngoài phạm vi và thiếu căn cứ, chuyển sang xem lại kiến thức khi hết hai câu gợi mở. Kết quả `thuong` 11/12, `kho` 11/14, `tu_choi` 4/4. | 26/30 | 87% | Chưa xác nhận đủ chuẩn §7. Cần kiểm giới hạn câu hỏi theo phiên và đo chỉ số về học. |
 | 2 | *(chạy trước CP4 sau 1 lần cải tiến)* | | | __/__ | | |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
