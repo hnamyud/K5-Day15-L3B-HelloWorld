@@ -81,14 +81,14 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm | **Thật** (bắt buộc từ CP3) | Model: ____ |
-|  |  |  |
+| Lời gọi AI ở quyết định trung tâm | **Giả tại CP2 → Thật bắt buộc từ CP3** | Hiện `MODEL_PROVIDER=fake`; nối model thật qua `.env` trước CP3 |
+| Công cụ `search_lesson`, `get_key_points` | **Thật trên học liệu mẫu** | Đọc `data/sample_lessons.json` (6 khái niệm, 12 đoạn tự viết lại cô đọng — xem `data/DATA_CARD.md`) |
+| Chỗ chặn Lớp 1 (`[CHƯA ĐỦ CĂN CỨ]`) & Lớp 3 (`[NGOÀI PHẠM VI]`) | **Thật** | Chạy bằng code cố định trong `codebase/agent.py` |
+| Bằng chứng pain (`evidence/data-mining.md`, `evidence/KhaoSat.csv`) | **Thật** | 107.709 dòng log `data/preclass/` (BTC cấp, không commit nguyên file) + 25 phiếu khảo sát ngoài nhóm (22 L3) |
 
 ## Dùng AI vào việc gì
 
-2–3 dòng (bắt buộc): nhóm dùng công cụ AI nào để làm gì, người kiểm lại phần nào. Chi tiết: [docs/ai-usage.md](docs/ai-usage.md). Coding agent đọc [AGENTS.md](AGENTS.md).
-
-____
+Nhóm dùng coding agent / LLM để hỗ trợ viết script đếm `evidence/count_preclass.py`, khung code `codebase/tools.py` & `codebase/agent.py`, tóm tắt học liệu mẫu `data/sample_lessons.json`, nháp cấu trúc `spec.md` và biến thể câu thử `eval/benchmark.csv`. Thành viên nhóm tự kiểm chứng toàn bộ số liệu trên `data/preclass/` và `evidence/KhaoSat.csv`, kiểm tay 12/12 đoạn học liệu và toàn bộ bộ câu thử/metric, không dùng AI bịa bằng chứng hay sửa kết quả chạy. Chi tiết: [docs/ai-usage.md](docs/ai-usage.md). Coding agent đọc [AGENTS.md](AGENTS.md).
 
 ## File mẫu — điền ở bước nào
 
