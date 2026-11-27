@@ -101,7 +101,10 @@ flowchart TD
   | Người quyết | Học viên có thể xem lại, để ôn sau hoặc kết thúc phiên. Bản tổng hợp giữ trạng thái của từng ý để học viên tự quyết khi nào sang lab. |
   | Giới hạn lượt hỏi | Tối đa 2 câu làm rõ hoặc gợi mở mỗi ý. Nếu trả lời lại vẫn vướng sau câu thứ hai, hiện phần xem lại. Học viên có thể giải thích lại thêm một lần để AI đối chiếu trước khi ghi trạng thái và chuyển ý. |
 
-- Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…) — ghi rõ, không giả làm thật: Công cụ `search_lesson` và `get_key_points` đã cài đặt thật trong `codebase/tools.py`, đọc từ tập học liệu tóm tắt tự biên soạn `data/sample_lessons.json` (6 khái niệm cốt lõi L3, 12 đoạn học liệu có mã đoạn, mô tả ở `data/DATA_CARD.md`, không commit nguyên tài liệu khoá). Model AI hiện chạy ở **chế độ giả** (`MODEL_PROVIDER=fake`) để luồng chạy hết tại CP2, sẽ nối model thật qua `.env` trước CP3 (`docs/connect-model.md`).
+- **Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…)**
+  - **Tra cứu đang chạy trên học liệu mẫu.** `search_lesson` tìm đoạn liên quan theo từ khóa, còn `get_key_points` lấy các ý chuẩn theo mã khái niệm. Hai công cụ đọc `data/sample_lessons.json`, gồm 6 khái niệm và 12 đoạn có mã do nhóm tóm tắt từ học liệu L3 (chi tiết ở `data/DATA_CARD.md`). Code đưa đoạn tra được và các ý chuẩn vào ngữ cảnh cho model.
+  - **Phản hồi AI đang được mô phỏng.** Với `MODEL_PROVIDER=fake`, bản chạy thử trả văn bản giữ chỗ và hiển thị mã đoạn đã tra. Việc xác định học viên trả lời đủ, thiếu hay hiểu sai cần model thật. Kế hoạch trước CP3 là triển khai phần gọi API trong `codebase/ai.py`, sau đó cấu hình model qua `.env` theo `docs/connect-model.md`.
+  - **Luồng ôn cả bài còn ở mức thiết kế.** Code hiện xử lý từng lượt cho một khái niệm. Phần giữ trạng thái từng ý, đối chiếu lời giải thích mới trước khi chuyển ý và tổng hợp cuối phiên còn cần triển khai theo sơ đồ §4.
 
 ## §5. Chỗ khó — 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3)*
 
