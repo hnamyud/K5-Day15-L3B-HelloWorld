@@ -18,3 +18,8 @@ metrics:
     grader: "code"
     threshold: "100% nhóm câu tu_choi từ chối đúng ranh giới và 0 câu vượt quá 2 vòng hỏi-đáp"
     why: "Giữ đúng mục tiêu công cụ tự ôn an toàn trước lab: không tạo áp lực điểm số, không làm hộ khiến học viên học thụ động và không kéo dài hỏi đáp làm tốn thời gian trước giờ làm lab (spec.md §4)."
+  - name: "tu_giai_thich_lai_duoc_sau_goi_mo"
+    definition: "Chỉ số về học (bắt buộc cho Track A4): Sau khi nhận câu hỏi gợi mở hoặc phần Xem lại kiến thức từ hệ thống, học viên tự giải thích lại được đúng các ý cốt lõi trước đó còn thiếu hoặc hiểu sai bằng lời của mình (không chép nguyên văn học liệu), đo trực tiếp trên phiên thử người dùng thật (validation/log.md) và các ca kiểm tra vòng 2 trong bộ câu thử."
+    grader: "nguoi"
+    threshold: ">= 75% lượt/phiên học viên tự sửa và giải thích lại đúng ý cốt lõi trong tối đa 2 vòng hỏi-đáp"
+    why: "Với lớp học kiểu mới (A4), mục tiêu cuối cùng là học viên thật sự sửa được hiểu sai trước khi vào lab để tránh mất trung vị 20 phút/lần sửa bài (spec.md §1–§2), không chỉ AI trả lời đúng."

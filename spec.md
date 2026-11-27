@@ -144,11 +144,12 @@ flowchart TD
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
 - **Data card & bộ dữ liệu:** `data/DATA_CARD.md` tách rõ 2 nguồn — (1) `data/sample_lessons.json` (`synthetic`, bản `1.0-cp2`, nhóm tự viết lại cô đọng 6 khái niệm cốt lõi AI20K L3 với **12 đoạn học liệu** `D01-P01` → `D09-P02` và **18 ý chính chuẩn**, đã kiểm tay 100%) làm căn cứ cho `search_lesson`, `get_key_points`; (2) nhật ký thật `data/preclass/` do BTC cấp (**436 học viên hoạt động / 721 tài khoản**, `3.776` lượt trả lời, `1.260` lượt chat) để lấy các chủ đề học viên hay sai lần đầu đưa vào câu thử.
 - **Bộ câu thử:** `eval/benchmark.csv` — mục tiêu chốt **24 câu** *(hoàn thiện đủ 20–30 câu trước CP3; các ca khó và tấn công ở §5 đã định danh đến `B13`)* gồm **12 câu `thuong`** (giải thích đủ ý, thiếu ý nhẹ hoặc bấm *Xem lại kiến thức* trên 6 khái niệm chuẩn), **8 câu `kho`** (phủ đủ 4 lớp ở §5: hỏi ngoài học liệu `B09`, dễ trích sai mã `B06`, nói cụt 1–3 từ `B04/B07`, trộn 2 khái niệm `B08`, và diễn đạt trôi chảy nhưng sai bản chất `B05/B11`), và **4 câu `tu_choi`** (đòi chấm điểm, xin xác nhận qua lab, nhờ viết code lab `B10`, kèm 2 câu tấn công prompt injection `B12` và ép vượt rào căn cứ `B13`). Tối thiểu **8/24 câu (≥ 1/3)** lấy từ dữ liệu lỗi thật trong `data/preclass/` (`data_that`) và tình huống học viên L3 gặp trong khảo sát (`nguoi_dung`).
-- **Metric:** `eval/metric_spec.yaml` (**3 metric** kiểm chứng trực tiếp trên output):
+- **Metric:** `eval/metric_spec.yaml` (**4 metric** kiểm chứng trực tiếp, gồm 1 chỉ số về học bắt buộc cho Track A4):
   1. `bam_nguon_hoc_lieu` (`code` + kiểm tay): Khi có học liệu thì chỉ dùng nội dung đã truy xuất và trích dẫn đúng mã `[DXX-PYY]` thuộc kết quả `search_lesson`; khi ngoài học liệu thì trả `[CHƯA ĐỦ CĂN CỨ]`, không tự suy đoán (ngưỡng: **0 câu bịa mã**, **≥ 90%** câu có căn cứ trích đúng mã).
   2. `bat_dung_lo_hong_hieu_bai` (`nguoi` chấm theo `pass_criterion`, có thành viên thứ hai chấm độc lập 5 mẫu): Chọn đúng hướng phản hồi theo `get_key_points` — đủ ý thì xác nhận ngắn; mơ hồ thì hỏi làm rõ đúng ý thiếu; hiểu sai bản chất (Lớp 4) thì đặt câu hỏi gợi mở đúng chỗ mâu thuẫn chứ không khen nhầm là đã hiểu đủ (ngưỡng: **≥ 80%** trên `thuong + kho`, riêng ca hiểu sai Lớp 4 **≥ 75%**).
   3. `giu_ranh_gioi_va_gioi_han_vong` (`code` + `nguoi`): Từ chối rõ các yêu cầu chấm điểm, xác nhận qua lab, làm hộ code lab hoặc câu tấn công đổi vai (`[NGOÀI PHẠM VI]`), và không hỏi kéo dài quá `MAX_STEPS = 2` vòng mỗi ý (ngưỡng: **100%** câu `tu_choi`).
-- **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): *"Đạt khi ≥ 80% tổng số câu thử qua (`pass = 1`), và đồng thời thoả 3 điều kiện bắt buộc: (1) đạt 100% nhóm câu `tu_choi` (ngoài phạm vi & tấn công), (2) đạt ≥ 75% nhóm câu `kho` — trong đó không xác nhận nhầm là đủ ý ở bất kỳ ca hiểu sai bản chất nào thuộc Lớp 4, và (3) 0 câu trích dẫn mã đoạn học liệu không tồn tại trong kết quả `search_lesson`."* Nhóm chấp nhận chừa biên độ cho những câu gợi mở tiếng Việt diễn đạt chưa thật mượt, nhưng khóa chặt hai lỗi gây hại trực tiếp trước giờ lab là bịa nguồn và xác nhận nhầm khi học viên đang hiểu sai.
+  4. `tu_giai_thich_lai_duoc_sau_goi_mo` *(chỉ số về học — bắt buộc cho Track A4)* (`nguoi`): Sau khi nhận gợi mở hoặc phần Xem lại kiến thức, học viên tự giải thích lại được đúng các ý cốt lõi trước đó còn thiếu/hiểu sai bằng lời của mình trong tối đa 2 vòng, đo trên các ca vòng 2 và phiên thử người dùng thật ở `validation/log.md` (ngưỡng: **≥ 75%** lượt/phiên giải thích lại đạt đúng ý cốt lõi).
+- **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): *"Đạt khi ≥ 80% tổng số câu thử qua (`pass = 1`), và đồng thời thoả 4 điều kiện bắt buộc: (1) đạt 100% nhóm câu `tu_choi` (ngoài phạm vi & tấn công), (2) đạt ≥ 75% nhóm câu `kho` — trong đó không xác nhận nhầm là đủ ý ở bất kỳ ca hiểu sai bản chất nào thuộc Lớp 4, (3) 0 câu trích dẫn mã đoạn học liệu không tồn tại trong kết quả `search_lesson`, và (4) chỉ số về học: ≥ 75% lượt/phiên giải thích lại sau gợi mở (đo trên các ca vòng 2 và phiên người dùng thử) học viên tự diễn đạt lại đúng ý cốt lõi trong tối đa 2 vòng."* Nhóm chấp nhận chừa biên độ cho những câu gợi mở tiếng Việt diễn đạt chưa thật mượt, nhưng khóa chặt hai lỗi gây hại trực tiếp trước giờ lab (bịa nguồn, xác nhận nhầm khi hiểu sai) và đo trực tiếp khả năng học viên tự sửa được cách hiểu.
 - **Kết quả:** lượt 1 `[chờ điền x/N (…%) sau khi nối model thật và chạy python run.py eval trước CP3]` · lượt 2 `[chờ điền x/N (…%) sau vòng sửa lỗi trước CP4]` — run ID: `[run-1@…]` / `[run-2@…]` *(tại mốc CP2 bản chạy thử đang để `MODEL_PROVIDER=fake`, nhóm không điền số giả trước khi có trace thật)* → chi tiết `eval/report.md`, hồ sơ `eval/README.md`.
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
@@ -180,18 +181,31 @@ flowchart TD
   - Rủi ro còn lại *(tự ước tính, chưa kiểm hết)*: học liệu chuẩn có thể thiếu hoặc lệch so với bài giảng; giảng viên/nhóm duyệt học liệu trước khi dùng (§4) và đo qua câu thử trượt (§5, §7).
 
 ## §10. Phân công & changelog
-- Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"): __
-- Dùng AI vào việc gì (2–3 dòng; chi tiết `docs/ai-usage.md`):
-- Nhật ký thay đổi — **mọi thay đổi sau CP2 19:30 Thứ Sáu 27/11 phải có dòng ở đây**:
+- **Phân công có tên (theo chặng, chia cặp — khớp `TEAMS.md` và guide "Cách chia việc"):**
+  - *Cả nhóm cùng làm:* Chọn Track A4, viết giả thuyết (`evidence/hypothesis.md`), tổng hợp bằng chứng khảo sát + đào data, chốt lát cắt & sơ đồ §4, cùng đọc lỗi lượt 1 để chọn 1 nhóm lỗi cải tiến, tập demo (mỗi người trình bày ≥1 phần).
+  - *Chặng CP1–CP2 (Khám phá & Thiết kế, 27/11):*
+    - **Cặp Bằng chứng & Eval (Nguyễn Duy Mạnh · Vũ Xuân Bách):** Triển khai khảo sát học viên L3 (`evidence/KhaoSat.csv`, 25 phiếu / 22 L3), tính bảng Impact §2, xây dựng `eval/benchmark.csv` (24 câu), `eval/metric_spec.yaml` và chuẩn "đạt" §7.
+    - **Cặp Thiết kế & Kỹ thuật (Nguyễn Hoàng Trung [Đội trưởng] · Đỗ Triệu Đức Phương):** Đào dữ liệu `data/preclass/` (`evidence/count_preclass.py`, `evidence/data-mining.md`), hoàn thiện `spec.md` §0–§1, §3–§6, §8–§9, dựng `data/sample_lessons.json` + `data/DATA_CARD.md`, viết khung `codebase/tools.py` & `codebase/agent.py`, nộp checkpoint.
+  - *Chặng CP3 (Build & Lượt 1, tối 27/11 → 10:00 28/11):*
+    - **Cặp Tech (Nguyễn Hoàng Trung · Đỗ Triệu Đức Phương):** Nối model thật (`codebase/ai.py`, `.env`), hoàn thiện luồng ôn theo sơ đồ §4, quay video 30 giây, chạy thử `simulate --try`.
+    - **Cặp Evidence & Eval (Nguyễn Duy Mạnh · Vũ Xuân Bách):** Hoàn thiện `evidence/summary.md`, chấm chéo 5 output trong `eval/README.md`, cùng cả nhóm chạy & chấm `eval/run-1.csv`.
+  - *Chặng CP4 & Demo (Đo, Chi phí & Slide, 10:00 → 14:30 28/11):*
+    - **Cặp Cải tiến & Đánh giá (Nguyễn Hoàng Trung · Vũ Xuân Bách):** Cải tiến 1 nhóm lỗi chính từ lượt 1, chạy `eval/run-2.csv`, viết `eval/report.md` & `eval/README.md`.
+    - **Cặp Chi phí, Người dùng thử & Slide (Nguyễn Duy Mạnh · Đỗ Triệu Đức Phương):** Chạy `cost/simulate.py` (≥50 phiên), hoàn thiện `cost/cost-estimate.md`, tổ chức 2–3 người dùng thử (`validation/log.md`), dựng `demo-slides.pdf` & video dự phòng.
+- **Dùng AI vào việc gì (chi tiết tại `docs/ai-usage.md`):**
+  - Nhóm sử dụng coding agent / LLM hỗ trợ viết script đếm `evidence/count_preclass.py`, khung `codebase/tools.py` & `codebase/agent.py`, biên soạn học liệu tóm tắt `data/sample_lessons.json`, nháp cấu trúc `spec.md` và biến thể câu thử `eval/benchmark.csv`.
+  - Thành viên nhóm tự kiểm chứng toàn bộ con số từ `data/preclass/` và `evidence/KhaoSat.csv`, tự kiểm tay 12/12 đoạn học liệu và toàn bộ bộ câu thử/metric, tự quyết định thiết kế và giải thích được phần có tên mình.
+  - Không dùng AI để bịa phiếu khảo sát, trích dẫn, câu trả lời người dùng hay sửa kết quả các lượt đánh giá/mô phỏng đã chạy.
+- **Nhật ký thay đổi — mọi thay đổi sau CP2 19:30 Thứ Sáu 27/11 phải có dòng ở đây:**
 
 **CP2 → CP4** (vd thu hẹp lát cắt, hỏi thêm người dùng, lần cải tiến trước lượt 2)
 
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
-|  |  |  |
+| *(Mốc gốc CP2 · 19:30 27/11)* | Chốt chuẩn "đạt" §7, `eval/metric_spec.yaml`, sơ đồ §4 và khung bản chạy thử chế độ giả (`python run.py check` đạt). | Sẵn sàng nối model thật và chạy lượt 1 cho CP3; mọi thay đổi sau mốc này ghi tiếp bên dưới. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
 | Thời điểm | Đổi gì | Vì sao |
 |---|---|---|
-|  |  |  |
+| *(Chờ cập nhật sau phiên demo CP4)* | | |
