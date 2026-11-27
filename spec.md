@@ -1,21 +1,33 @@
-# AI SPEC — [Tên lát cắt] · Nhóm [tên nhóm] · Phòng [XXX] · Zone [X]
+# AI SPEC — Kiểm tra cách hiểu khái niệm trước lab (A4) · Nhóm HelloWorld · Phòng C401 · Zone L3B
 
 > Mốc nộp: §7 chốt chuẩn "đạt" tại **CP2 19:30 Thứ Sáu 27/11** · §0–§7 nộp **CP3 10:00 Thứ Bảy 28/11** · đủ §0–§10 **CP4 14:30 Thứ Bảy 28/11** · §10 changelog ghi tiếp đến **23:59 Thứ Bảy 28/11**.
-> Đầu mỗi mục ghi bước guide (`02-guide.md` trong repo đề) chỉ cách điền. Mỗi mục ngắn, có số và nguồn; chi tiết để ở file được trỏ tới. Xoá dòng hướng dẫn trong ngoặc vuông khi điền xong.
 
-Track: [ ] A · [ ] B · [ ] C · [ ] D · [ ] E — bài toán: [đề gợi ý trong file track, hoặc bài toán nhóm tự mở rộng] __
-Data BTC cấp đã dùng (nếu có — không commit nguyên file): __
+Track: [x] A · [ ] B · [ ] C · [ ] D · [ ] E — bài toán: **A4 · Lớp học kiểu mới** (Phát hiện sớm cách hiểu sai khái niệm pre-class trước khi làm lab bằng phương pháp tự giải thích và hỏi gợi mở bám học liệu chuẩn).
+Data BTC cấp đã dùng (không commit nguyên file): `data/preclass/` (`learners.csv`, `events.csv`, `class_events.csv`, `answers.csv`, `chat.csv`, `completed_items.csv`, `rewards.csv`, ngày 05/11–25/11/2026) — tổng hợp tại `evidence/data-mining.md` và script `evidence/count_preclass.py`.
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
-- Luồng hiện tại của việc này, trong khoá hoặc trên app thật (3–5 bước; ảnh chụp từ tài khoản của mình, đã che thông tin):
-- Công cụ / AI đang được dùng cho việc này (nếu có) + nguồn. Không kiểm được thì ghi "chưa kiểm":
+- **Luồng hiện tại trong khoá (4 bước):**
+  1. Học viên lớp L3 mở trang pre-class (`preclass-online.com`) trước buổi học để xem video bài giảng, làm câu hỏi giữa video, mini lab hoặc bài ôn cuối ngày (`pre_post_post`).
+  2. Sau khi học xong pre-class và trước khi vào làm lab thực hành, học viên tự ôn nhanh bằng cách đọc lại slide/học liệu (`13/22` phiếu L3), làm bài thử (`8/22`), tự giải thích nhẩm (`7/22`), hỏi công cụ ngoài (`6/22`) hoặc hỏi bạn/trợ giảng (`5/22`) *(nguồn: `evidence/KhaoSat.csv`)*.
+  3. Khi bắt đầu viết/chạy bài lab, học viên mới gặp lỗi logic, lỗi kích thước/rò dữ liệu hoặc lệch kết quả test mẫu nên nhận ra mình đã hiểu sai khái niệm cốt lõi ngay từ bước pre-class.
+  4. Học viên phải dừng mạch làm lab để quay lại xem học liệu (`7/22`), sửa bài lab (`6/22`), hỏi người khác (`5/22`), hỏi công cụ ngoài (`3/22`) hoặc tạm dừng lab (`1/22`), mất trung vị `20 phút/lần` *(nguồn: `evidence/KhaoSat.csv`)*.
+  *(Ảnh chụp luồng `preclass-online.com` đã che thông tin tài khoản: bổ sung trước CP3).*
+- **Công cụ / AI đang được dùng cho việc này + nguồn:**
+  - Trên `preclass-online.com` đã có **trợ giảng AI** (`teaching_assistant`, khung hỏi dưới video), **lớp học AI** với các bạn học AI tự động xen vào giữa video (`director_decided` xen vào `385/761 = 50.6%` đoạn bài giảng, tạo `13.975` lượt `agent_message_shown`), và **Sổ hiểu bài** *(nguồn: `tracks/track-a-edtech.md`, `data/preclass/README.md`, `evidence/data-mining.md`)*. Tuy nhiên `98.9%` lượt bạn học AI xen vào bị phớt lờ (`151/13.975 = 1.1%` phản hồi) và chưa có bước chủ động tự kiểm tra từng khái niệm ngay sau pre-class, trước giờ làm lab.
+  - Ngoài hệ thống khoá, `6/22 (27.3%)` học viên L3 trong khảo sát dùng **công cụ AI bên ngoài** (như ChatGPT) để tự kiểm tra trước lab, và `3/22` hỏi công cụ AI sau khi phát hiện sai trong lab *(nguồn: `evidence/KhaoSat.csv`)*; các công cụ ngoài này không bám trực tiếp học liệu chuẩn của khoá.
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
-- Người dùng chính (một vai cụ thể):
-- Việc họ cố làm xong (`động từ + đối tượng + bối cảnh`, không có chữ AI):
-- Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:
-- Pain (KHÔNG chữ AI): ai — đang làm gì — vướng đâu — hậu quả gì:
-- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`): __
+- **Người dùng chính:** Học viên AI20K lớp L3 (`L3A`, `L3B`) vừa hoàn thành bài học pre-class và chuẩn bị bắt đầu làm bài lab áp dụng kiến thức.
+- **Việc họ cố làm xong:** Tự kiểm tra lại mức độ hiểu đúng từng khái niệm cốt lõi vừa học trong bài pre-class ngay trước khi bắt đầu làm bài lab thực hành.
+- **Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:**
+  - *Giải bằng gì (`evidence/KhaoSat.csv`, n = 22 phiếu L3, chọn nhiều đáp án):* Xem lại học liệu (`13/22 = 59.1%`), làm câu hỏi/bài thử (`8/22 = 36.4%`), tự giải thích (`7/22 = 31.8%`), dùng công cụ ngoài (`6/22 = 27.3%`), hỏi bạn/trợ giảng (`5/22 = 22.7%`).
+  - *Hỏng ở đâu:* Xem lại slide chỉ tạo cảm giác "quen mắt" (ảo tưởng hiểu bài) chứ không bộc lộ chỗ hiểu sai bản chất — **`14/22 (63.6%)`** học viên L3 nghĩ mình đã hiểu đủ để áp dụng nhưng vào lab mới phát hiện hiểu sai (vd: áp softmax hai lần trước `CrossEntropyLoss`, dùng `fit_transform` lên tập test gây rò dữ liệu, shuffle dữ liệu chuỗi thời gian, nhầm `axis` hoặc `mean/median`). Còn hỏi bạn/trợ giảng khó thực hiện ngay lúc tự học ngoài giờ, còn công cụ ngoài không gắn học liệu chuẩn và dễ trả lời thay thay vì đặt câu hỏi phản biện.
+  - *Vì sao chưa bỏ:* Đọc lại slide nhanh, có sẵn ngay trên hệ thống, không tốn thêm công chuẩn bị và không sợ bị đánh giá điểm số.
+- **Pain:** Học viên lớp L3 sau khi hoàn thành bài pre-class và chuẩn bị làm lab thường xem lướt lại học liệu nên tưởng mình đã hiểu đủ, không phát hiện sớm chỗ hiểu sai bản chất cho đến khi chạy bài lab bị lỗi hoặc lệch kết quả; hậu quả là phải dừng giữa chừng để đọc lại kiến thức và sửa bài, mất trung vị 20 phút mỗi lần (dao động 15–60 phút ở nhóm tự tin mình đã hiểu).
+- **Bằng chứng — số chính + kết luận** *(đủ 2 nguồn kiểm chéo nhau; chi tiết: `evidence/summary.md`, `evidence/data-mining.md`, `evidence/KhaoSat.csv`)*:
+  - **Nguồn 1 — Khảo sát hành vi thật (`evidence/KhaoSat.csv`, `n = 25` phiếu ngoài nhóm, lọc đúng người dùng L3: `22` phiếu — `12 L3B`, `10 L3A`):** `14/22 (63.6%)` nghĩ mình đã hiểu đủ để áp dụng trước lần phát hiện hiểu sai gần nhất trong lab (`5/22` còn phân vân, `3/22` biết chưa hiểu); `17/22 (77.3%)` gặp lại tình trạng này trong 30 ngày qua (`12` chọn dưới 5 lab, `5` chọn trên 5 lab, `5` không nhớ); thời gian tốn thêm để xem lại/sửa lab có trung vị **`20 phút/lần`** (`n = 21` phiếu ghi số phút, `5–60 phút`; riêng nhóm 14 phiếu tự tin có `13` phiếu ghi số phút, `15–60 phút`, trung vị `20 phút`). Có **22 ví dụ cụ thể** về lỗi hiểu sai trước lab (vd: *"đọc slide thấy quen nên chủ quan, lúc code CrossEntropyLoss lỡ cho qua softmax trước nên kết quả lệch hẳn"* — phiếu #21 L3B; *"tưởng fit_transform dùng luôn cho tập test, chạy xong thấy điểm cao bất thường mới biết bị rò dữ liệu"* — phiếu #12 L3B; *"đinh ninh hiểu cách split train/test rồi, làm lab tới bước tiền xử lý bị leak từ tập test sang mới sửa"* — phiếu #10 L3B).
+  - **Nguồn 2 — Đào dữ liệu hành vi thật (`data/preclass/`, `evidence/data-mining.md`, `436/721` HV hoạt động, `107.709` events):** Trên `preclass-online.com`, bộ điều phối lớp học AI xen vào `385/761 (50.6%)` đoạn video (`13.975` lượt `agent_message_shown`), nhưng **`98.9%` bị phớt lờ** (`151/13.975 = 1.1%` phản hồi, `0/228` thưởng `phan_hoi_xay_dung`). Đồng thời `69/77 (89.6%)` HV làm kiểm tra sau bài (`pre_post_post`) sai ít nhất 1 câu ngay lần đầu (`399/1.968 = 20.3%` lượt sai), chỉ `18/436 (4.1%)` từng viết tự giải thích (`giai_thich`), và `909/1.223 (74.3%)` lượt nhắn AI chưa có ý riêng (`rubric_y_moi = 0`).
+  - **Kết luận đối chiếu:** Hai nguồn bổ sung chặt cho nhau — log pre-class chứng minh xen vào giữa video bị phớt lờ (`98.9%`) và học viên ít tự giải thích (`4.1%`) nên còn sai nhiều (`20.3%` câu `pre_post_post`), còn khảo sát giải thích nguyên nhân cốt lõi là **ảo tưởng hiểu bài (`14/22 = 63.6%`)** khi chỉ đọc lướt slide trước lab, khiến học viên mất trung vị `20 phút/lần` sửa lab. Vì vậy nhóm đổi lát cắt so với CP1: không xen vào lúc đang xem video, mà để học viên chủ động tự giải thích từng ý cốt lõi ngay sau pre-class và trước lab.
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
 
