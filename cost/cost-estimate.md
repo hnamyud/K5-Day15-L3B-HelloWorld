@@ -4,8 +4,6 @@
 > Khi có lượt đo mới, chạy `python run.py simulate --rate-from eval/run-2.csv` rồi lấy bảng trong `cost/simulate-N-summary.md`.
 > Lúc build dùng gói miễn phí vẫn tính theo **giá gói trả phí** — đây là chi phí cho lúc đưa vào dùng thật.
 
-> Luồng hai vai đã ghi số đo API cho 38 lượt đầu tại [báo cáo 15 ngày](../eval/study-15days-report.md). Chi phí cho một phiên nhiều mục và tỷ lệ học viên tự sửa vẫn cần đo.
-
 ## 1. Đầu vào
 
 - **Persona** (`cost/personas.yaml`): dùng ít **42,2% · 2 phiên/tháng · 3 lượt/phiên**, dùng vừa **39,7% · 5 · 6**, dùng nhiều **18,1% · 10 · 10**. Tỷ trọng lấy từ `evidence/data-mining.md`. Tần suất và số lượt là tự ước tính cho bài mẫu ba ý.

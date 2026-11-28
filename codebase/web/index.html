@@ -271,8 +271,8 @@ body.presenter.in-study .inspector { display: block; }
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
       Chọn bài khác
     </button>
-    <div class="side-label" id="railTitle">Các mục</div>
-    <p class="side-empty" id="sideEmpty">Chọn một bài pre-class để xem các mục cần dạy lại.</p>
+    <div class="side-label" id="railTitle">Các ý cốt lõi</div>
+    <p class="side-empty" id="sideEmpty">Chọn một bài pre-class để xem các ý cần ôn.</p>
     <ol class="steps" id="steps"></ol>
     <div class="side-bottom">
       <button class="side-btn" id="presenterToggle" aria-pressed="false">
@@ -292,7 +292,7 @@ body.presenter.in-study .inspector { display: block; }
       <div class="col">
         <div class="page-hello">
           <h1>Hôm nay bạn ôn bài nào?</h1>
-          <p>Bạn là người dạy. AI đóng vai người mới học và hỏi lại để hiểu bài. Phía sau, một giám khảo ngầm đối chiếu lời bạn với từng ý chuẩn và chỉ công bố kết quả khi bạn dạy đủ, hết lượt gợi mở, hoặc chọn Xem lại kiến thức.</p>
+          <p>Giải thích lại từng ý cốt lõi bằng lời của bạn. AI đối chiếu với học liệu chuẩn, hỏi lại chỗ còn thiếu hoặc hiểu sai, và luôn chỉ rõ đoạn học liệu làm căn cứ.</p>
         </div>
         <div class="lessons" id="lessons"></div>
         <p class="note">Không chấm điểm, không ghi vào hồ sơ, không gửi cho giảng viên.</p>
@@ -312,7 +312,7 @@ body.presenter.in-study .inspector { display: block; }
     <div class="dock">
       <div class="col done hidden" id="doneBar">
         <div>
-          <b>Bạn đã đi hết các mục của bài này.</b>
+          <b>Bạn đã đi hết các ý của bài này.</b>
           <span>Đọc lại phản hồi bên trên, rồi sang bước tự nhắc lại khi sẵn sàng.</span>
         </div>
         <button class="btn primary" id="btnToRecall">Tự nhắc lại và xem tổng hợp</button>
@@ -349,7 +349,7 @@ body.presenter.in-study .inspector { display: block; }
       <div class="col">
         <div class="page-hello">
           <h1>Tự nhắc lại một chút</h1>
-          <p>Bạn áp dụng điều vừa làm rõ vào tình huống nào trong lab? Viết vài câu ngắn, hoặc bỏ qua.</p>
+          <p>Ý nào bạn vừa làm rõ? Bạn sẽ áp dụng nó thế nào trong lab? Viết vài câu ngắn, hoặc bỏ qua.</p>
         </div>
         <div class="recall-box">
           <div class="composer">
@@ -393,7 +393,7 @@ body.presenter.in-study .inspector { display: block; }
 (() => {
   const $ = (id) => document.getElementById(id);
   const LABELS = {
-    enough: "Đủ ý", missing: "Thiếu ý", wrong: "Hiểu sai", review: "Xem ý chuẩn", learner: "AI người học",
+    enough: "Đủ ý", missing: "Thiếu ý", wrong: "Hiểu sai", review: "Xem lại kiến thức",
     scope: "Ngoài phạm vi", nosource: "Chưa đủ căn cứ", error: "Chưa đối chiếu được", info: "Phản hồi",
   };
   const LEADING = /^\s*\[(ĐỦ Ý|THIẾU Ý|HIỂU SAI|XEM LẠI KIẾN THỨC|NGOÀI PHẠM VI|CHƯA ĐỦ CĂN CỨ)\]\s*/;
@@ -470,7 +470,7 @@ body.presenter.in-study .inspector { display: block; }
     const items = state.items || [];
     $("sideEmpty").classList.toggle("hidden", items.length > 0);
     $("railTitle").classList.toggle("hidden", !items.length);
-    $("railTitle").textContent = `${state.day} · ${state.day_title} · ${items.length} mục`;
+    $("railTitle").textContent = `Bài ${state.day} · ${items.length} ý cốt lõi`;
     $("btnEnd").classList.toggle("hidden", state.phase !== "study");
     $("btnNew").classList.toggle("hidden", state.phase === "choose");
     $("steps").innerHTML = items.map((it, i) => {
@@ -485,8 +485,8 @@ body.presenter.in-study .inspector { display: block; }
   function renderLessons() {
     $("lessons").innerHTML = lessons.map((l) => `
       <button class="lesson" data-day="${esc(l.day)}">
-        <span class="head"><span class="day">${esc(l.day)} · ${esc(l.title)}</span><span>${l.items.length} mục</span></span>
-        <ul>${l.items.slice(0, 4).map((i) => `<li>${esc(i.title)}</li>`).join("")}${l.items.length > 4 ? `<li>và ${l.items.length - 4} mục khác</li>` : ""}</ul>
+        <span class="head"><span class="day">${esc(l.day)}</span><span>${l.items.length} ý cốt lõi</span></span>
+        <ul>${l.items.map((i) => `<li>${esc(i.title)}</li>`).join("")}</ul>
       </button>`).join("");
     $("lessons").querySelectorAll(".lesson").forEach((b) => b.onclick = () => start(b.dataset.day));
   }
@@ -496,10 +496,10 @@ body.presenter.in-study .inspector { display: block; }
     if (!cur) return;
     $("focusTitle").textContent = cur.title;
     const pips = Array.from({ length: state.max_hints }, (_, i) => `<span class="pip${i < state.hints ? " used" : ""}"></span>`).join("");
-    $("meter").innerHTML = `Mục ${state.index + 1}/${state.items.length} · gợi mở <span class="pips" aria-hidden="true">${pips}</span> ${state.hints}/${state.max_hints}`;
+    $("meter").innerHTML = `Ý ${state.index + 1}/${state.items.length} · gợi mở <span class="pips" aria-hidden="true">${pips}</span> ${state.hints}/${state.max_hints}`;
     $("btnReview").disabled = busy || state.reviewed;
     $("btnDefer").disabled = busy;
-    $("input").placeholder = state.reviewed ? "Dạy lại mục này một lần bằng lời của bạn…" : "Trả lời AI người học bằng lời của bạn…";
+    $("input").placeholder = state.reviewed ? "Thử diễn đạt lại ý này một lần bằng lời của bạn…" : "Giải thích ý này bằng lời của bạn…";
     syncInput();
     renderPresets();
     renderTotals();
@@ -510,21 +510,16 @@ body.presenter.in-study .inspector { display: block; }
     return `<div class="hello">
       <div class="glyph">${AI_MARK.replace('class="ai-mark"', 'style="display:contents"')}</div>
       <h2>${esc(cur.title)}</h2>
-      <p>Dạy mục này như đang nói với một bạn mới học. Không cần đúng thuật ngữ. Nếu chưa nhớ, chọn Xem lại kiến thức.</p>
-      <p class="src">Đề cương: ${cur.codes.map((c) => `<button class="cite" data-code="${c}" aria-expanded="false">${c}</button>`).join(" ")} · mục ${esc(cur.section)}</p>
-      ${state.fake ? `<p class="src">Chế độ mô phỏng (MODEL_PROVIDER=fake): giám khảo cần model thật để đối chiếu.</p>` : ""}
+      <p>Giải thích ý này như đang nói với bạn cùng nhóm. Không cần đúng thuật ngữ. Nếu chưa nhớ, chọn Xem lại kiến thức.</p>
+      <p class="src">Căn cứ: ${cur.codes.map((c) => `<button class="cite" data-code="${c}" aria-expanded="false">${c}</button>`).join(" ")}</p>
     </div>`;
   }
   function showHello() {
     $("transcript").innerHTML = helloHtml();
     const h = $("transcript").querySelector(".hello");
     h.querySelectorAll(".cite").forEach((b) => b.onclick = () => toggleSource(b, h));
-    addOpening();
   }
   function clearHello() { const h = $("transcript").querySelector(".hello"); if (h) h.remove(); }
-  function addOpening() {
-    if (state.opening) addAi({ reply: state.opening, kind: "learner", speaker: "learner" });
-  }
 
   function renderPresets() {
     const box = $("presets");
@@ -595,16 +590,15 @@ body.presenter.in-study .inspector { display: block; }
     let text = turn.reply || "";
     const m = text.match(LEADING);
     if (m) text = text.slice(m[0].length);
-    const badge = turn.speaker === "judge" ? "Giám khảo · " + (LABELS[turn.kind] || "") : LABELS[turn.kind] || LABELS.info;
-    addMsg(`<div class="ai-head">${AI_MARK}<span class="badge">${esc(badge)}</span></div>
-      <div class="body">${richText(text)}</div>`, "ai k-" + turn.kind, turn.speaker !== "judge");
+    addMsg(`<div class="ai-head">${AI_MARK}<span class="badge">${esc(LABELS[turn.kind] || LABELS.info)}</span></div>
+      <div class="body">${richText(text)}</div>`, "ai k-" + turn.kind, turn.kind !== "review");
   }
   function addStatusEvent(turn) {
     if (!turn.status_after) return;
     const next = state.items[state.index];
-    addMsg(`<span>Ghi <b>${esc(turn.status_after)}</b>${next ? " · sang mục tiếp theo" : ""}</span>`, "event");
-    if (next) { addMsg(`<span>Mục ${state.index + 1}: <b>${esc(next.title)}</b></span>`, "event"); addOpening(); }
-    else addMsg(`<span>Đã đi hết các mục của bài</span>`, "event");
+    addMsg(`<span>Ghi <b>${esc(turn.status_after)}</b>${next ? " · sang ý tiếp theo" : ""}</span>`, "event");
+    if (next) addMsg(`<span>Ý ${state.index + 1}: <b>${esc(next.title)}</b></span>`, "event");
+    else addMsg(`<span>Đã đi hết các ý của bài</span>`, "event");
   }
 
   function addTrace(turn) {
@@ -632,8 +626,7 @@ body.presenter.in-study .inspector { display: block; }
     div.innerHTML = `
       <h3>Lượt ${turnNo}<span class="badge">${esc(LABELS[turn.kind] || "")}</span></h3>
       <dl>
-        <dt>Mục</dt><dd>${esc(turn.item_title)}</dd>
-        ${turn.judge ? `<dt>Giám khảo</dt><dd>[${esc(turn.judge)}]${turn.speaker === "learner" ? " · chưa công bố cho học viên" : ""}</dd>` : ""}
+        <dt>Ý</dt><dd>${esc(turn.item_title)}</dd>
         <dt>Công cụ</dt><dd>${tools}</dd>
         <dt>Model</dt><dd>${modelRow}</dd>
         <dt>Token</dt><dd>${stats.tokens_in} vào · ${stats.tokens_out} ra</dd>
@@ -671,7 +664,7 @@ body.presenter.in-study .inspector { display: block; }
     if (busy) return;
     busy = true;
     if (mine !== undefined) { clearHello(); addMsg(`<div class="body">${esc(mine)}</div>`, "me", true); }
-    const wait = path === "/api/send" ? addMsg(`<div class="typing">${AI_MARK}<i></i><i></i><i></i> Giám khảo đang đối chiếu với ý chuẩn</div>`, "ai") : null;
+    const wait = path === "/api/send" ? addMsg(`<div class="typing">${AI_MARK}<i></i><i></i><i></i> Đang đối chiếu với học liệu</div>`, "ai") : null;
     renderStudy();
     try {
       const d = await api(path, body);
@@ -720,7 +713,7 @@ body.presenter.in-study .inspector { display: block; }
   $("btnReview").onclick = () => step("/api/review", {});
   $("btnDefer").onclick = () => step("/api/defer", {});
   $("btnEnd").onclick = async () => {
-    if (!confirm("Kết thúc phiên? Các mục chưa đối chiếu giữ trạng thái Chưa kiểm tra.")) return;
+    if (!confirm("Kết thúc phiên? Các ý chưa đối chiếu giữ trạng thái Chưa kiểm tra.")) return;
     try { state = (await api("/api/finish", {})).state; render(); } catch (e) { toast(e.message); }
   };
   async function recall(text) {
