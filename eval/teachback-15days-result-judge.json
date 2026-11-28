@@ -1,0 +1,306 @@
+{
+  "M01": {
+    "id": "M01",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Phản hồi chuẩn giám khảo, đúng vai trò trong ca đủ ý; không hỏi lại hay tiết lộ đáp án vì đã đủ ý."
+  },
+  "M02": {
+    "id": "M02",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Phản hồi đóng vai người học, hỏi mở rõ ràng về việc phân loại công cụ tạo ảnh, tập trung vào sai sót của học sinh, không tiết lộ đáp án."
+  },
+  "M03": {
+    "id": "M03",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Phản hồi đúng vai trò giám khảo trong ca đủ ý, không hỏi lại hay tiết lộ vì học sinh đã trả lời đầy đủ và chính xác."
+  },
+  "M04": {
+    "id": "M04",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Phản hồi đóng vai người học, hỏi về vai trò cụ thể của model trong chatbot, tập trung vào ý còn thiếu mà không tiết lộ đáp án."
+  },
+  "M05": {
+    "id": "M05",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Phản hồi đúng vai giám khảo trong ca đủ ý; không hỏi lại cũng không tiết lộ đáp án."
+  },
+  "M06": {
+    "id": "M06",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi về điều gì thay đổi khi chỉnh Temperature, nhắm vào tác động của tham số này mà không tiết lộ đáp án hay giảng bài, đúng vai trò người học."
+  },
+  "M07": {
+    "id": "M07",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "AI đóng vai giám khảo, nhận xét chuẩn xác các ý đã đủ của học sinh, không hỏi lại, không tiết lộ đáp án nào không phù hợp."
+  },
+  "M08": {
+    "id": "M08",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi đúng một vấn đề còn thiếu (cách kiểm số token dùng thật), không tiết lộ đáp án, vào vai học trò hỏi lại để hiểu hơn."
+  },
+  "M09": {
+    "id": "M09",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Phản hồi nhận xét đầy đủ, đúng kiến thức nguồn, đúng vai trò giám khảo, không cần hỏi lại vì ca này đã đủ ý."
+  },
+  "M10": {
+    "id": "M10",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi mở về căn cứ nào model dùng khi gặp đại từ, đúng trọng tâm về attention, không tiết lộ đáp án, vào vai người học để làm rõ hiểu lầm."
+  },
+  "M11": {
+    "id": "M11",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Phản hồi khẳng định đủ ý, nội dung đúng với nguồn; dùng giọng giám khảo phù hợp với ca đủ ý, không có câu hỏi phụ hay tiết lộ đáp án cho học sinh."
+  },
+  "M12": {
+    "id": "M12",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Phản hồi đặt đúng một câu hỏi mở về cách xử lý khi tài liệu dài, đúng với trọng tâm thiếu về thành phần chiếm ngân sách; không tiết lộ sẵn đáp án."
+  },
+  "M13": {
+    "id": "M13",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Phản hồi chấm đủ ý, nhận xét chuẩn kiến thức phù hợp với vai trò giám khảo của ca đủ ý, không hỏi thêm hay tiết lộ gì khác."
+  },
+  "M14": {
+    "id": "M14",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Phản hồi đề cập đúng chỗ sai (vai trò người đánh giá), hỏi mở về thời điểm người đánh giá tham gia, không tiết lộ sẵn đáp án, đúng vai người học."
+  },
+  "M15": {
+    "id": "M15",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Chấm đúng nội dung, đủ ý theo tài liệu, giữ vai trò giám khảo phù hợp ca đủ ý, không hỏi thêm hay tiết lộ thông tin khác."
+  },
+  "M16": {
+    "id": "M16",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi đúng một câu về sự khác biệt giữa top-k và top-p khi rút bớt ứng viên, phù hợp với hướng sửa cần phân biệt, không tiết lộ đáp án."
+  },
+  "M17": {
+    "id": "M17",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Giám khảo xác nhận và phân tích đáp án, đúng vai trò và không hỏi thêm, không tiết lộ đáp án vì đã đủ ý."
+  },
+  "M18": {
+    "id": "M18",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi đúng một câu về những gì gửi và nhận khi gọi API, hướng tới việc phân biệt request và response, không tiết lộ đáp án."
+  },
+  "M19": {
+    "id": "M19",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Giám khảo xác nhận các ý hợp chuẩn, không hỏi lại hoặc tiết lộ đáp án khi đã đủ ý."
+  },
+  "M20": {
+    "id": "M20",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi đúng một câu tập trung vào những phần phải tính chi phí khi prompt dài và câu trả lời ngắn, không tiết lộ đáp án."
+  },
+  "M21": {
+    "id": "M21",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Phản hồi bám sát tài liệu (kiểm chứng thay đổi qua đo lường), dùng vai trò AI đang hỏi lại để tự hiểu, đặt một câu hỏi tập trung vào phương pháp đo mà không tiết lộ đáp án."
+  },
+  "M22": {
+    "id": "M22",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Phản hồi giám khảo chuẩn khi ca đủ ý: chấm đúng và trích dẫn lại điểm chính xác, không đặt câu hỏi, không tiết lộ thêm nội dung."
+  },
+  "M23": {
+    "id": "M23",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI giữ vai trò người học khi đặt câu hỏi mở nhằm làm rõ phần còn thiếu (lý do chọn mức tự chủ), câu hỏi chỉ tập trung vào một trọng tâm, không nói sẵn đáp án."
+  },
+  "M24": {
+    "id": "M24",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Đáp án giám khảo cho ca đủ ý: xác nhận đầy đủ điểm trích dẫn, không hỏi lại, không tiết lộ thêm hướng dẫn."
+  },
+  "M25": {
+    "id": "M25",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi lại đúng về quy trình trả kết quả giữa model và ứng dụng mà không nói sẵn bên nào chịu trách nhiệm, đảm bảo học viên phải tự trình bày."
+  },
+  "M26": {
+    "id": "M26",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Câu hỏi tập trung vào điểm cốt lõi cần sửa là học điều gì từ người dùng trước khi làm prototype, không tiết lộ đáp án và đóng vai người học hỏi lại."
+  },
+  "M27": {
+    "id": "M27",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Câu hỏi tập trung vào hành động cụ thể khi mời người ngoài nhóm dùng thử, không tiết lộ đáp án, phù hợp vai người học đang tự tìm hiểu."
+  },
+  "M28": {
+    "id": "M28",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Câu hỏi chỉ tập trung vào ý nghĩa của điểm cosine, không nói sẵn đáp án cần học sinh tự diễn đạt, giữ vai người học."
+  },
+  "M29": {
+    "id": "M29",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "Đáp án ở vai giám khảo, nhận xét hai ý đúng, không hỏi lại vì đã đủ ý nên hai trường này là false."
+  },
+  "M30": {
+    "id": "M30",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Câu hỏi tập trung vào thiếu sót học sinh là đưa bằng chứng để kiểm khẳng định, không nói trước đáp án, đúng vai người học."
+  },
+  "M31": {
+    "id": "M31",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "Câu hỏi tập trung vào việc giao việc và ghép kết quả giữa các worker, phù hợp với trọng tâm cần sửa, không tiết lộ đáp án mà để học sinh tự diễn đạt."
+  },
+  "M32": {
+    "id": "M32",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi về cách kiểm lỗi giữa ngày giao và ngày đặt hàng, trúng trọng tâm cần sửa, không tiết lộ sẵn đáp án."
+  },
+  "M33": {
+    "id": "M33",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi đúng vào việc lựa chọn thao tác cần duyệt, không giảng bài hay nói sẵn đáp án."
+  },
+  "M34": {
+    "id": "M34",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": false,
+    "reveals_answer": false,
+    "reason": "Giám khảo nhận xét đủ ý, không hỏi và cũng không tiết lộ đáp án ở trường hợp thiếu/sai nào."
+  },
+  "M35": {
+    "id": "M35",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi tập trung vào cách ghép log của các bước, phù hợp với ý cần sửa, không tiết lộ đáp án."
+  },
+  "M36": {
+    "id": "M36",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": null,
+    "reveals_answer": null,
+    "reason": "AI nhận xét đúng nội dung, giữ vai trò giám khảo phù hợp với ca đủ ý, không hỏi hay tiết lộ đáp án vì kiến thức đã đủ."
+  },
+  "M37": {
+    "id": "M37",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI hỏi đúng một câu vào trọng tâm cần sửa; giữ vai trò người học và không hé lộ sẵn đáp án."
+  },
+  "M38": {
+    "id": "M38",
+    "grounded": true,
+    "learner_role": true,
+    "focused_question": true,
+    "reveals_answer": false,
+    "reason": "AI dùng một câu hỏi mở đúng trọng tâm thiếu sót, không lộ đáp án, phản hồi với thái độ muốn hiểu thêm."
+  }
+}

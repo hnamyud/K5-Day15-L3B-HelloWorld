@@ -1,5 +1,7 @@
 # Báo cáo đánh giá — lượt 1 → một cải tiến → lượt 2
 
+Lượt 1 là mốc **CP3 đã nộp từ main**. Lượt 2 trong bảng dưới ghi lần sửa prompt của luồng cũ trên main. **CP4 trên nhánh 15dayspreclass** dùng phiên dạy lại hai vai, với báo cáo và phép kiểm riêng. [Đối chiếu CP3 đến CP4](teachback-cp3-cp4.md)
+
 > Điền ở guide bước 4.1. Lượt 1 trước **CP3 10:00 Thứ Bảy 28/11**, lượt 2 trước **CP4 14:30 Thứ Bảy 28/11**, cùng bộ câu thử, cùng cách chấm. Chấm ở rubric R5.
 > Số lấy từ `python run.py score eval/run-1.csv` (và `run-2.csv`) sau khi điền cột `pass`. **Kết quả thấp ghi thật vẫn đủ điểm.**
 > Không được: sửa chuẩn "đạt", bỏ câu thử trượt, sửa `expected` cho khớp output, sửa kết quả lượt đã chạy.
@@ -67,3 +69,28 @@ Chạy `python run.py` trên commit `c8754f2` với API OpenAI model `gpt-4.1-mi
 **Quan sát về chất lượng:** AI đã nêu trước một số ý mà câu hỏi yêu cầu người học tự giải thích. Ví dụ, ở ý Temperature, AI nói tăng Temperature không cải thiện độ chính xác rồi hỏi lại vì sao. Phiên này xác nhận giới hạn số câu hiển thị, đồng thời ghi nhận lỗi nêu sẵn ý cần gợi mở.
 
 **Trạng thái §7:** Ca thử với AI thật đã xác nhận tối đa hai câu gợi mở cho mỗi ý và trạng thái đúng khi kết thúc sớm. Tỷ lệ học viên tự giải thích lại đúng cần đo từ các phiên có người dùng thật. [Nhật ký dùng thử](../validation/log.md)
+
+## 6. Mô phỏng phiên D01 mở rộng
+
+Học liệu mẫu `1.1-d01` dùng [đề cương Day 1 công khai](https://e-learning-production.vercel.app/ngay/ngay-01) để bổ sung 8 mục cho phiên tự ôn. Các mục ưu tiên kiến thức nền và chuẩn bị gọi API. Phạm vi bắt buộc trước lab cần được nhóm đối chiếu với slide hoặc transcript pre-class K5. [Data card](../data/DATA_CARD.md)
+
+| Phần ôn | Mã đoạn | Ví dụ để học viên tự giải thích |
+|---|---|---|
+| Bản đồ AI | `[D01-P05]` | Vì sao hệ thống tạo ảnh có thể thuộc GenAI mà không cần là LLM? |
+| Chatbot và LLM | `[D01-P01]` `[D01-P02]` | Khi mở lại cuộc trò chuyện, phần nào quản lý lịch sử? |
+| Sinh token và Temperature | `[D01-P03]` `[D01-P04]` | Sau khi chọn một token, model làm gì? Tăng Temperature thay đổi điều gì? |
+| Token và tokenizer | `[D01-P06]` | Hai đoạn cùng số từ có nhất thiết dùng cùng số token không? |
+| Transformer và attention | `[D01-P07]` | Với cùng một đại từ, vì sao đổi phần còn lại của câu có thể đổi đối tượng được nhắc đến? |
+| Cửa sổ ngữ cảnh | `[D01-P08]` | Nếu lịch sử quá dài, bạn sẽ gửi lại phần nào và vì sao? |
+| Huấn luyện và giới hạn | `[D01-P09]` `[D01-P10]` | Phân biệt ba bước huấn luyện và giải thích vì sao model vẫn có thể trả lời sai. |
+| Tham số sinh và giới hạn đầu ra | `[D01-P11]` | Phân biệt top-p với giới hạn độ dài khi câu trả lời bị ngắt. |
+| Đọc một lần gọi API | `[D01-P12]` | Trường nào do ứng dụng gửi đi? Tìm số token đã dùng ở đâu? |
+| Chọn model và ước tính chi phí | `[D01-P13]` `[D01-P14]` | Với 1.000 token vào và 250 token ra, tính tiền theo hai mức giá giả định trong học liệu. |
+
+**Kết quả kiểm thử.** Chạy `MODEL_PROVIDER=fake python run.py`, chọn bài 1 rồi dùng `/xem` và `/sau` ở từng mục. Chương trình hiện đủ 10 mục, phần xem lại, lời mời tự nhắc lại và bảng tổng hợp. Với phản hồi theo kịch bản, đã kiểm luồng hai lượt gợi mở rồi xem lại, đối chiếu khi diễn đạt lại, chặn phản hồi dẫn sai mã và giữ nguyên mục đang ôn. Cả 30 đầu vào của benchmark cho cùng phản hồi ở chế độ giả khi đối chiếu trước và sau cập nhật. Các kết quả này đo luồng và mã nguồn trên dữ liệu mô phỏng. Chất lượng model thật và kết quả học A4 của bản mở rộng chưa được đo.
+
+## 7. Kiểm tra phiên dạy lại hai vai
+
+Phiên mới dùng [52 mục học liệu mô phỏng](../data/teachback_lessons.json) trên 15 ngày theo đề cương công khai. Kiểm tra bằng chế độ giả cho thấy cả 15 ngày đều chọn được, mở đầu bằng câu hỏi và hiện nội dung kèm nguồn khi chọn `/xem`. Các bài kiểm thử theo kịch bản kiểm thêm việc giới hạn hai câu gợi mở, chuyển sang giám khảo và giữ đáp án ngoài đầu vào của vai người học.
+
+Chạy `MODEL_NAME=gpt-4.1-mini python run.py` và nhập `ôn lại ngày 1`. Khi lời giảng giả lập nhầm công cụ tạo ảnh với LLM, AI hỏi “Bạn xếp một công cụ chỉ tạo ảnh vào đâu trong bản đồ này?”. Sau khi lời giảng mới phân biệt đủ AI, ML, Deep Learning, GenAI và LLM, giám khảo xác nhận hai ý đúng, giải thích theo `[D01-P51]`, dẫn mục 1.1–1.2 của đề cương và phiên chuyển sang Chatbot và mô hình. Số đo API của ca này là 3 lời gọi, 957 token vào và 34 token ra. Đây là một ca chạy luồng với lời giảng giả lập. Kết quả học của người dùng thật và tỷ lệ giám khảo gắn đúng nhãn trên toàn bộ học liệu còn cần đo.

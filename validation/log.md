@@ -7,7 +7,7 @@
 ## Kịch bản dùng thử
 
 - Mời 2–3 học viên L3 ngoài nhóm, khoảng 10 phút/người. Nói rõ người tham gia đang thử công cụ và có thể dừng bất cứ lúc nào. Hỏi trước lab bạn thường kiểm tra mình đã hiểu bài bằng cách nào.
-- Giao việc: “Bạn vừa học xong bài pre-class về chatbot và temperature. Hãy dùng bản chạy thử để chọn ý mình cần ôn thêm trước khi vào lab.” Mở `python run.py` và để người thử tự chọn bài D01, thao tác và diễn đạt. Quan sát họ làm gì trước, chỗ do dự và lúc chọn xem lại hoặc để ôn sau.
+- Giao việc: “Bạn vừa học xong bài pre-class về chatbot và temperature. Hãy dạy lại cho AI một ý bạn vừa học, rồi dùng câu hỏi của AI để tự làm rõ chỗ còn vướng trước khi vào lab.” Mở `python run.py` và để người thử tự chọn bài D01, thao tác và diễn đạt. Quan sát họ làm gì trước, chỗ do dự và lúc chọn xem lại hoặc để ôn sau.
 - Hỏi sau: “Ý nào bạn vừa làm rõ? Bạn sẽ áp dụng nó thế nào trong lab?”. Cho người thử tự nói bằng lời của mình sau khi đóng gợi ý, rồi đối chiếu với học liệu. Hỏi thêm câu về mức tiếc nuối bên dưới.
 
 | Người thử (vai) | Việc giao (theo kết quả, không theo nút) | Quan sát (làm gì đầu tiên, chỗ do dự, chỗ hiểu sai) | Trích nguyên văn | Mức nghiêm trọng (cao / vừa / thấp) |

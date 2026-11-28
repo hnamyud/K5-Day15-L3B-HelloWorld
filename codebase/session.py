@@ -1,10 +1,11 @@
-"""Điều phối một phiên tự ôn theo thứ tự học liệu mẫu."""
+"""Phiên CP3 để đối chiếu với học liệu mẫu đã dùng khi nộp."""
 
-import re
 from dataclasses import dataclass
+import json
+from pathlib import Path
+import re
 
 from guardrails import ENOUGH, NEEDS_WORK, NO_SOURCE, OUT_OF_SCOPE
-from tools import get_key_points, list_concept_titles
 
 EXPLAINED = "Đã giải thích được"
 REVISIT = "Nên ôn lại"
@@ -14,6 +15,7 @@ _UNVERIFIED = (
 )
 _SOURCE_CODE = re.compile(r"\[([A-Za-z]\d{2}-P\d{2})\]")
 _MAX_HINTS = 2
+CP3_LESSONS_PATH = Path(__file__).resolve().parents[1] / "data" / "sample_lessons.json"
 
 
 @dataclass
@@ -29,13 +31,15 @@ class StudyItem:
 
 
 def load_lessons():
-    """Gom các mục theo mã ngày trong mã đoạn, giữ thứ tự của học liệu."""
+    """Đọc học liệu CP3 và gom các mục theo mã ngày."""
+    data = json.loads(CP3_LESSONS_PATH.read_text(encoding="utf-8"))
     lessons = {}
-    for concept_id, title in list_concept_titles():
-        points = get_key_points(concept_id)
+    for item in data["concepts"]:
+        points = item.get("key_points", [])
         if points:
             day = points[0]["code"].split("-", 1)[0]
-            lessons.setdefault(day, []).append(StudyItem(concept_id, title, points))
+            study_item = StudyItem(item["concept_id"], item["title"], points)
+            lessons.setdefault(day, []).append(study_item)
     return lessons
 
 

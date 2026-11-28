@@ -1,5 +1,7 @@
 # Cải tiến thứ hai: phản hồi đối chiếu dạng JSON có kiểm tra (lượt 3)
 
+> **Trạng thái:** PR #2 đã thay luồng đối chiếu trên `main` bằng phiên dạy lại (`codebase/teachback.py`). Ở luồng đó, model chỉ chấm từng ý bằng JSON, còn câu hỏi lấy sẵn từ học liệu. Vì vậy thay đổi 1 và 2 dưới đây (trong `codebase/agent.py`) **không được gộp vào `main`**. Khi gỡ xung đột, nhóm giữ `agent.py` của `main`. Trên `main` chỉ còn thay đổi 3 (`temperature` trong `codebase/ai.py`), kết quả `run-3` và tài liệu này. `run-3` đo trên luồng cũ (commit `ed0ee3e`), trước khi chuyển sang teachback, nên chỉ dùng để so với `run-1` và `run-2`, không đại diện cho luồng hiện tại.
+
 Lượt 2 vẫn đạt 26/30 như lượt 1. Prompt mới sửa được `B06`, `B23` nhưng làm trượt `B05`, `B11`, còn `B03`, `B08` trượt ở cả hai lượt. [Kết quả lượt 2](../eval/run-2.csv) · [Cải tiến thứ nhất](de-xuat-cai-tien-goi-mo-luot-2.md)
 
 ## Vì sao lần sửa prompt trước chưa tăng điểm

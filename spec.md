@@ -74,15 +74,16 @@ Data BTC cấp đã dùng (không commit nguyên file): `data/preclass/` (`learn
 ```mermaid
 flowchart TD
   A["Học viên chọn bài pre-class"] --> B["Tải danh sách ý cốt lõi theo thứ tự"]
-  B --> C["Học viên tự giải thích ý hiện tại"]
+  B --> P["AI người học mở đầu bằng một câu tò mò"]
+  P --> C["Học viên tự giải thích ý hiện tại"]
   C --> D{"Có căn cứ từ học liệu?"}
   D -- Không --> R["Báo thiếu căn cứ<br/>Ghi Chưa kiểm tra"]
-  D -- Có --> H{"AI đối chiếu từng điểm cốt lõi<br/>Đủ, thiếu hay hiểu sai?"}
-  H -- Đủ ý --> O["Xác nhận ngắn<br/>Ghi Đã giải thích được"]
+  D -- Có --> H{"Giám khảo đối chiếu ngầm từng điểm cốt lõi<br/>Đủ, thiếu hay hiểu sai?"}
+  H -- Đủ ý --> O["Giám khảo xác nhận từng ý kèm nguồn<br/>Ghi Đã giải thích được"]
   H -- Còn thiếu hoặc sai --> L{"Đã xem lại kiến thức?"}
   L -- Có --> N["Chỉ rõ phần cần ôn<br/>Ghi Nên ôn lại"]
   L -- Chưa --> Q{"Còn lượt hỏi?"}
-  Q -- Có --> G["Hỏi một câu về điểm còn vướng<br/>Ưu tiên chỗ hiểu sai ảnh hưởng đến lab"]
+  Q -- Có --> G["AI người học hỏi một câu về điểm còn vướng<br/>Ưu tiên chỗ hiểu sai ảnh hưởng đến lab"]
   Q -- Hết --> X["Hiện giải thích chuẩn hoặc đáp án gốc nếu có<br/>Kèm đoạn học liệu và lời mời tự diễn đạt lại"]
   G -- Thử giải thích lại --> C
   G -- Xem lại kiến thức --> X
@@ -94,13 +95,13 @@ flowchart TD
   C -- Kết thúc phiên --> E
   O --> T{"Còn ý trong bài?"}
   N --> T
-  R --> T
-  T -- Có --> C
+  R -- Giữ mục --> C
+  T -- Có --> P
   T -- Hết --> F["Mời học viên tự nhắc lại ngắn<br/>và nêu cách áp dụng trước khi xem tổng hợp"]
   F --> E["Tổng hợp từng ý và phần cần ôn<br/>Học viên chọn ôn thêm hay sang lab"]
 ```
 
-- **Hình dạng:** [x] workflow cố định · [ ] một agent · [ ] nhiều agent — Học liệu xác định thứ tự các ý. Workflow giữ ý hiện tại, đếm lượt hỏi, ghi kết quả và chuyển ý. AI đối chiếu lời giải thích mới nhất với học liệu chuẩn để chọn phản hồi cho ý đó.
+- **Hình dạng:** [x] workflow cố định · [ ] một agent · [ ] nhiều agent — Học liệu xác định thứ tự các ý. Workflow giữ ý hiện tại, đếm lượt hỏi, ghi kết quả và chuyển ý. Giám khảo đối chiếu cả lời giảng đã tích lũy và lời giải thích mới nhất với học liệu. AI người học chọn câu hỏi theo nhận định nội bộ của giám khảo.
   - Công cụ và đường đi được xác định trước, nên một workflow cố định đủ để xử lý nhiều ý trong cùng bài.
 - **Vòng ôn từng ý:** AI đối chiếu lời giải thích với từng điểm cốt lõi để nhận ra phần đã đủ, phần còn thiếu và chỗ hiểu sai. AI hỏi từng câu, ưu tiên chỗ hiểu sai ảnh hưởng đến lab rồi tới điểm còn thiếu. Sau mỗi câu hỏi, học viên diễn đạt lại bằng lời của mình và AI đối chiếu lại toàn bộ các điểm cốt lõi của ý hiện tại. Nếu đã đủ, AI xác nhận cụ thể điểm học viên đã làm rõ. Khi hết lượt gợi mở mà vẫn vướng, hoặc khi học viên chọn **Xem lại kiến thức**, AI hiện giải thích chuẩn hoặc đáp án gốc nếu học liệu có, kèm nguồn và lời mời thử diễn đạt lại một lần.
 - **Quy tắc chuyển ý:** Chỉ chuyển sau khi ghi kết quả cho ý hiện tại: **Đã giải thích được** nếu lời giải thích đủ các điểm cốt lõi, **Nên ôn lại** nếu vẫn vướng sau khi xem lại và thử diễn đạt hoặc học viên chọn để ôn sau, **Chưa kiểm tra** nếu thiếu căn cứ. Nếu kết thúc sớm, các ý chưa được đối chiếu đầy đủ giữ trạng thái **Chưa kiểm tra**.
@@ -109,11 +110,11 @@ flowchart TD
 
   | Công cụ | Input | Output | Tác động ra ngoài? |
   |---|---|---|---|
-  | `search_lesson` | mã bài và mã ý hiện tại | danh sách đoạn học liệu `{"code", "text"}`; rỗng nếu không có đoạn khớp | Không (chỉ đọc) |
-  | `get_key_points` | mã bài (str) | danh sách ý cốt lõi theo thứ tự, mỗi ý có mã ý, nội dung chuẩn và mã đoạn học liệu | Không (chỉ đọc) |
+  | `search_lesson` | tên mục, bí danh hoặc mã đoạn | bài và mục khớp để chạy đường đơn lượt | Không (chỉ đọc) |
+  | `get_key_points` | mã đoạn đang ôn | các ý chuẩn và câu hỏi phù hợp với từng ý | Không (chỉ đọc) |
 
 - **Mức tự động:** [x] AI gợi ý, người quyết · [ ] AI tự làm khi chắc, chuyển người khi không · [ ] AI tự làm — AI phản hồi từng ý. Học viên tự diễn đạt lại, chọn xem lại hoặc để ôn sau, và tự quyết khi nào sang lab. Phản hồi lệch có thể khiến học viên thêm bối rối hoặc mang cách hiểu sai vào lab, dẫn đến mất thêm thời gian ôn hoặc sửa bài (§2).
-- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì): Rủi ro lớn nhất là AI hỏi lệch ý hoặc xác nhận lời giải thích thiếu căn cứ. Thiết kế yêu cầu mỗi phản hồi trỏ đến mã đoạn của ý hiện tại do `search_lesson` trả về. `agent.py` sẽ kiểm mã trước khi hiện phản hồi. Nếu thiếu đoạn hoặc mã không hợp lệ, báo chưa đủ căn cứ và ghi ý đó là **Chưa kiểm tra**. Khi thử, cần có cả trường hợp dẫn mã hợp lệ nhưng câu hỏi lệch nội dung.
+- **Chỗ chặn rủi ro** (rủi ro lớn nhất của lát cắt bị chặn ở đâu, bằng gì): Rủi ro lớn nhất là AI hỏi lệch ý hoặc xác nhận lời giải thích thiếu căn cứ. Giám khảo nhận đúng mục đã chọn. Hệ thống kiểm định dạng và số ý giám khảo trả, chỉ hiện câu hỏi đã biên soạn trong mục và lấy mã nguồn trực tiếp từ học liệu khi đối chiếu. Nếu thiếu căn cứ hoặc chưa xác nhận được kết quả, phiên giữ mục ở trạng thái **Chưa kiểm tra**.
 - **Chỗ người duyệt** (việc AI không được tự làm): AI không tự kết luận học viên "đã hiểu" để cho qua lab; không chấm điểm, không ghi hay gửi kết quả cho ai; không tự đổi hay thêm học liệu chuẩn. Giảng viên/nhóm duyệt học liệu chuẩn và các ý chính trong `data/` trước khi dùng.
 - **Nguyên tắc thiết kế** (≥3, bắt buộc G10):
 
@@ -124,10 +125,7 @@ flowchart TD
   | Người quyết | Học viên có thể xem lại, để ôn sau hoặc kết thúc phiên. Bản tổng hợp giữ trạng thái của từng ý để học viên tự quyết khi nào sang lab. |
   | Giới hạn lượt hỏi | Tối đa 2 câu làm rõ hoặc gợi mở mỗi ý. Nếu trả lời lại vẫn vướng sau câu thứ hai, hiện phần xem lại. Học viên có thể giải thích lại thêm một lần để AI đối chiếu trước khi ghi trạng thái và chuyển ý. |
 
-- **Phần nào còn giả (công cụ trả dữ liệu giả, model chế độ giả…)**
-  - **Tra cứu đang chạy trên học liệu mẫu.** `search_lesson` tìm đoạn liên quan theo từ khóa đặc trưng và tiêu đề khái niệm, còn `get_key_points` lấy các ý chuẩn theo mã khái niệm. Hai công cụ đọc `data/sample_lessons.json`, gồm 6 khái niệm và 12 đoạn có mã do nhóm tóm tắt từ học liệu L3 (chi tiết ở `data/DATA_CARD.md`).
-  - **Phản hồi AI đã nối model thật (từ 27/11 23:05).** `codebase/ai.py` hỗ trợ gọi API thật qua `.env` (`gemini`, `openai`/OpenAI-compatible qua `MODEL_BASE_URL`, `anthropic`, `ollama`) và đã chạy trọn bộ lượt 1 trên 30 câu thử bằng model thật `cx/gpt-6-luna` (`run-1@20261127-230315`, 0 lỗi kỹ thuật, token đo từ `usage` của API). Khi không có `.env`, mặc định vẫn fallback về `MODEL_PROVIDER=fake`.
-  - **Luồng ôn cả bài nhiều ý đã triển khai trong `codebase/session.py` và `codebase/app.py` (commit `25422ff`).** Khi chạy `python run.py`, học viên chọn bài và ôn lần lượt từng ý cốt lõi (giữ trạng thái *Đã giải thích được / Nên ôn lại / Chưa kiểm tra*, giới hạn tối đa 2 câu hỏi gợi mở/ý, hỗ trợ *Xem lại kiến thức*, *Để ôn sau*, *Kết thúc phiên* và bước tự nhắc lại cuối phiên); trong khi `codebase/agent.py` giữ hợp đồng đơn lượt `answer(text)` để `run.py eval` và `run.py simulate` chạy tự động. Video 30 giây bản chạy thử gọi AI thật: [Google Drive](https://drive.google.com/file/d/103SH3vI9oHgr-xipk7X_N-tLoN23WWxd/view?usp=sharing).
+- **Học liệu và model đang dùng.** `data/teachback_lessons.json` có 52 mục mô phỏng trên 15 ngày theo đề cương công khai. Phiên gồm `codebase/app.py` và `codebase/teachback.py`; `codebase/agent.py` dùng cùng luồng cho hợp đồng đơn lượt `answer(text)`. Đã chạy model thật với `gpt-4.1-mini`. Xem [data card](data/DATA_CARD.md) và [đánh giá hiện tại](eval/study-15days-report.md).
 
 ## §5. Chỗ khó — 4 lớp + ≥6 kịch bản + 2 tấn công *(guide 2.3)*
 
@@ -163,7 +161,7 @@ flowchart TD
   4. `tu_giai_thich_lai_duoc_sau_goi_mo` *(chỉ số về học — bắt buộc cho Track A4)* — **≥ 75%** lượt/phiên học viên tự sửa và giải thích lại đúng các ý cốt lõi còn thiếu/hiểu sai trong tối đa 2 vòng sau gợi mở hoặc *Xem lại kiến thức* (đo trên phiên kiểm thử nhiều vòng và người dùng thử ở `validation/log.md`).
 - **Kiểm thử luồng cả bài:** Chạy riêng một phiên có ít nhất hai ý. Cho học viên giải thích thiếu hoặc sai ở ý đầu, trả lời lại và kiểm AI đối chiếu lời mới trước khi chuyển. Ở ý tiếp theo, thử hết hai câu gợi mở, xem lại học liệu và diễn đạt lại. Kiểm trạng thái từng ý, lời mời tự nhắc lại và tổng hợp cuối phiên. Chạy thêm nhánh kết thúc sớm để xác nhận các ý chưa đối chiếu đầy đủ giữ trạng thái **Chưa kiểm tra**. Ghi kết quả theo phiên trong `eval/report.md`, bên cạnh kết quả bộ câu thử một lượt.
 - **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): **≥ 80% tổng số câu thử qua (`pass = 1`)** và đồng thời đạt đủ cả **4 metric** trên theo đúng mẫu số đã ghi (trong đó có chỉ số về học `tu_giai_thich_lai_duoc_sau_goi_mo` ≥ 75%). Đánh giá điều kiện giới hạn câu hỏi và chỉ số tự giải thích lại bằng phiên kiểm thử / người dùng thử, vì một đầu vào mô phỏng đơn lượt như `B22` chỉ kiểm được phản hồi ở một thời điểm.
-- **Kết quả:** lượt 1 **26/30 (87%)** (`thuong`: 11/12 = 92% · `kho`: 11/14 = 79% · `tu_choi`: 4/4 = 100% · model `cx/gpt-6-luna` · chấm chéo Trung–Bách khớp **4/5 = 80%** · chưa xác nhận đủ chuẩn §7 vì còn kiểm luồng nhiều ý và đo chỉ số về học ở người dùng thử; 4 câu trượt: `B03`, `B06`, `B08`, `B23`) · lượt 2 `[chờ điền x/30 (…%) sau vòng sửa lỗi trước CP4]` — run ID: `run-1@20261127-230315` / `[run-2@…]` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`, đối chiếu chấm chéo 5 mẫu `eval/cross-check-trung.md`.
+- **Kết quả:** lượt 1 **26/30 (87%)** (`thuong`: 11/12 = 92% · `kho`: 11/14 = 79% · `tu_choi`: 4/4 = 100% · model `cx/gpt-6-luna` · chấm chéo Trung–Bách khớp **4/5 = 80%** · chưa xác nhận đủ chuẩn §7 vì còn kiểm luồng nhiều ý và đo chỉ số về học ở người dùng thử; 4 câu trượt: `B03`, `B06`, `B08`, `B23`) · lượt 2 **26/30 (87%)** với cùng bộ 30 câu — run ID: `run-1@20261127-230315` / `run-2@20261128-001731` → chi tiết `eval/report.md`, hồ sơ `eval/README.md`, đối chiếu chấm chéo 5 mẫu `eval/cross-check-trung.md`.
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 
@@ -225,6 +223,7 @@ flowchart TD
 | 27/11 23:18 | Trung lập bảng chấm chéo độc lập 5 mẫu (`eval/cross-check-trung.md`), cập nhật trạng thái model thật (§4, §7 KQ), bổ sung 2 ảnh chụp `preclass-online.com` đã che tên (`assets/preclass-video-ai.png`, `assets/preclass-ontap.png` vào §0) và dựng khung 8 trang slide (`slides/outline.md`). | Chuẩn bị chấm chéo ≥4/5 với Bách (Rubric R4), đủ nguồn ảnh cho §0 và giữ tiến độ CP3–CP4; không sửa chuẩn "đạt" §7 hay `eval/metric_spec.yaml`. |
 | 27/11 23:19 | Phương triển khai luồng ôn nhiều ý (`codebase/session.py`, `codebase/app.py`, commit `25422ff`) và quay video 30 giây chạy AI thật. | Đáp ứng luồng ôn cả bài theo sơ đồ `spec.md` §4 và yêu cầu video 30 giây CP3. |
 | 28/11 00:05 | Bách hoàn tất chấm 30/30 câu `eval/run-1.csv` (`26/30 = 87%`; `thuong 11/12`, `kho 11/14`, `tu_choi 4/4`), đối chiếu chấm chéo Trung–Bách khớp `4/5` trong `eval/README.md` (commit `3d8b581`); Trung cập nhật số Lượt 1 + link video 30s vào `spec.md`, `README.md`, `slides/outline.md`. | Chốt đầy đủ điều kiện nộp CP3 (trước 10:00 28/11); xác định rõ nhóm lỗi lộ đáp án / hỏi lệch (`B06`, `B08`, `B23`) và độ dài (`B03`) cho cải tiến Lượt 2. |
+| 28/11 · Nhánh `15dayspreclass` | CP3 đã nộp từ `main`. Bản CP4 đề xuất thay học liệu mẫu bằng 52 mục theo đề cương 15 ngày và tách giám khảo khỏi AI người học. Phát lại bộ 30 câu để kiểm tương thích và đo riêng 38 lời giảng giả lập. | Giữ cơ hội để học viên tự sửa trước khi xem đáp án. [Đối chiếu CP3 đến CP4 và các ca cần sửa](eval/teachback-cp3-cp4.md). |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
