@@ -84,7 +84,7 @@ AI người học mở đầu bằng một câu tò mò. Mỗi khi bạn giải 
 
 Model thật lấy từ cấu hình hiện có. Nếu cấu hình từ chối tên model, có thể thử `MODEL_NAME=gpt-4.1-mini python run.py` với endpoint tương thích. Chế độ giả vẫn cho thử chọn bài và xem học liệu.
 
-Để đo luồng mới, dùng bộ giả lập 38 ca có mã mục học liệu hiện tại. Kết quả CP2–CP4 dùng bộ cũ và ghi nhận riêng trong báo cáo. [Cách chạy và kết quả 15 ngày](eval/study-15days-report.md)
+**CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15-day`.** Giữ kết quả CP3 đã lưu và báo riêng phép kiểm tương thích bộ cũ, cùng kết quả 38 ca của phiên mới. [Đối chiếu CP3 đến CP4](eval/teachback-cp3-cp4.md) · [Kết quả phiên 15 ngày](eval/study-15days-report.md)
 
 ## Phần nào thật, phần nào giả
 

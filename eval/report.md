@@ -1,8 +1,6 @@
 # Báo cáo đánh giá — lượt 1 → một cải tiến → lượt 2
 
-Lượt 1 và lượt 2 thuộc mốc CP3–CP4. Phiên dạy lại đang dùng bộ học liệu 15 ngày và có kết quả riêng. [Báo cáo hiện tại](study-15days-report.md)
-
-**CP3** lưu lượt gốc và chấm chéo. **CP4** ghi thay đổi, chạy lại cùng bộ và kiểm phiên nhiều ý. Xem [bảng bàn giao](../docs/checkpoint-handoff.md) để đối chiếu các đầu việc còn lại.
+Lượt 1 là mốc **CP3 đã nộp từ main**. Lượt 2 trong bảng dưới ghi lần sửa prompt của luồng cũ trên main. **CP4 trên nhánh 15-day** dùng phiên dạy lại hai vai, với báo cáo và phép kiểm riêng. [Đối chiếu CP3 đến CP4](teachback-cp3-cp4.md) · [Bảng bàn giao](../docs/checkpoint-handoff.md)
 
 > Điền ở guide bước 4.1. Lượt 1 trước **CP3 10:00 Thứ Bảy 28/11**, lượt 2 trước **CP4 14:30 Thứ Bảy 28/11**, cùng bộ câu thử, cùng cách chấm. Chấm ở rubric R5.
 > Số lấy từ `python run.py score eval/run-1.csv` (và `run-2.csv`) sau khi điền cột `pass`. **Kết quả thấp ghi thật vẫn đủ điểm.**

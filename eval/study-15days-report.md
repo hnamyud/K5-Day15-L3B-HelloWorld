@@ -1,6 +1,6 @@
 # Bản đồ 15 ngày và đánh giá phiên học sinh dạy lại cho AI
 
-## Kết quả hiện tại trên nhánh 15-day
+## Kết quả phiên CP4 trên nhánh 15-day
 
 Cả 38 ca đã được gắn mã mục theo bộ 52 mục mới và chạy trong phiên hai vai. Model dự án là `gpt-4.1-mini`. `gpt-4.1` chấm phản hồi bổ sung, đối chiếu toàn bộ lời đáp với các ý chuẩn.
 
@@ -15,7 +15,7 @@ Cả 38 ca đã được gắn mã mục theo bộ 52 mục mới và chạy tro
 
 **Ca trượt M34.** Học viên nói có thể chuyển yêu cầu sang tiến trình khác mà vẫn đọc trạng thái trong bộ nhớ riêng. Giám khảo gắn nhầm **Đủ ý**, công bố phần chuẩn và chuyển mục trước khi học viên tự sửa. 23 ca còn lại chỉ hiện câu hỏi ở lượt đầu. Lượt này ghi 47 lần gọi model cho dự án, 16.227 token vào và 605 token ra. Số token của lượt chấm bổ sung nằm ngoài phép đếm này.
 
-Phép thử này kiểm lượt đầu với lời giảng giả lập. Kết quả học A4 ở người dùng thật còn cần đo. Mốc trước đó chỉ có 28 ca trong mục có học liệu, vì vậy hai tỷ lệ tổng có mẫu số và phạm vi khác nhau. [Phản hồi luồng hai vai](teachback-15days-result.json) · [Chấm bổ sung](teachback-15days-result-judge.json)
+Phép thử này kiểm lượt đầu với lời giảng giả lập. Kết quả học A4 ở người dùng thật còn cần đo. CP3 đã nộp từ main dùng bộ 30 câu CP2. Bản thử trung gian trước khi tách vai chỉ có 28 ca trong mục có học liệu. Các phép đo có mẫu số và phạm vi khác nhau. [Đối chiếu CP3 đến CP4](teachback-cp3-cp4.md) · [Phản hồi luồng hai vai](teachback-15days-result.json) · [Chấm bổ sung](teachback-15days-result-judge.json)
 
 Chạy lại bằng `MODEL_NAME=gpt-4.1-mini python eval/run_study_15days.py --judge-model gpt-4.1 --output /tmp/teachback-15days-new.json`. Dùng tên tệp mới cho mỗi lượt.
 

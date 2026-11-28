@@ -1,6 +1,6 @@
 # Hồ sơ đánh giá — một trang
 
-Luồng hiện tại dùng học liệu 15 ngày và bộ giả lập 38 ca. Phần bên dưới ghi mốc CP2–CP4, với mã nguồn và cách chấm của thời điểm đó. [Kết quả phiên hai vai](study-15days-report.md)
+**CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15-day`.** Bên dưới lưu các lượt của luồng cũ để truy vết. [Đối chiếu CP3 đến CP4](teachback-cp3-cp4.md) · [Kết quả phiên hai vai](study-15days-report.md)
 
 [Bàn giao CP3 và CP4](../docs/checkpoint-handoff.md) ghi trạng thái hồ sơ, gồm video, chi phí, kiểm thử phiên và chỉ số học A4.
 
@@ -56,7 +56,7 @@ Luồng hiện tại dùng học liệu 15 ngày và bộ giả lập 38 ca. Ph�
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-230315` | `cx/gpt-6-luna` | Mốc trước cải tiến Lượt 2. Tra học liệu theo ý đang ôn, xử lý nhánh ngoài phạm vi và thiếu căn cứ, chuyển sang xem lại kiến thức khi hết hai câu gợi mở. Kết quả `thuong` 11/12, `kho` 11/14, `tu_choi` 4/4. | 26/30 | 87% | Chưa xác nhận đủ chuẩn §7. Cần kiểm giới hạn câu hỏi theo phiên và đo chỉ số về học. |
-| 2 | `run-2@20261128-001731` | `cx/gpt-6-luna` | Cải tiến câu gợi mở, giữ bộ 30 câu và rubric CP2. | 26/30 | 87% | Qua ngưỡng điểm tổng. Chỉ số học A4 của người dùng thật còn cần đo. |
+| 2 | `run-2@20261128-001731` | `cx/gpt-6-luna` | Lượt sửa prompt của luồng cũ trên `main`, giữ bộ 30 câu và rubric CP2. | 26/30 | 87% | Qua ngưỡng điểm tổng. Chỉ số học A4 của người dùng thật còn cần đo. |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
