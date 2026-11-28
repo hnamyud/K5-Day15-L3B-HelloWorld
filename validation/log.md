@@ -26,7 +26,19 @@ Ghi mỗi ý có điểm thiếu hoặc sai và đã nhận câu gợi mở ho�
 |---|---|---|---|---|---|
 | | | | | | |
 
-- Kết quả thực tế: __ / __ lượt đủ điều kiện tự diễn đạt lại đúng theo học liệu (ngưỡng §7: ≥75%). Nếu chưa có lượt đủ điều kiện, ghi "chưa đo được".
+- Kết quả thực tế: **chưa đo được**. Chưa có phiên với học viên L3 ngoài nhóm để tính tỷ lệ theo ngưỡng §7 (≥75%).
+
+## Kiểm thử theo vai học viên trên bản dòng lệnh
+
+Ba kịch bản dưới đây chạy qua giao diện `codebase/app.py` và workflow tại commit `6ea10b4`. Câu nhập của học viên được soạn cho kịch bản. Các phản hồi model được cấp sẵn để kiểm tra cách ứng dụng xử lý từng nhánh. Kết quả ghi từ màn hình Terminal.
+
+| Kịch bản | Thao tác | Quan sát khi chạy |
+|---|---|---|
+| A. Ôn hết hai mục D01 | Giải thích rằng LLM tự giữ lịch sử, sửa lời giải thích sau gợi mở. Sang Temperature, tiếp tục nhầm giữa lấy mẫu và độ chính xác qua hai lượt, rồi tự diễn đạt lại sau khi xem học liệu. | Hai mục được xử lý lần lượt. Temperature hiện đúng hai câu gợi mở trước phần xem lại. Cuối phiên có lời mời tự nhắc lại, rồi tổng hợp cả hai mục **Đã giải thích được** theo phản hồi mẫu. |
+| B. Cần xem nhanh trước khi vào lab | Mở D01, chọn `/xem`, để mục đầu ôn sau bằng `/sau`, rồi kết thúc ở mục tiếp theo bằng `/thoat`. | Học liệu của mục đầu hiện kèm mã đoạn. Tổng hợp ghi mục đầu **Nên ôn lại**, mục sau **Chưa kiểm tra**. |
+| C. Lẫn hai khái niệm | Ở mục Chatbot và LLM, nhập lời giải thích lẫn với RAG. Cấp phản hồi mẫu dẫn `[D07-P01]` của bài RAG, rồi chọn để ôn sau. | Phản hồi lệch nguồn bị chặn. Giao diện nhắc tiếp tục ở mục hiện tại và vẫn cho để ôn sau. |
+
+Giữ cách hiển thị trạng thái cuối phiên để người học biết mục nào cần xem tiếp. Ở buổi dùng thử với học viên thật, cần quan sát xem người học có nhận ra bước tiếp theo khi gặp thông báo thiếu căn cứ hay không. Mục này chỉ cung cấp bằng chứng kiểm thử luồng. Tỷ lệ A4 vẫn cần quan sát từ học viên thật.
 
 ## Tổng hợp
 
