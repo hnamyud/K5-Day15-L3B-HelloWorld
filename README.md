@@ -84,7 +84,7 @@ AI người học mở đầu bằng một câu tò mò. Mỗi khi bạn giải 
 
 Model thật lấy từ cấu hình hiện có. Nếu cấu hình từ chối tên model, có thể thử `MODEL_NAME=gpt-4.1-mini python run.py` với endpoint tương thích. Chế độ giả vẫn cho thử chọn bài và xem học liệu.
 
-**CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15-day`.** Giữ kết quả CP3 đã lưu và báo riêng phép kiểm tương thích bộ cũ, cùng kết quả 38 ca của phiên mới. [Đối chiếu CP3 đến CP4](eval/teachback-cp3-cp4.md) · [Kết quả phiên 15 ngày](eval/study-15days-report.md)
+**CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15dayspreclass`.** Giữ kết quả CP3 đã lưu và báo riêng phép kiểm tương thích bộ cũ, cùng kết quả 38 ca của phiên mới. [Đối chiếu CP3 đến CP4](eval/teachback-cp3-cp4.md) · [Kết quả phiên 15 ngày](eval/study-15days-report.md)
 
 Học liệu mẫu và mô-đun phiên CP3 được giữ để đối chiếu. Lệnh `python run.py` trên nhánh CP4 mở phiên hai vai với bộ học liệu 15 ngày. [Học liệu CP3](data/sample_lessons.json) · [Phiên CP3](codebase/session.py)
 

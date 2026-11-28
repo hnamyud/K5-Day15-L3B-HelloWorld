@@ -1,6 +1,6 @@
 # Hồ sơ đánh giá — một trang
 
-**CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15-day`.** Bên dưới lưu các lượt của luồng cũ để truy vết. [Đối chiếu CP3 đến CP4](teachback-cp3-cp4.md) · [Kết quả phiên hai vai](study-15days-report.md)
+**CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15dayspreclass`.** Bên dưới lưu các lượt của luồng cũ để truy vết. [Đối chiếu CP3 đến CP4](teachback-cp3-cp4.md) · [Kết quả phiên hai vai](study-15days-report.md)
 
 [Bộ mở rộng về cách diễn đạt và phiên nhiều lượt](teachback-variants-report.md) kiểm 52 mục trên 15 ngày theo nhiều kiểu lời giảng.
 

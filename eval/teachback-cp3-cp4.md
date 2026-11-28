@@ -1,6 +1,6 @@
-# Từ bản CP3 trên main đến bản CP4 trên 15-day
+# Từ bản CP3 trên main đến bản CP4 trên 15dayspreclass
 
-CP3 đã nộp từ `main`, theo xác nhận của nhóm. Điểm gốc là [lượt 1](run-1.csv) **26/30**, chấm chéo **4/5**. PR `15-day → main` đề xuất bản CP4 với học liệu và phiên hai vai. Lượt 2 **26/30** đã lưu trên `main` là lần sửa prompt của luồng cũ. [Chấm chéo CP3](cross-check-trung.md) · [Hai lượt lịch sử](report.md)
+CP3 đã nộp từ `main`, theo xác nhận của nhóm. Điểm gốc là [lượt 1](run-1.csv) **26/30**, chấm chéo **4/5**. PR `15dayspreclass → main` đề xuất bản CP4 với học liệu và phiên hai vai. Lượt 2 **26/30** đã lưu trên `main` là lần sửa prompt của luồng cũ. [Chấm chéo CP3](cross-check-trung.md) · [Hai lượt lịch sử](report.md)
 
 ## 1. Lỗi ở CP3 và thay đổi đề xuất cho CP4
 
@@ -15,9 +15,9 @@ CP3 đã nộp từ `main`, theo xác nhận của nhóm. Điểm gốc là [lư
 
 ## 3. Kết quả phát lại bộ CP2
 
-Chạy `main@6ea10b4` và `15-day@3fb671d` với `gpt-4.1-mini`. Tệp đầu vào có SHA-256 `43d1f1decf7a8623261cf8ff7bfea0305e416ac0c6f36f80768bf14795ec0c04`. Hai bản dùng cùng đầu vào gốc. [Phản hồi theo từng ID](cp4-compatibility.json)
+Chạy `main@6ea10b4` và `3fb671d` với `gpt-4.1-mini`. Tệp đầu vào có SHA-256 `43d1f1decf7a8623261cf8ff7bfea0305e416ac0c6f36f80768bf14795ec0c04`. Hai bản dùng cùng đầu vào gốc. [Phản hồi theo từng ID](cp4-compatibility.json)
 
-| Phép kiểm | main | CP4 15-day |
+| Phép kiểm | main | CP4 15dayspreclass |
 |---|---:|---:|
 | Có phản hồi, không gặp lỗi kỹ thuật | 30/30 | 30/30 |
 | Khớp nhãn mở đầu được yêu cầu rõ trong rubric | 27/29 | 24/29 |

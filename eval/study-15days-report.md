@@ -1,6 +1,6 @@
 # Bản đồ 15 ngày và đánh giá phiên học sinh dạy lại cho AI
 
-## Kết quả phiên CP4 trên nhánh 15-day
+## Kết quả phiên CP4 trên nhánh 15dayspreclass
 
 Cả 38 ca đã được gắn mã mục theo bộ 52 mục mới và chạy trong phiên hai vai. Model dự án là `gpt-4.1-mini`. `gpt-4.1` chấm phản hồi bổ sung, đối chiếu toàn bộ lời đáp với các ý chuẩn.
 
