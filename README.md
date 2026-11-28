@@ -1,8 +1,8 @@
-# HelloWorld — Bộ điều phối can thiệp học chủ động trên pre-class (Track A · A4)
+# HelloWorld — Học viên dạy lại cho AI (Track A · A4)
 
 **Thành viên, lớp, track:** xem [TEAMS.md](TEAMS.md).
 
-*Lát cắt: Một học viên lớp L3 đang tự học pre-class · vừa trả lời sai hoặc bỏ qua một câu hỏi giữa video · bộ điều phối AI quyết định có can thiệp không và chọn kiểu gợi mở bám đúng đoạn bài giảng để học viên tự giải thích lại · học viên sửa được hiểu nhầm và trả lời đúng câu kiểm tra tương đương ngay sau đó.*
+Sau pre-class và trước lab, học viên L3 chủ động chọn một bài để dạy lại cho AI. Giám khảo đối chiếu ngầm từng ý. AI người học hỏi một câu về chỗ vướng, rồi học viên tự giải thích lại.
 
 ---
 
@@ -101,6 +101,8 @@ Model thật lấy từ cấu hình hiện có. Nếu cấu hình từ chối t�
 Nhóm dùng coding agent và LLM để hỗ trợ code, biên soạn học liệu mô phỏng, thiết kế câu thử và chấm bổ sung phiên dạy lại. Kiểm tay 12 đoạn ghi nhận trong hồ sơ CP2 áp dụng cho học liệu khi đó. Bộ 52 mục hiện tại cần nhóm rà trước khi dùng làm căn cứ chính thức. [Nhật ký dùng AI](docs/ai-usage.md) · [Quy ước repo](AGENTS.md)
 
 ## File mẫu — điền ở bước nào
+
+[Bàn giao CP3 và CP4](docs/checkpoint-handoff.md) ghi từng đầu việc, người phụ trách, bằng chứng đã có và phần cần cập nhật để nộp.
 
 | File | Điền ở bước guide | Mốc |
 |---|---|---|
