@@ -52,10 +52,16 @@
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-230315` | `cx/gpt-6-luna` | Mốc trước cải tiến Lượt 2. Tra học liệu theo ý đang ôn, xử lý nhánh ngoài phạm vi và thiếu căn cứ, chuyển sang xem lại kiến thức khi hết hai câu gợi mở. Kết quả `thuong` 11/12, `kho` 11/14, `tu_choi` 4/4. | 26/30 | 87% | Chưa xác nhận đủ chuẩn §7. Cần kiểm giới hạn câu hỏi theo phiên và đo chỉ số về học. |
-| 2 | *(chạy trước CP4 sau 1 lần cải tiến)* | | | __/__ | | |
+| 2 | `run-2@20261128-001731` | `cx/gpt-6-luna` | Sửa prompt để hỏi một câu mở đúng chỗ học viên vướng và dành phần giải thích chuẩn cho bước xem lại. `thuong` 11/12, `kho` 11/14, `tu_choi` 4/4. | 26/30 | 87% | Qua ngưỡng tổng. Chưa xác nhận đủ chuẩn §7. |
+| 3 | `run-3@20261128-122313` | `cx/gpt-6-luna` | Kiểm nhãn, mã đoạn và nội dung của JSON trước khi ghép phản hồi. `thuong` 12/12, `kho` 12/14, `tu_choi` 4/4. | 28/30 | 93% | Qua ngưỡng tổng theo điểm chấm sơ bộ. Chưa xác nhận đủ chuẩn §7. |
+
+
+[Phiên D01 với AI thật](report.md#5-kiểm-thử-phiên-ôn-nhiều-ý-d01) đã kiểm giới hạn hai câu gợi mở mỗi ý và nhánh kết thúc sớm ở bản trước Lượt 3. Trong [bốn ca mô phỏng sau đó](report.md#6-mô-phỏng-cách-ghi-nhận-chỉ-số-a4), trạng thái ứng dụng khớp đối chiếu học liệu ở 4/4 ca. Do giới hạn thời gian hackathon, tỷ lệ học viên thật tự giải thích lại đúng vẫn [chưa đo được](../validation/log.md#chỉ-số-tự-giải-thích-lại-a4). Vì vậy, nhóm chưa xác nhận đủ chuẩn §7.
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
 ## 6. Lỗi chính
 
-*(Cập nhật sau lượt 1 và lượt 2 từ `eval/report.md`.)*
+- **Lượt 1 → Lượt 2:** `B06` và `B23` chuyển sang đạt nhờ câu hỏi bám đúng vai trò thực thi và quyền điều khiển luồng. `B05` và `B11` chuyển sang trượt vì hỏi lệch trọng số hoặc nêu sẵn tác động của Temperature. `B03` vẫn thiếu số câu và `B08` vẫn hỏi lệch chỗ lẫn giữa truy xuất với gửi tin hoặc sửa dữ liệu. [Phân tích và phản hồi thực tế](report.md#3-một-lần-cải-tiến)
+- **Lượt 2 → Lượt 3, theo điểm đã lưu:** `B03`, `B05` và `B08` chuyển sang đạt, `B23` chuyển sang trượt, `B11` vẫn trượt. `B03` đạt yêu cầu độ dài, `B08` hỏi về vai trò của RAG trong đúng tình huống học viên mô tả. `B05` là ca cần rà vì lời dẫn nhắc đúng chỗ hiểu sai về trọng số, còn câu hỏi vẫn hỏi gián tiếp qua vai trò tài liệu ngoài. [Điểm và ghi chú từng câu](run-3.csv)
+- **Lỗi còn lại ở Lượt 3:** `B11` nêu sẵn Temperature thay đổi cách lấy mẫu ngay trong câu hỏi. `B23` nêu sẵn giới hạn `MAX_STEPS` và bỏ qua câu hỏi về bên điều khiển luồng. [Phản hồi và tiêu chí từng câu](run-3.csv)

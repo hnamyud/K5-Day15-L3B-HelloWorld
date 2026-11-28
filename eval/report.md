@@ -67,3 +67,16 @@ Chạy `python run.py` trên commit `c8754f2` với API OpenAI model `gpt-4.1-mi
 **Quan sát về chất lượng:** AI đã nêu trước một số ý mà câu hỏi yêu cầu người học tự giải thích. Ví dụ, ở ý Temperature, AI nói tăng Temperature không cải thiện độ chính xác rồi hỏi lại vì sao. Phiên này xác nhận giới hạn số câu hiển thị, đồng thời ghi nhận lỗi nêu sẵn ý cần gợi mở.
 
 **Trạng thái §7:** Ca thử với AI thật đã xác nhận tối đa hai câu gợi mở cho mỗi ý và trạng thái đúng khi kết thúc sớm. Tỷ lệ học viên tự giải thích lại đúng cần đo từ các phiên có người dùng thật. [Nhật ký dùng thử](../validation/log.md)
+
+## 6. Mô phỏng cách ghi nhận chỉ số A4
+
+Do giới hạn thời gian hackathon, nhóm chưa đo được tỷ lệ học viên thật tự giải thích lại đúng. Để kiểm cách ghi nhận chỉ số, chạy bốn ca độc lập qua cùng bộ điều phối phiên trên `main` (`1c4103a`) với `gpt-4.1-mini`. Lời giải thích ban đầu và lời diễn đạt lại được soạn trước, gồm hai ca sửa đúng và hai ca vẫn vướng. Các câu trả lời được đối chiếu với ý chuẩn của từng mục, rồi so với trạng thái ứng dụng ghi nhận.
+
+| Ca mô phỏng | Phần thiếu hoặc sai ban đầu | Hỗ trợ nhận được | Lời diễn đạt lại, tóm tắt | Đối chiếu học liệu và trạng thái ứng dụng |
+|---|---|---|---|---|
+| `MP01` · Chatbot và LLM `[D01-P01]` `[D01-P02]` | Cho rằng LLM tự giữ lịch sử, chatbot chỉ hiển thị chữ. | 1 câu gợi mở | LLM dự đoán token, còn ứng dụng quản lý lịch sử và gửi lại ngữ cảnh. | Đúng · **Đã giải thích được** |
+| `MP02` · Temperature `[D01-P03]` `[D01-P04]` | Cho rằng tăng Temperature làm model thông minh và chính xác hơn. | 1 câu gợi mở | Temperature thay đổi cách lấy mẫu và độ đa dạng, không bổ sung kiến thức hay bảo đảm độ chính xác. | Đúng · **Đã giải thích được** |
+| `MP03` · RAG `[D07-P01]` | Cho rằng RAG cập nhật trọng số mỗi lần trả lời. | 1 câu gợi mở và **Xem lại kiến thức** | Đã nêu đúng việc đưa tài liệu vào ngữ cảnh, nhưng vẫn cho rằng mô hình cập nhật trọng số. | Chưa đúng · **Nên ôn lại** |
+| `MP04` · Tool Calling `[D03-P03]` `[D03-P04]` | Nêu đúng cơ chế gọi hàm, còn thiếu ranh giới công cụ chỉ đọc và bước người duyệt. | 1 câu gợi mở và **Xem lại kiến thức** | Vẫn cho rằng gửi email là đọc dữ liệu và có thể gửi ngay mà không cần duyệt. | Chưa đúng · **Nên ôn lại** |
+
+**Kết quả mô phỏng:** 2/4 lời diễn đạt lại đúng ý chuẩn. Trạng thái ứng dụng khớp với đối chiếu học liệu ở 4/4 ca. Tỷ lệ 2/4 phản ánh cách chọn các lời giải thích mẫu để thử cả hai trạng thái. Chỉ số A4 từ học viên thật vẫn **chưa đo được**, nên chưa xác nhận đủ chuẩn §7. [Nhật ký dùng thử](../validation/log.md#chỉ-số-tự-giải-thích-lại-a4)
