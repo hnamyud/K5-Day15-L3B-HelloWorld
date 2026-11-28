@@ -335,6 +335,9 @@
   @media print {
     .nav, .progress { display: none; }
     .deck, .frame { display: block; transform: none !important; }
+    /* Slide nằm trong .frame nên ngắt trang theo .frame (mỗi slide là :last-child của frame). */
+    .frame { break-after: page; page-break-after: always; }
+    .frame:last-child { break-after: auto; page-break-after: auto; }
     .frame > .slide { transform: none !important; }
   }
 </style>
