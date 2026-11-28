@@ -1,0 +1,1018 @@
+{
+  "project_model": "gpt-4.1-mini",
+  "judge_model": "gpt-4.1",
+  "cases": [
+    {
+      "id": "M01",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P51",
+          "text": "ML là cách học quy luật từ dữ liệu trong AI; deep learning dùng mạng nơ-ron nhiều tầng."
+        },
+        {
+          "code": "D01-P51",
+          "text": "GenAI tạo nội dung như ảnh và văn bản; LLM chuyên về ngôn ngữ, nên một công cụ tạo ảnh có thể là GenAI mà không phải LLM."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 434,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · ML là cách học quy luật từ dữ liệu trong AI; deep learning dùng mạng nơ-ron nhiều tầng. [D01-P51]\n- Ý 2 đúng · GenAI tạo nội dung như ảnh và văn bản; LLM chuyên về ngôn ngữ, nên một công cụ tạo ảnh có thể là GenAI mà không phải LLM. [D01-P51]\nNguồn mô phỏng theo đề cương · 1.1–1.2 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M02",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P51",
+          "text": "ML là cách học quy luật từ dữ liệu trong AI; deep learning dùng mạng nơ-ron nhiều tầng."
+        },
+        {
+          "code": "D01-P51",
+          "text": "GenAI tạo nội dung như ảnh và văn bản; LLM chuyên về ngôn ngữ, nên một công cụ tạo ảnh có thể là GenAI mà không phải LLM."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 399,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Bạn xếp một công cụ chỉ tạo ảnh vào đâu trong bản đồ này?",
+      "error": null
+    },
+    {
+      "id": "M03",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P52",
+          "text": "Mô hình dự đoán token dựa trên thông tin được cấp trong lần gọi."
+        },
+        {
+          "code": "D01-P52",
+          "text": "Ứng dụng chatbot quản lý lịch sử, gửi chỉ dẫn và thực hiện công cụ nếu có."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 398,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Mô hình dự đoán token dựa trên thông tin được cấp trong lần gọi. [D01-P52]\n- Ý 2 đúng · Ứng dụng chatbot quản lý lịch sử, gửi chỉ dẫn và thực hiện công cụ nếu có. [D01-P52]\nNguồn mô phỏng theo đề cương · 2.1, 5.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M04",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P52",
+          "text": "Mô hình dự đoán token dựa trên thông tin được cấp trong lần gọi."
+        },
+        {
+          "code": "D01-P52",
+          "text": "Ứng dụng chatbot quản lý lịch sử, gửi chỉ dẫn và thực hiện công cụ nếu có."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 359,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 147,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Trong chatbot, model làm phần việc nào khi nhận câu hỏi?",
+      "error": null
+    },
+    {
+      "id": "M05",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P53",
+          "text": "Mô hình tính phân phối cho token kế tiếp, chọn một token, nối vào ngữ cảnh rồi lặp."
+        },
+        {
+          "code": "D01-P53",
+          "text": "Temperature ảnh hưởng cách lấy mẫu và độ đa dạng, không bổ sung kiến thức hay bảo đảm trả lời đúng."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 410,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Mô hình tính phân phối cho token kế tiếp, chọn một token, nối vào ngữ cảnh rồi lặp. [D01-P53]\n- Ý 2 đúng · Temperature ảnh hưởng cách lấy mẫu và độ đa dạng, không bổ sung kiến thức hay bảo đảm trả lời đúng. [D01-P53]\nNguồn mô phỏng theo đề cương · 2.1–2.2, 3.4 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M06",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P53",
+          "text": "Mô hình tính phân phối cho token kế tiếp, chọn một token, nối vào ngữ cảnh rồi lặp."
+        },
+        {
+          "code": "D01-P53",
+          "text": "Temperature ảnh hưởng cách lấy mẫu và độ đa dạng, không bổ sung kiến thức hay bảo đảm trả lời đúng."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 379,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Với cùng một câu hỏi, bạn chờ đợi điều gì thay đổi khi chỉnh Temperature?",
+      "error": null
+    },
+    {
+      "id": "M07",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P54",
+          "text": "Tokenizer chuyển văn bản thành đơn vị xử lý; một token có thể là từ, một phần từ hoặc dấu câu."
+        },
+        {
+          "code": "D01-P54",
+          "text": "Số token phụ thuộc cách tách của model; có thể đọc usage để biết lượng đã dùng cho một lần gọi."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 398,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Tokenizer chuyển văn bản thành đơn vị xử lý; một token có thể là từ, một phần từ hoặc dấu câu. [D01-P54]\n- Ý 2 đúng · Số token phụ thuộc cách tách của model; có thể đọc usage để biết lượng đã dùng cho một lần gọi. [D01-P54]\nNguồn mô phỏng theo đề cương · 2.1 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M08",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P54",
+          "text": "Tokenizer chuyển văn bản thành đơn vị xử lý; một token có thể là từ, một phần từ hoặc dấu câu."
+        },
+        {
+          "code": "D01-P54",
+          "text": "Số token phụ thuộc cách tách của model; có thể đọc usage để biết lượng đã dùng cho một lần gọi."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 373,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Nếu muốn biết một lần gọi thực sự dùng bao nhiêu token, bạn kiểm ở đâu?",
+      "error": null
+    },
+    {
+      "id": "M09",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P55",
+          "text": "Attention giúp tổng hợp thông tin từ các token liên quan mà vị trí hiện tại được phép thấy."
+        },
+        {
+          "code": "D01-P55",
+          "text": "Đổi ngữ cảnh có thể đổi cách hiểu một đại từ dù chính từ đó giữ nguyên."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 397,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Attention giúp tổng hợp thông tin từ các token liên quan mà vị trí hiện tại được phép thấy. [D01-P55]\n- Ý 2 đúng · Đổi ngữ cảnh có thể đổi cách hiểu một đại từ dù chính từ đó giữ nguyên. [D01-P55]\nNguồn mô phỏng theo đề cương · 1.4, 2.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M10",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P55",
+          "text": "Attention giúp tổng hợp thông tin từ các token liên quan mà vị trí hiện tại được phép thấy."
+        },
+        {
+          "code": "D01-P55",
+          "text": "Đổi ngữ cảnh có thể đổi cách hiểu một đại từ dù chính từ đó giữ nguyên."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 375,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 171,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Khi gặp một đại từ, model có thể dựa vào phần nào của câu?",
+      "error": null
+    },
+    {
+      "id": "M11",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P56",
+          "text": "Cửa sổ ngữ cảnh giới hạn lượng token của lần gọi; câu hỏi, chỉ dẫn, tài liệu và lịch sử gửi lại đều chiếm chỗ."
+        },
+        {
+          "code": "D01-P56",
+          "text": "Có thể chọn đoạn liên quan hoặc tóm tắt lịch sử và dự trù chỗ cho đầu ra theo API."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 429,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Cửa sổ ngữ cảnh giới hạn lượng token của lần gọi; câu hỏi, chỉ dẫn, tài liệu và lịch sử gửi lại đều chiếm chỗ. [D01-P56]\n- Ý 2 đúng · Có thể chọn đoạn liên quan hoặc tóm tắt lịch sử và dự trù chỗ cho đầu ra theo API. [D01-P56]\nNguồn mô phỏng theo đề cương · 2.1, 3.3, 3.5 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M12",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P56",
+          "text": "Cửa sổ ngữ cảnh giới hạn lượng token của lần gọi; câu hỏi, chỉ dẫn, tài liệu và lịch sử gửi lại đều chiếm chỗ."
+        },
+        {
+          "code": "D01-P56",
+          "text": "Có thể chọn đoạn liên quan hoặc tóm tắt lịch sử và dự trù chỗ cho đầu ra theo API."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 390,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Nếu tài liệu dài quá, bạn sẽ giữ lại phần nào để model vẫn trả lời được?",
+      "error": null
+    },
+    {
+      "id": "M13",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P57",
+          "text": "Pre-training học mẫu ngôn ngữ, tinh chỉnh có giám sát học từ ví dụ, còn RLHF dùng phản hồi của người như tín hiệu huấn luyện."
+        },
+        {
+          "code": "D01-P57",
+          "text": "Mô hình có thể nói tự tin khi sai hoặc dùng thông tin đã lỗi thời; dữ kiện ngoài ngữ cảnh của lần gọi có thể không sẵn có."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 441,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Pre-training học mẫu ngôn ngữ, tinh chỉnh có giám sát học từ ví dụ, còn RLHF dùng phản hồi của người như tín hiệu huấn luyện. [D01-P57]\n- Ý 2 đúng · Mô hình có thể nói tự tin khi sai hoặc dùng thông tin đã lỗi thời; dữ kiện ngoài ngữ cảnh của lần gọi có thể không sẵn có. [D01-P57]\nNguồn mô phỏng theo đề cương · 3.1, 3.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M14",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P57",
+          "text": "Pre-training học mẫu ngôn ngữ, tinh chỉnh có giám sát học từ ví dụ, còn RLHF dùng phản hồi của người như tín hiệu huấn luyện."
+        },
+        {
+          "code": "D01-P57",
+          "text": "Mô hình có thể nói tự tin khi sai hoặc dùng thông tin đã lỗi thời; dữ kiện ngoài ngữ cảnh của lần gọi có thể không sẵn có."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 408,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Người đánh giá tham gia ở đâu khi một model được huấn luyện để thành trợ lý?",
+      "error": null
+    },
+    {
+      "id": "M15",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P58",
+          "text": "Top-k giới hạn số ứng viên; top-p giới hạn theo tổng xác suất; Temperature điều chỉnh phân phối lấy mẫu."
+        },
+        {
+          "code": "D01-P58",
+          "text": "Giới hạn đầu ra đặt mức trần số token sinh và có thể làm câu bị ngắt."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 405,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Top-k giới hạn số ứng viên; top-p giới hạn theo tổng xác suất; Temperature điều chỉnh phân phối lấy mẫu. [D01-P58]\n- Ý 2 đúng · Giới hạn đầu ra đặt mức trần số token sinh và có thể làm câu bị ngắt. [D01-P58]\nNguồn mô phỏng theo đề cương · 3.4, 5.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M16",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P58",
+          "text": "Top-k giới hạn số ứng viên; top-p giới hạn theo tổng xác suất; Temperature điều chỉnh phân phối lấy mẫu."
+        },
+        {
+          "code": "D01-P58",
+          "text": "Giới hạn đầu ra đặt mức trần số token sinh và có thể làm câu bị ngắt."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 374,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 153,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Top-k và top-p khác nhau thế nào khi rút bớt ứng viên?",
+      "error": null
+    },
+    {
+      "id": "M17",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P59",
+          "text": "Yêu cầu gửi model, messages và tham số; phản hồi thường có nội dung, lý do dừng và usage."
+        },
+        {
+          "code": "D01-P59",
+          "text": "Nếu cần tiếp tục hội thoại, ứng dụng phải cung cấp lại phần lịch sử liên quan."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 396,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Yêu cầu gửi model, messages và tham số; phản hồi thường có nội dung, lý do dừng và usage. [D01-P59]\n- Ý 2 đúng · Nếu cần tiếp tục hội thoại, ứng dụng phải cung cấp lại phần lịch sử liên quan. [D01-P59]\nNguồn mô phỏng theo đề cương · 5.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M18",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P59",
+          "text": "Yêu cầu gửi model, messages và tham số; phản hồi thường có nội dung, lý do dừng và usage."
+        },
+        {
+          "code": "D01-P59",
+          "text": "Nếu cần tiếp tục hội thoại, ứng dụng phải cung cấp lại phần lịch sử liên quan."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 382,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Khi gửi một yêu cầu, bạn gửi gì và dự kiến nhận gì về?",
+      "error": null
+    },
+    {
+      "id": "M19",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P60",
+          "text": "Chọn model dựa trên chất lượng, độ trễ và chi phí đo trên tác vụ thực tế."
+        },
+        {
+          "code": "D01-P60",
+          "text": "Tính chi phí đầu vào và đầu ra bằng số token nhân đơn giá tương ứng, quy đổi theo đơn vị bảng giá, rồi cộng lại."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 440,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Chọn model dựa trên chất lượng, độ trễ và chi phí đo trên tác vụ thực tế. [D01-P60]\n- Ý 2 đúng · Tính chi phí đầu vào và đầu ra bằng số token nhân đơn giá tương ứng, quy đổi theo đơn vị bảng giá, rồi cộng lại. [D01-P60]\nNguồn mô phỏng theo đề cương · 5.1–5.2 · https://e-learning-production.vercel.app/ngay/ngay-01",
+      "error": null
+    },
+    {
+      "id": "M20",
+      "public_day": 1,
+      "app_day": "D01",
+      "sources": [
+        {
+          "code": "D01-P60",
+          "text": "Chọn model dựa trên chất lượng, độ trễ và chi phí đo trên tác vụ thực tế."
+        },
+        {
+          "code": "D01-P60",
+          "text": "Tính chi phí đầu vào và đầu ra bằng số token nhân đơn giá tương ứng, quy đổi theo đơn vị bảng giá, rồi cộng lại."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 386,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 166,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Một lượt có prompt rất dài nhưng câu trả lời ngắn thì bạn tính chi phí từ những phần nào?",
+      "error": null
+    },
+    {
+      "id": "M21",
+      "public_day": 2,
+      "app_day": "D02",
+      "sources": [
+        {
+          "code": "D02-P52",
+          "text": "Hiện trạng đo điểm xuất phát, mục tiêu là thay đổi mong muốn."
+        },
+        {
+          "code": "D02-P52",
+          "text": "Cách đo phải nêu chỉ số và cách thu thập để kiểm tra thay đổi."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 369,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Bạn sẽ đo thế nào để biết công cụ làm người dùng bớt mất thời gian?",
+      "error": null
+    },
+    {
+      "id": "M22",
+      "public_day": 3,
+      "app_day": "D03",
+      "sources": [
+        {
+          "code": "D03-P51",
+          "text": "Workflow để mã điều khiển luồng và nhánh; agent dùng model chọn hành động tùy tình huống."
+        },
+        {
+          "code": "D03-P51",
+          "text": "Bắt đầu bằng cách đơn giản đáp ứng yêu cầu trước khi tăng mức tự chủ."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 405,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Workflow để mã điều khiển luồng và nhánh; agent dùng model chọn hành động tùy tình huống. [D03-P51]\n- Ý 2 đúng · Bắt đầu bằng cách đơn giản đáp ứng yêu cầu trước khi tăng mức tự chủ. [D03-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-03.html",
+      "error": null
+    },
+    {
+      "id": "M23",
+      "public_day": 3,
+      "app_day": "D03",
+      "sources": [
+        {
+          "code": "D03-P51",
+          "text": "Workflow để mã điều khiển luồng và nhánh; agent dùng model chọn hành động tùy tình huống."
+        },
+        {
+          "code": "D03-P51",
+          "text": "Bắt đầu bằng cách đơn giản đáp ứng yêu cầu trước khi tăng mức tự chủ."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 369,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Với công việc có quy trình ổn định, bạn chọn mức tự chủ dựa vào điều gì?",
+      "error": null
+    },
+    {
+      "id": "M24",
+      "public_day": 4,
+      "app_day": "D04",
+      "sources": [
+        {
+          "code": "D04-P52",
+          "text": "Model đề xuất tên và tham số công cụ; ứng dụng kiểm tra và thực thi."
+        },
+        {
+          "code": "D04-P52",
+          "text": "Ứng dụng gửi kết quả công cụ lại để model tiếp tục xử lý."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 389,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Model đề xuất tên và tham số công cụ; ứng dụng kiểm tra và thực thi. [D04-P52]\n- Ý 2 đúng · Ứng dụng gửi kết quả công cụ lại để model tiếp tục xử lý. [D04-P52]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 4 · https://e-learning-production.vercel.app/ngay/ngay-04.html",
+      "error": null
+    },
+    {
+      "id": "M25",
+      "public_day": 4,
+      "app_day": "D04",
+      "sources": [
+        {
+          "code": "D04-P52",
+          "text": "Model đề xuất tên và tham số công cụ; ứng dụng kiểm tra và thực thi."
+        },
+        {
+          "code": "D04-P52",
+          "text": "Ứng dụng gửi kết quả công cụ lại để model tiếp tục xử lý."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 366,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Làm cách nào model biết công cụ đã trả về dữ liệu gì?",
+      "error": null
+    },
+    {
+      "id": "M26",
+      "public_day": 5,
+      "app_day": "D05",
+      "sources": [
+        {
+          "code": "D05-P51",
+          "text": "Nêu giả thuyết về việc người dùng đang gặp khó và hành vi kỳ vọng thay đổi."
+        },
+        {
+          "code": "D05-P51",
+          "text": "Dùng cách thử ít tốn kém nhất thu đủ bằng chứng rồi mới xây thêm."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 382,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 165,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Trước khi làm prototype, bạn muốn học được gì về người dùng?",
+      "error": null
+    },
+    {
+      "id": "M27",
+      "public_day": 6,
+      "app_day": "D06",
+      "sources": [
+        {
+          "code": "D06-P53",
+          "text": "Cho người ngoài nhóm thực hiện tác vụ thật và quan sát họ hoàn thành hay vướng ở đâu."
+        },
+        {
+          "code": "D06-P53",
+          "text": "Bộ kiểm kỹ thuật và quan sát người dùng cung cấp bằng chứng khác nhau."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 377,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Khi mời một người dùng thử, bạn sẽ giao họ việc gì và quan sát điều gì?",
+      "error": null
+    },
+    {
+      "id": "M28",
+      "public_day": 7,
+      "app_day": "D07",
+      "sources": [
+        {
+          "code": "D07-P52",
+          "text": "Embedding biểu diễn nội dung bằng vector để so sánh độ gần."
+        },
+        {
+          "code": "D07-P52",
+          "text": "Cosine gần cho thấy tương đồng theo biểu diễn, không bảo đảm tài liệu đúng hoặc được phép dùng."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 372,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Điểm cosine cao cho bạn biết điều gì về một đoạn văn?",
+      "error": null
+    },
+    {
+      "id": "M29",
+      "public_day": 8,
+      "app_day": "D08",
+      "sources": [
+        {
+          "code": "D08-P53",
+          "text": "Trích đúng đoạn hỗ trợ mỗi khẳng định cần kiểm chứng."
+        },
+        {
+          "code": "D08-P53",
+          "text": "Nếu thiếu đoạn hỗ trợ hoặc nguồn mâu thuẫn chưa giải quyết được, báo giới hạn và tránh đoán."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 396,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Trích đúng đoạn hỗ trợ mỗi khẳng định cần kiểm chứng. [D08-P53]\n- Ý 2 đúng · Nếu thiếu đoạn hỗ trợ hoặc nguồn mâu thuẫn chưa giải quyết được, báo giới hạn và tránh đoán. [D08-P53]\nNguồn mô phỏng theo đề cương · Module 5–6 · https://e-learning-production.vercel.app/ngay/ngay-08.html",
+      "error": null
+    },
+    {
+      "id": "M30",
+      "public_day": 8,
+      "app_day": "D08",
+      "sources": [
+        {
+          "code": "D08-P53",
+          "text": "Trích đúng đoạn hỗ trợ mỗi khẳng định cần kiểm chứng."
+        },
+        {
+          "code": "D08-P53",
+          "text": "Nếu thiếu đoạn hỗ trợ hoặc nguồn mâu thuẫn chưa giải quyết được, báo giới hạn và tránh đoán."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 369,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 159,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Bạn làm gì để người đọc kiểm được một khẳng định trong câu trả lời?",
+      "error": null
+    },
+    {
+      "id": "M31",
+      "public_day": 9,
+      "app_day": "D09",
+      "sources": [
+        {
+          "code": "D09-P52",
+          "text": "Supervisor giao mục tiêu và xác định điều kiện hoàn thành; worker trả kết quả theo hợp đồng."
+        },
+        {
+          "code": "D09-P52",
+          "text": "Trạng thái chung ghi rõ tiến độ và đầu ra đã hoàn thành để tránh lặp việc hoặc mất thông tin giữa người giao và người làm."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 391,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 181,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Nếu hai worker làm hai phần khác nhau, bạn giao việc và ghép kết quả thế nào?",
+      "error": null
+    },
+    {
+      "id": "M32",
+      "public_day": 10,
+      "app_day": "D10",
+      "sources": [
+        {
+          "code": "D10-P52",
+          "text": "Schema chỉ kiểm kiểu và hình dạng; luật nghiệp vụ kiểm quan hệ, phạm vi hoặc tính hợp lý."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 350,
+          "tokens_out": 12
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Ngày giao trước ngày đặt nhưng vẫn đúng định dạng thì bạn kiểm lỗi ấy bằng cách nào?",
+      "error": null
+    },
+    {
+      "id": "M33",
+      "public_day": 11,
+      "app_day": "D11",
+      "sources": [
+        {
+          "code": "D11-P52",
+          "text": "Hành động có hậu quả lớn hoặc khó đảo ngược cần phê duyệt rõ ràng trước khi thực hiện."
+        },
+        {
+          "code": "D11-P52",
+          "text": "Người duyệt cần thấy hành động dự kiến và hậu quả để quyết định."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 386,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 160,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Bạn sẽ chọn thao tác nào bắt buộc phải qua người duyệt?",
+      "error": null
+    },
+    {
+      "id": "M34",
+      "public_day": 12,
+      "app_day": "D12",
+      "sources": [
+        {
+          "code": "D12-P53",
+          "text": "Các bản sao stateless không dựa vào bộ nhớ riêng để tiếp tục phiên; trạng thái cần có thể nằm ở kho dùng chung."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 366,
+          "tokens_out": 12
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Các bản sao stateless không dựa vào bộ nhớ riêng để tiếp tục phiên; trạng thái cần có thể nằm ở kho dùng chung. [D12-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 12 · https://e-learning-production.vercel.app/ngay/ngay-12.html",
+      "error": null
+    },
+    {
+      "id": "M35",
+      "public_day": 13,
+      "app_day": "D13",
+      "sources": [
+        {
+          "code": "D13-P52",
+          "text": "Đưa cùng ID yêu cầu vào log các bước để nối chúng."
+        },
+        {
+          "code": "D13-P52",
+          "text": "Chỉ ghi dữ liệu cần thiết và che thông tin cá nhân khi ghi log."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 365,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 155,
+          "tokens_out": 1
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "THIẾU Ý",
+      "response": "AI người học · Làm sao bạn ghép log của ba bước thuộc cùng một yêu cầu?",
+      "error": null
+    },
+    {
+      "id": "M36",
+      "public_day": 14,
+      "app_day": "D14",
+      "sources": [
+        {
+          "code": "D14-P51",
+          "text": "Bộ ca đại diện có ca thường, khó và giới hạn kèm tiêu chí rõ."
+        },
+        {
+          "code": "D14-P51",
+          "text": "Giữ bộ thử và chuẩn để so sánh qua phiên bản; phân tích ca hỏng thay vì xóa."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 398,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Đã giải thích được",
+      "advanced": true,
+      "label": "ĐỦ Ý",
+      "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Bộ ca đại diện có ca thường, khó và giới hạn kèm tiêu chí rõ. [D14-P51]\n- Ý 2 đúng · Giữ bộ thử và chuẩn để so sánh qua phiên bản; phân tích ca hỏng thay vì xóa. [D14-P51]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 14 · https://e-learning-production.vercel.app/ngay/ngay-14.html",
+      "error": null
+    },
+    {
+      "id": "M37",
+      "public_day": 14,
+      "app_day": "D14",
+      "sources": [
+        {
+          "code": "D14-P51",
+          "text": "Bộ ca đại diện có ca thường, khó và giới hạn kèm tiêu chí rõ."
+        },
+        {
+          "code": "D14-P51",
+          "text": "Giữ bộ thử và chuẩn để so sánh qua phiên bản; phân tích ca hỏng thay vì xóa."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 387,
+          "tokens_out": 16
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Nếu bản mới không qua một ca, bạn làm gì để so sánh vẫn công bằng?",
+      "error": null
+    },
+    {
+      "id": "M38",
+      "public_day": 15,
+      "app_day": "D15",
+      "sources": [
+        {
+          "code": "D15-P53",
+          "text": "Chọn track dựa trên mục tiêu, năng lực và khoảng trống; đưa ra bước tiếp theo có thể kiểm tra."
+        }
+      ],
+      "model_calls": [
+        {
+          "tokens_in": 360,
+          "tokens_out": 12
+        }
+      ],
+      "status": "Chưa kiểm tra",
+      "advanced": false,
+      "label": "HIỂU SAI",
+      "response": "AI người học · Bạn sẽ giải thích quyết định chọn track và bước kiểm chứng lựa chọn đó như thế nào?",
+      "error": null
+    }
+  ]
+}
