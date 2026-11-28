@@ -81,8 +81,8 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm | **Thật** (đã nối từ CP3) | Model: `cx/gpt-6-luna` (OpenAI-compatible qua `.env`; mặc định fallback `fake` nếu chưa tạo `.env`). Video 30s chạy thật: [Google Drive](https://drive.google.com/file/d/103SH3vI9oHgr-xipk7X_N-tLoN23WWxd/view?usp=sharing) |
-| Luồng ôn nhiều ý (`codebase/session.py`, `codebase/app.py`) | **Thật** | Giữ trạng thái từng ý, giới hạn 2 câu hỏi/ý, *Xem lại kiến thức*, *Để ôn sau*, tự nhắc lại cuối phiên |
+| Lời gọi AI ở quyết định trung tâm | **Thật** (đã nối từ CP3, nâng cấp JSON có kiểm tra ở Lượt 3) | Model: `cx/gpt-6-luna` (OpenAI-compatible qua `.env`; mặc định fallback `fake` nếu chưa tạo `.env`). Video 30s CP3: [Google Drive](https://drive.google.com/file/d/103SH3vI9oHgr-xipk7X_N-tLoN23WWxd/view?usp=sharing) · Video demo dự phòng CP4: [Google Drive](https://drive.google.com/file/d/1Kks0p-gb2HuAfsSPgWCQs66lwBA_29Kj/view?usp=sharing) |
+| Luồng ôn nhiều ý & Giao diện (`codebase/session.py`, `app.py`, `web.py`, `guardrails.py`) | **Thật** | Giữ trạng thái từng ý, giới hạn 2 câu hỏi/ý, *Xem lại kiến thức*, *Để ôn sau*, tự nhắc lại cuối phiên, hỗ trợ cả CLI (`python run.py`) và giao diện web |
 | Công cụ `search_lesson`, `get_key_points` | **Thật trên học liệu mẫu** | Đọc `data/sample_lessons.json` (6 khái niệm, 12 đoạn tự viết lại cô đọng — xem `data/DATA_CARD.md`) |
 | Chỗ chặn Lớp 1 (`[CHƯA ĐỦ CĂN CỨ]`) & Lớp 3 (`[NGOÀI PHẠM VI]`) | **Thật** | Chạy bằng code cố định trong `codebase/agent.py` |
 | Bằng chứng pain (`evidence/data-mining.md`, `evidence/KhaoSat.csv`) | **Thật** | 107.709 dòng log `data/preclass/` (BTC cấp, không commit nguyên file) + 25 phiếu khảo sát ngoài nhóm (22 L3) |
@@ -121,5 +121,5 @@ Nhóm dùng coding agent / LLM để hỗ trợ viết script đếm `evidence/c
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | slide trong repo (`demo-slides.pdf` trước CP4) · video 30s CP3: [Google Drive](https://drive.google.com/file/d/103SH3vI9oHgr-xipk7X_N-tLoN23WWxd/view?usp=sharing) · video dự phòng CP4: ____ |
+| 7 | Slide + demo + video dự phòng | [demo-slides.pdf](demo-slides.pdf) (8 trang tại thư mục gốc) · video 30s CP3: [Google Drive](https://drive.google.com/file/d/103SH3vI9oHgr-xipk7X_N-tLoN23WWxd/view?usp=sharing) · video demo dự phòng CP4: [Google Drive](https://drive.google.com/file/d/1Kks0p-gb2HuAfsSPgWCQs66lwBA_29Kj/view?usp=sharing) |
 | + | *Bonus:* người dùng thử | `validation/log.md` |
