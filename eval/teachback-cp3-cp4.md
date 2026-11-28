@@ -42,6 +42,8 @@ Chạy lại phép phát lại với `MODEL_NAME=gpt-4.1-mini python eval/run_ch
 
 Trên bộ **38 lời giảng mới**, giám khảo gắn đúng **37/38 nhãn** và **23/24 ca cần gợi mở** đạt tiêu chí. M34 phát biểu sai về trạng thái giữa các tiến trình nhưng được cho qua. Mốc này đo trực tiếp luồng hai vai của CP4. [Kết quả và ca trượt](study-15days-report.md)
 
+Bộ mở rộng kiểm cả cách diễn đạt và ứng xử qua nhiều lượt. Kết quả là **54/66 ca**, với 6 lượt xác nhận đủ ý quá sớm. Hai bộ dùng tiêu chí và phạm vi khác nhau. [Báo cáo bộ mở rộng](teachback-variants-report.md)
+
 ## 5. Việc phát triển tiếp và cách nghiệm thu
 
 | Thứ tự | Việc phát triển từ PR | Cách nghiệm thu |

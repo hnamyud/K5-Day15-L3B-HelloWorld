@@ -1,0 +1,1850 @@
+{
+  "model": "gpt-4.1-mini",
+  "revision": "e935d75ec2a13c4a1e2fbd42b7c37e29a66c51db",
+  "dataset_sha256": "6701431bcc475e86f162a95d1ec2144066c3e953a10ef6310dc512b505a60806",
+  "lessons_sha256": "d8c998ed28a1cb716e9ed7d758b7fa2b1d3a7b0b243aa91368b9191e7ec5a291",
+  "cases": [
+    {
+      "id": "V01",
+      "style": "lien_tuong",
+      "lesson": "D01-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · ML là cách học quy luật từ dữ liệu trong AI; deep learning dùng mạng nơ-ron nhiều tầng. [D01-P51]\n- Ý 2 đúng · GenAI tạo nội dung như ảnh và văn bản; LLM chuyên về ngôn ngữ, nên một công cụ tạo ảnh có thể là GenAI mà không phải LLM. [D01-P51]\nNguồn mô phỏng theo đề cương · 1.1–1.2 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 443,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V02",
+      "style": "vi_du_lab",
+      "lesson": "D01-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Mô hình dự đoán token dựa trên thông tin được cấp trong lần gọi. [D01-P52]\n- Ý 2 đúng · Ứng dụng chatbot quản lý lịch sử, gửi chỉ dẫn và thực hiện công cụ nếu có. [D01-P52]\nNguồn mô phỏng theo đề cương · 2.1, 5.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 400,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V03",
+      "style": "tron_dung_sai",
+      "lesson": "D01-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Với cùng một câu hỏi, bạn chờ đợi điều gì thay đổi khi chỉnh Temperature?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 403,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V04",
+      "style": "ngap_ngung",
+      "lesson": "D01-P54",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Nếu muốn biết một lần gọi thực sự dùng bao nhiêu token, bạn kiểm ở đâu?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 391,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V05",
+      "style": "lien_tuong",
+      "lesson": "D01-P55",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Attention giúp tổng hợp thông tin từ các token liên quan mà vị trí hiện tại được phép thấy. [D01-P55]\n- Ý 2 đúng · Đổi ngữ cảnh có thể đổi cách hiểu một đại từ dù chính từ đó giữ nguyên. [D01-P55]\nNguồn mô phỏng theo đề cương · 1.4, 2.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 408,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V06",
+      "style": "lan_man",
+      "lesson": "D01-P56",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Cửa sổ ngữ cảnh giới hạn lượng token của lần gọi; câu hỏi, chỉ dẫn, tài liệu và lịch sử gửi lại đều chiếm chỗ. [D01-P56]\n- Ý 2 đúng · Có thể chọn đoạn liên quan hoặc tóm tắt lịch sử và dự trù chỗ cho đầu ra theo API. [D01-P56]\nNguồn mô phỏng theo đề cương · 2.1, 3.3, 3.5 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 463,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V07",
+      "style": "tron_dung_sai",
+      "lesson": "D01-P57",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Pre-training học mẫu ngôn ngữ, tinh chỉnh có giám sát học từ ví dụ, còn RLHF dùng phản hồi của người như tín hiệu huấn luyện. [D01-P57]\n- Ý 2 đúng · Mô hình có thể nói tự tin khi sai hoặc dùng thông tin đã lỗi thời; dữ kiện ngoài ngữ cảnh của lần gọi có thể không sẵn có. [D01-P57]\nNguồn mô phỏng theo đề cương · 3.1, 3.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [
+            "outcome",
+            "label",
+            "focus"
+          ],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 449,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V08",
+      "style": "thang",
+      "lesson": "D01-P58",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Top-k giới hạn số ứng viên; top-p giới hạn theo tổng xác suất; Temperature điều chỉnh phân phối lấy mẫu. [D01-P58]\n- Ý 2 đúng · Giới hạn đầu ra đặt mức trần số token sinh và có thể làm câu bị ngắt. [D01-P58]\nNguồn mô phỏng theo đề cương · 3.4, 5.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 404,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V09",
+      "style": "ngap_ngung",
+      "lesson": "D01-P59",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Nếu hỏi tiếp ‘còn trường hợp kia’, ứng dụng cần làm gì để model hiểu bạn đang nhắc đến cái nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 392,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V10",
+      "style": "tu_sua_mot_luot",
+      "lesson": "D01-P60",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Chọn model dựa trên chất lượng, độ trễ và chi phí đo trên tác vụ thực tế. [D01-P60]\n- Ý 2 đúng · Tính chi phí đầu vào và đầu ra bằng số token nhân đơn giá tương ứng, quy đổi theo đơn vị bảng giá, rồi cộng lại. [D01-P60]\nNguồn mô phỏng theo đề cương · 5.1–5.2 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 421,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V11",
+      "style": "vi_du_lab",
+      "lesson": "D02-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Yêu cầu xây chatbot mô tả một giải pháp khả dĩ, chưa xác định người dùng và trở ngại. [D02-P51]\n- Ý 2 đúng · Double Diamond khám phá và thu hẹp vấn đề trước khi tìm rồi chọn giải pháp. [D02-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-02.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 416,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V12",
+      "style": "thang",
+      "lesson": "D02-P52",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Nếu mục tiêu chỉ ghi ‘tiết kiệm thời gian’, bạn còn cần biết gì về hiện trạng?",
+          "failures": [
+            "outcome",
+            "label"
+          ],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 379,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V13",
+      "style": "tron_dung_sai",
+      "lesson": "D02-P53",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Tách hỗ trợ người khỏi tự động hóa theo chi phí khi sai và nhu cầu giám sát. [D02-P53]\n- Ý 2 đúng · Chọn Rule, Workflow hay Agent theo mức linh hoạt cần thiết và chọn cách đơn giản đủ dùng. [D02-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 2 · https://e-learning-production.vercel.app/ngay/ngay-02.html",
+          "failures": [
+            "outcome",
+            "label",
+            "focus"
+          ],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 403,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V14",
+      "style": "lien_tuong",
+      "lesson": "D03-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Workflow để mã điều khiển luồng và nhánh; agent dùng model chọn hành động tùy tình huống. [D03-P51]\n- Ý 2 đúng · Bắt đầu bằng cách đơn giản đáp ứng yêu cầu trước khi tăng mức tự chủ. [D03-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-03.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 402,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V15",
+      "style": "tron_dung_sai",
+      "lesson": "D03-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Bạn sẽ thiết kế lúc nào vòng lặp dừng?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 394,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V16",
+      "style": "thang",
+      "lesson": "D03-P53",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Nếu kết quả cuối sai, bạn tìm dấu vết lỗi ở đâu?",
+          "failures": [
+            "outcome",
+            "label"
+          ],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 397,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V17",
+      "style": "lan_man",
+      "lesson": "D04-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Nêu vai trò, nhiệm vụ, bối cảnh và hình thức đầu ra cần thiết. [D04-P51]\n- Ý 2 đúng · Ví dụ few-shot giúp minh họa một khuôn cần tuân theo khi chỉ dẫn chữ vẫn mơ hồ. [D04-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-04.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 423,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V18",
+      "style": "tron_dung_sai",
+      "lesson": "D04-P52",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Model đề xuất tên và tham số công cụ; ứng dụng kiểm tra và thực thi. [D04-P52]\n- Ý 2 đúng · Ứng dụng gửi kết quả công cụ lại để model tiếp tục xử lý. [D04-P52]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 4 · https://e-learning-production.vercel.app/ngay/ngay-04.html",
+          "failures": [
+            "outcome",
+            "label",
+            "focus"
+          ],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 380,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V19",
+      "style": "vi_du_lab",
+      "lesson": "D04-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Văn bản lấy từ bên ngoài là dữ liệu và không có quyền đổi vai hay chỉ dẫn hệ thống. [D04-P53]\n- Ý 2 đúng · Kiểm tham số và quyền ở ứng dụng trước khi cho công cụ thực hiện hành động. [D04-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 4 · https://e-learning-production.vercel.app/ngay/ngay-04.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 399,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V20",
+      "style": "ngap_ngung",
+      "lesson": "D05-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bạn có thể thử giả thuyết ấy bằng cách nào với ít công sức nhất?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 394,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V21",
+      "style": "lien_tuong",
+      "lesson": "D05-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Nêu phạm vi, giới hạn và mức tin cậy ở thời điểm người dùng cần quyết định. [D05-P52]\n- Ý 2 đúng · Cho người dùng xem, sửa, xác nhận hoặc bỏ qua kết quả theo mức rủi ro. [D05-P52]\nNguồn mô phỏng theo đề cương · Module 3 · https://e-learning-production.vercel.app/ngay/ngay-05.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 408,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V22",
+      "style": "tron_dung_sai",
+      "lesson": "D05-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Bạn phân biệt thế nào hai kiểu sai của bộ lọc cảnh báo?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 403,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V23",
+      "style": "vi_du_lab",
+      "lesson": "D06-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Dùng bằng chứng quan sát hoặc dữ liệu để mô tả trở ngại của nhóm người dùng cụ thể. [D06-P51]\n- Ý 2 đúng · Thu hẹp prototype về một luồng đủ đo được giá trị. [D06-P51]\nNguồn mô phỏng theo đề cương · Module 1–2 · https://e-learning-production.vercel.app/ngay/ngay-06.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 401,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V24",
+      "style": "tron_dung_sai",
+      "lesson": "D06-P52",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Dùng bộ ca đã chốt và tiêu chí quan sát được để so sánh các phiên bản. [D06-P52]\n- Ý 2 đúng · Giữ ca trượt làm dữ liệu để sửa và chạy lại trên cùng bộ. [D06-P52]\nNguồn mô phỏng theo đề cương · Module 2 · https://e-learning-production.vercel.app/ngay/ngay-06.html",
+          "failures": [
+            "outcome",
+            "label",
+            "focus"
+          ],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 384,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V25",
+      "style": "lan_man",
+      "lesson": "D06-P53",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bộ câu thử đã qua cho bạn biết gì, và bạn còn phải quan sát gì ở người dùng?",
+          "failures": [
+            "outcome",
+            "label"
+          ],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 419,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V26",
+      "style": "lien_tuong",
+      "lesson": "D07-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Chia theo đơn vị ý hoặc cấu trúc để giữ ngữ cảnh đủ và dễ truy xuất. [D07-P51]\n- Ý 2 đúng · Đoạn quá lớn mang nhiễu, đoạn quá nhỏ có thể mất điều kiện đứng cạnh. [D07-P51]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 7 · https://e-learning-production.vercel.app/ngay/ngay-07.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 402,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V27",
+      "style": "tron_dung_sai",
+      "lesson": "D07-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Điểm cosine cao cho bạn biết điều gì về một đoạn văn?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 376,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V28",
+      "style": "vi_du_lab",
+      "lesson": "D07-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Vector store gắn vector với đoạn, mã nguồn, phiên bản hoặc metadata cần thiết. [D07-P53]\n- Ý 2 đúng · Lọc theo metadata khi cần giới hạn quyền, ngày hoặc nhóm tài liệu. [D07-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 7 · https://e-learning-production.vercel.app/ngay/ngay-07.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 387,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V29",
+      "style": "lien_tuong",
+      "lesson": "D08-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Tài liệu được xử lý và đưa vào chỉ mục để truy xuất đoạn liên quan lúc hỏi. [D08-P51]\n- Ý 2 đúng · Đoạn truy xuất đi vào ngữ cảnh lúc sinh câu trả lời; quá trình đó không cập nhật trọng số. [D08-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-08.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 414,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V30",
+      "style": "ngap_ngung",
+      "lesson": "D08-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Sau khi đã tìm ra vài ứng viên, tại sao vẫn có bước chọn lại thứ tự?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 407,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V31",
+      "style": "vi_du_lab",
+      "lesson": "D08-P53",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bạn làm gì để người đọc kiểm được một khẳng định trong câu trả lời?",
+          "failures": [
+            "outcome",
+            "label"
+          ],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 400,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V32",
+      "style": "lan_man",
+      "lesson": "D09-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Chỉ tách khi có nhu cầu rõ như phân công chuyên môn, phạm vi công cụ hoặc ngữ cảnh. [D09-P51]\n- Ý 2 đúng · Đánh đổi chi phí phối hợp và độ khó quan sát với lợi ích phân vai. [D09-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-09.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 416,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V33",
+      "style": "tron_dung_sai",
+      "lesson": "D09-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Nếu một worker làm xong nhưng tiến trình bị tạm dừng, phần còn lại biết điều gì đã hoàn thành bằng cách nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 404,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V34",
+      "style": "thang",
+      "lesson": "D09-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · MCP kết nối ứng dụng hoặc agent với công cụ hay dữ liệu; A2A hướng đến giao việc giữa các agent. [D09-P53]\n- Ý 2 đúng · Trace theo bước giúp quy trách nhiệm khi điều phối đi sai. [D09-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 9 · https://e-learning-production.vercel.app/ngay/ngay-09.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 392,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V35",
+      "style": "vi_du_lab",
+      "lesson": "D10-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Chọn cơ chế nạp theo nhịp cập nhật, độ trễ cần thiết và khả năng truy cập nguồn. [D10-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-10.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 385,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V36",
+      "style": "thang",
+      "lesson": "D10-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Schema chỉ kiểm kiểu và hình dạng; luật nghiệp vụ kiểm quan hệ, phạm vi hoặc tính hợp lý. [D10-P52]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 10 · https://e-learning-production.vercel.app/ngay/ngay-10.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 356,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V37",
+      "style": "tron_dung_sai",
+      "lesson": "D10-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Một số bản ghi lỗi còn phần còn lại tốt thì khi nào bạn tách riêng thay vì dừng hết?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 402,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V38",
+      "style": "lien_tuong",
+      "lesson": "D11-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Kiểm đầu vào, quyền thực hiện và đầu ra ở những điểm khác nhau của luồng. [D11-P51]\nNguồn mô phỏng theo đề cương · Module 1–2 · https://e-learning-production.vercel.app/ngay/ngay-11.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 361,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V39",
+      "style": "ngap_ngung",
+      "lesson": "D11-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Người duyệt cần thấy gì trước khi đồng ý?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 391,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V40",
+      "style": "vi_du_lab",
+      "lesson": "D11-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Dùng tình huống giả lập để kiểm phòng vệ và ghi lỗi quan sát được. [D11-P53]\n- Ý 2 đúng · Xác định ai có quyền quyết định, cách ghi dấu và cách phục hồi khi có sự cố. [D11-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 11 · https://e-learning-production.vercel.app/ngay/ngay-11.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 398,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V41",
+      "style": "lan_man",
+      "lesson": "D12-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Container đóng gói ứng dụng và môi trường chạy; cấu hình đưa từ môi trường triển khai. [D12-P51]\n- Ý 2 đúng · Health check giúp nền tảng biết dịch vụ sẵn sàng nhận yêu cầu. [D12-P51]\nNguồn mô phỏng theo đề cương · Module 1–2 · https://e-learning-production.vercel.app/ngay/ngay-12.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 400,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V42",
+      "style": "ngap_ngung",
+      "lesson": "D12-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bạn sẽ bảo vệ một endpoint gọi model công khai bằng những lớp nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 355,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V43",
+      "style": "tron_dung_sai",
+      "lesson": "D12-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Nếu lượt tiếp theo vào một tiến trình khác, làm sao nó biết trạng thái cần cho phiên?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 371,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V44",
+      "style": "thang",
+      "lesson": "D13-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Metrics cho biết xu hướng, logs ghi sự kiện, trace nối các bước của một yêu cầu. [D13-P51]\n- Ý 2 đúng · Cần theo dõi chất lượng phản hồi cùng độ trễ, lỗi và chi phí. [D13-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-13.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 389,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V45",
+      "style": "tron_dung_sai",
+      "lesson": "D13-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Bạn xử lý phần thông tin cá nhân trong log thế nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 376,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V46",
+      "style": "vi_du_lab",
+      "lesson": "D13-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Percentile cho thấy nhóm chậm mà số trung bình có thể che mất. [D13-P53]\n- Ý 2 đúng · Thiết kế cảnh báo dựa trên mục tiêu dịch vụ và tín hiệu có thể hành động. [D13-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 13 · https://e-learning-production.vercel.app/ngay/ngay-13.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 395,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V47",
+      "style": "lien_tuong",
+      "lesson": "D14-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Bộ ca đại diện có ca thường, khó và giới hạn kèm tiêu chí rõ. [D14-P51]\n- Ý 2 đúng · Giữ bộ thử và chuẩn để so sánh qua phiên bản; phân tích ca hỏng thay vì xóa. [D14-P51]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 14 · https://e-learning-production.vercel.app/ngay/ngay-14.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 410,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V48",
+      "style": "tron_dung_sai",
+      "lesson": "D14-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Nếu hai hệ thống đều tìm ra tài liệu đúng nhưng xếp ở vị trí khác, bạn dùng số nào để phân biệt?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 399,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V49",
+      "style": "ngap_ngung",
+      "lesson": "D14-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bạn dựa vào tín hiệu nào để quyết định một bản sửa được phép phát hành?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 405,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V50",
+      "style": "lan_man",
+      "lesson": "D15-P51",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Dùng việc đã làm, trở ngại và kết quả để rút điều nên lặp hay thay đổi. [D15-P51]\nNguồn mô phỏng theo đề cương · Module 1 · https://e-learning-production.vercel.app/ngay/ngay-15.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 395,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V51",
+      "style": "vi_du_lab",
+      "lesson": "D15-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Dựa trên yêu cầu công việc cụ thể để phân biệt năng lực đã có với khoảng trống cần luyện. [D15-P52]\nNguồn mô phỏng theo đề cương · Module 2–3 · https://e-learning-production.vercel.app/ngay/ngay-15.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 383,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V52",
+      "style": "sai_tu_tin",
+      "lesson": "D15-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Bạn sẽ giải thích quyết định chọn track và bước kiểm chứng lựa chọn đó như thế nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 372,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V53",
+      "style": "thang",
+      "lesson": "D01-P56",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Cửa sổ ngữ cảnh giới hạn lượng token của lần gọi; câu hỏi, chỉ dẫn, tài liệu và lịch sử gửi lại đều chiếm chỗ. [D01-P56]\n- Ý 2 đúng · Có thể chọn đoạn liên quan hoặc tóm tắt lịch sử và dự trù chỗ cho đầu ra theo API. [D01-P56]\nNguồn mô phỏng theo đề cương · 2.1, 3.3, 3.5 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 418,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V54",
+      "style": "lien_tuong",
+      "lesson": "D01-P56",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Cửa sổ ngữ cảnh giới hạn lượng token của lần gọi; câu hỏi, chỉ dẫn, tài liệu và lịch sử gửi lại đều chiếm chỗ. [D01-P56]\n- Ý 2 đúng · Có thể chọn đoạn liên quan hoặc tóm tắt lịch sử và dự trù chỗ cho đầu ra theo API. [D01-P56]\nNguồn mô phỏng theo đề cương · 2.1, 3.3, 3.5 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 435,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V55",
+      "style": "thang",
+      "lesson": "D07-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Vector store gắn vector với đoạn, mã nguồn, phiên bản hoặc metadata cần thiết. [D07-P53]\n- Ý 2 đúng · Lọc theo metadata khi cần giới hạn quyền, ngày hoặc nhóm tài liệu. [D07-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 7 · https://e-learning-production.vercel.app/ngay/ngay-07.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 375,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V56",
+      "style": "lan_man",
+      "lesson": "D07-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Vector store gắn vector với đoạn, mã nguồn, phiên bản hoặc metadata cần thiết. [D07-P53]\n- Ý 2 đúng · Lọc theo metadata khi cần giới hạn quyền, ngày hoặc nhóm tài liệu. [D07-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 7 · https://e-learning-production.vercel.app/ngay/ngay-07.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 412,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "V57",
+      "style": "ngap_ngung",
+      "lesson": "D15-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bạn sẽ giải thích quyết định chọn track và bước kiểm chứng lựa chọn đó như thế nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 362,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "V58",
+      "style": "vi_du_lab",
+      "lesson": "D15-P53",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bạn sẽ giải thích quyết định chọn track và bước kiểm chứng lựa chọn đó như thế nào?",
+          "failures": [
+            "outcome",
+            "label"
+          ],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 383,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "S01",
+      "style": "tu_sua_nhieu_luot",
+      "lesson": "D04-P52",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Sau khi model đưa ra tên hàm và tham số, điều gì xảy ra trước khi có kết quả?",
+          "failures": [
+            "label"
+          ],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 2
+        },
+        {
+          "turn": 2,
+          "pass": false,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Model đề xuất tên và tham số công cụ; ứng dụng kiểm tra và thực thi. [D04-P52]\n- Ý 2 đúng · Ứng dụng gửi kết quả công cụ lại để model tiếp tục xử lý. [D04-P52]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 4 · https://e-learning-production.vercel.app/ngay/ngay-04.html",
+          "failures": [
+            "outcome",
+            "label",
+            "focus"
+          ],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        },
+        {
+          "turn": 3,
+          "pass": false,
+          "outcome": "not_reached"
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 359,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 155,
+          "tokens_out": 1
+        },
+        {
+          "tokens_in": 374,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "style": "tu_sua_nhieu_luot",
+      "lesson": "D12-P53",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Nếu lượt tiếp theo vào một tiến trình khác, làm sao nó biết trạng thái cần cho phiên?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        },
+        {
+          "turn": 2,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Các bản sao stateless không dựa vào bộ nhớ riêng để tiếp tục phiên; trạng thái cần có thể nằm ở kho dùng chung. [D12-P53]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 12 · https://e-learning-production.vercel.app/ngay/ngay-12.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 351,
+          "tokens_out": 12
+        },
+        {
+          "tokens_in": 389,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "style": "giu_y_dang_on",
+      "lesson": "D07-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "redirect",
+          "label": null,
+          "response": "AI người học · Bạn dạy mình về Embedding và cosine qua một ví dụ được không?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 0,
+          "model_calls": 1
+        },
+        {
+          "turn": 2,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Điểm cosine cao cho bạn biết điều gì về một đoạn văn?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        },
+        {
+          "turn": 3,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Embedding biểu diễn nội dung bằng vector để so sánh độ gần. [D07-P52]\n- Ý 2 đúng · Cosine gần cho thấy tương đồng theo biểu diễn, không bảo đảm tài liệu đúng hoặc được phép dùng. [D07-P52]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 7 · https://e-learning-production.vercel.app/ngay/ngay-07.html",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 355,
+          "tokens_out": 10
+        },
+        {
+          "tokens_in": 363,
+          "tokens_out": 16
+        },
+        {
+          "tokens_in": 390,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "style": "het_luot_va_tu_sua",
+      "lesson": "D10-P52",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Ngày giao trước ngày đặt nhưng vẫn đúng định dạng thì bạn kiểm lỗi ấy bằng cách nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        },
+        {
+          "turn": 2,
+          "pass": true,
+          "outcome": "ask",
+          "label": "HIỂU SAI",
+          "response": "AI người học · Bạn thử lấy một ví dụ khác để giúp mình hiểu chỗ vừa hỏi được không?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 2,
+          "model_calls": 1
+        },
+        {
+          "turn": 3,
+          "pass": false,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Schema chỉ kiểm kiểu và hình dạng; luật nghiệp vụ kiểm quan hệ, phạm vi hoặc tính hợp lý. [D10-P52]\nNguồn mô phỏng theo đề cương · Mục tiêu ngày 10 · https://e-learning-production.vercel.app/ngay/ngay-10.html",
+          "failures": [
+            "outcome",
+            "label"
+          ],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        },
+        {
+          "turn": 4,
+          "pass": false,
+          "outcome": "not_reached"
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 345,
+          "tokens_out": 12
+        },
+        {
+          "tokens_in": 359,
+          "tokens_out": 12
+        },
+        {
+          "tokens_in": 372,
+          "tokens_out": 12
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "style": "tu_mo_xem_lai",
+      "lesson": "D01-P60",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "review",
+          "label": null,
+          "response": "Giám khảo · Xem ý chuẩn\n- Chọn model dựa trên chất lượng, độ trễ và chi phí đo trên tác vụ thực tế. [D01-P60]\n- Tính chi phí đầu vào và đầu ra bằng số token nhân đơn giá tương ứng, quy đổi theo đơn vị bảng giá, rồi cộng lại. [D01-P60]\nNguồn mô phỏng theo đề cương · 5.1–5.2 · https://e-learning-production.vercel.app/ngay/ngay-01\nBạn có thể dạy lại ý này một lần bằng lời của mình.",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 0,
+          "model_calls": 0
+        },
+        {
+          "turn": 2,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Chọn model dựa trên chất lượng, độ trễ và chi phí đo trên tác vụ thực tế. [D01-P60]\n- Ý 2 đúng · Tính chi phí đầu vào và đầu ra bằng số token nhân đơn giá tương ứng, quy đổi theo đơn vị bảng giá, rồi cộng lại. [D01-P60]\nNguồn mô phỏng theo đề cương · 5.1–5.2 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 401,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "style": "de_on_sau",
+      "lesson": "D02-P52",
+      "pass": false,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": false,
+          "outcome": "redirect",
+          "label": null,
+          "response": "AI người học · Bạn dạy mình về Định lượng pain qua một ví dụ được không?",
+          "failures": [
+            "outcome",
+            "label",
+            "focus"
+          ],
+          "status": "Chưa kiểm tra",
+          "hints": 0,
+          "model_calls": 1
+        },
+        {
+          "turn": 2,
+          "pass": true,
+          "outcome": "deferred",
+          "label": null,
+          "response": "",
+          "failures": [],
+          "status": "Nên ôn lại",
+          "hints": 0,
+          "model_calls": 0
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 361,
+          "tokens_out": 10
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "style": "yeu_cau_ngoai_pham_vi",
+      "lesson": "D01-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "refuse",
+          "label": null,
+          "response": "Phiên này dùng để dạy lại bài đang ôn. Bạn có thể tiếp tục giải thích hoặc chọn /xem.",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 0,
+          "model_calls": 0
+        },
+        {
+          "turn": 2,
+          "pass": true,
+          "outcome": "advance",
+          "label": "ĐỦ Ý",
+          "response": "Giám khảo · [ĐỦ Ý]\n- Ý 1 đúng · Mô hình dự đoán token dựa trên thông tin được cấp trong lần gọi. [D01-P52]\n- Ý 2 đúng · Ứng dụng chatbot quản lý lịch sử, gửi chỉ dẫn và thực hiện công cụ nếu có. [D01-P52]\nNguồn mô phỏng theo đề cương · 2.1, 5.3 · https://e-learning-production.vercel.app/ngay/ngay-01",
+          "failures": [],
+          "status": "Đã giải thích được",
+          "hints": 0,
+          "model_calls": 1
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 376,
+          "tokens_out": 16
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "style": "ket_thuc_som",
+      "lesson": "D13-P52",
+      "pass": true,
+      "turns": [
+        {
+          "turn": 1,
+          "pass": true,
+          "outcome": "ask",
+          "label": "THIẾU Ý",
+          "response": "AI người học · Bạn xử lý phần thông tin cá nhân trong log thế nào?",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 1
+        },
+        {
+          "turn": 2,
+          "pass": true,
+          "outcome": "unchecked",
+          "label": null,
+          "response": "",
+          "failures": [],
+          "status": "Chưa kiểm tra",
+          "hints": 1,
+          "model_calls": 0
+        }
+      ],
+      "usage": [
+        {
+          "tokens_in": 357,
+          "tokens_out": 16
+        }
+      ]
+    }
+  ]
+}
