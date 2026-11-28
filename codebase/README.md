@@ -14,6 +14,7 @@ python codebase/web.py
 
 Mở http://localhost:8765 trên trình duyệt. Nhấn `Ctrl+C` trong cửa sổ lệnh để dừng.
 
+- **Lỗi `CERTIFICATE_VERIFY_FAILED` khi gọi Gemini/OpenAI qua HTTPS:** thường do lệnh `python` đang trỏ tới Python của MSYS2, bản này không tin chứng chỉ của Windows. Chạy bằng Python cài từ python.org: `py codebase/web.py`.
 - **Model thật:** đọc `.env` ở thư mục gốc, giống `run.py`. Không có `.env` thì tự chạy chế độ giả (`MODEL_PROVIDER=fake`).
 - **Đổi cổng:** đặt biến môi trường `PORT`.
 - **Thử giao diện không tốn token:** ép chế độ giả bằng `MODEL_PROVIDER=fake`. Biến môi trường được ưu tiên hơn `.env`.
@@ -51,7 +52,7 @@ Gợi ý kịch bản demo 2 phút với bài D01:
 3. `B01`: giải thích đủ, AI trả **Đủ ý**, tự chuyển sang ý Temperature.
 4. `B11`: hiểu sai Temperature, AI trả **Hiểu sai** kèm câu hỏi gợi mở.
 
-Mỗi lượt gọi model thật mất khoảng 6 giây (đo với `cx/gpt-6-luna`).
+Độ trễ mỗi lượt gọi model thật (đo ngày 28/11): khoảng 5–6 giây với `cx/gpt-6-luna` qua proxy cục bộ, khoảng 1–1,5 giây với `gemini-3.5-flash-lite` gọi thẳng API.
 
 ## Giới hạn
 
