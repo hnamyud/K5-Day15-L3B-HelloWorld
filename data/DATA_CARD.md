@@ -15,7 +15,7 @@
 | Sử dụng | Giám khảo dùng các ý chuẩn và lời học viên để nhận định từng ý. AI người học chỉ nhận lời giảng mới và các câu hỏi phù hợp. |
 | Giới hạn | Bản biên soạn phục vụ chạy thử. Các ý cần người dạy rà chuyên môn và thử với học viên trước khi dùng làm căn cứ chính thức. |
 
-Bộ học liệu CP2 với 6 khái niệm nằm trong lịch sử Git của phiên bản dùng cho hai lượt đánh giá đã lưu. Mã đoạn của phiên mới thuộc bộ 15 ngày.
+Bộ học liệu CP3 với 6 khái niệm được giữ trong [sample_lessons.json](sample_lessons.json) để đối chiếu mã nguồn của hai lượt đã lưu. Phiên CP4 dùng mã đoạn từ bộ 15 ngày.
 
 ## Dataset 2 · Nhật ký hành vi pre-class (`data/preclass/` do BTC cấp)
 

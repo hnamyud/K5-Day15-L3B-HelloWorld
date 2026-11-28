@@ -86,6 +86,8 @@ Model thật lấy từ cấu hình hiện có. Nếu cấu hình từ chối t�
 
 **CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15-day`.** Giữ kết quả CP3 đã lưu và báo riêng phép kiểm tương thích bộ cũ, cùng kết quả 38 ca của phiên mới. [Đối chiếu CP3 đến CP4](eval/teachback-cp3-cp4.md) · [Kết quả phiên 15 ngày](eval/study-15days-report.md)
 
+Học liệu mẫu và mô-đun phiên CP3 được giữ để đối chiếu. Lệnh `python run.py` trên nhánh CP4 mở phiên hai vai với bộ học liệu 15 ngày. [Học liệu CP3](data/sample_lessons.json) · [Phiên CP3](codebase/session.py)
+
 ## Phần nào thật, phần nào giả
 
 | Thành phần | Thật / Giả | Ghi chú |

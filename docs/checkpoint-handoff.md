@@ -9,7 +9,7 @@ Mốc theo spec là **10:00 ngày 28/11**. Mục tiêu là chốt lát cắt, c�
 | Hạng mục | Người phụ trách theo spec | Bằng chứng hoặc trạng thái |
 |---|---|---|
 | Bằng chứng, impact và thiết kế | Nguyễn Hoàng Trung | Có [tổng hợp bằng chứng](../evidence/summary.md), [khảo sát](../evidence/survey/report.md) và [spec §0–§7](../spec.md). |
-| Học liệu và chuẩn đánh giá đã chốt | Nguyễn Duy Mạnh, Vũ Xuân Bách | Có [benchmark 30 câu](../eval/benchmark.csv) và [4 metric](../eval/metric_spec.yaml). Dùng chuẩn §7 của CP2. Học liệu 6 khái niệm của mốc này nằm trong revision CP3. |
+| Học liệu và chuẩn đánh giá đã chốt | Nguyễn Duy Mạnh, Vũ Xuân Bách | Có [benchmark 30 câu](../eval/benchmark.csv), [4 metric](../eval/metric_spec.yaml) và [học liệu 6 khái niệm](../data/sample_lessons.json). Dùng chuẩn §7 của CP2. |
 | Model thật và lượt gốc | Nguyễn Duy Mạnh | Có [run-1](../eval/run-1.csv) và [trace](../traces/run-1.jsonl). Lượt chạy `run-1@20261127-230315`, model `cx/gpt-6-luna`, ghi ở commit `246dc63`. |
 | Chấm chéo và chấm hết bộ | Vũ Xuân Bách, Nguyễn Hoàng Trung | Có [chấm chéo 4/5](../eval/cross-check-trung.md) và điểm lượt 1 **26/30**. Bản chấm ở commit `3d8b581`. Lỗi đưa sang CP4 là gợi mở lộ đáp án hoặc hỏi lệch. |
 | Video 30 giây | Đỗ Triệu Đức Phương | Repo đã ghi [link video CP3](https://drive.google.com/file/d/103SH3vI9oHgr-xipk7X_N-tLoN23WWxd/view?usp=sharing). Quyền xem cần nhóm kiểm trước khi nộp. |
@@ -31,7 +31,7 @@ Mốc theo spec là **14:30 ngày 28/11**. PR bổ sung phần chênh lệch t�
 ## Phần chênh lệch của PR CP4
 
 - **Sản phẩm.** 52 mục học liệu mô phỏng theo đề cương công khai. AI người học hỏi một câu, giám khảo đối chiếu từng ý ở hậu trường rồi giải thích kèm nguồn khi chốt. [Data card](../data/DATA_CARD.md)
-- **Kiểm chạy.** `python run.py` mở phiên dạy lại. `python run.py eval --try` kiểm đường đơn lượt chạy model. Năm bài kiểm thử trạng thái và vai trò chạy bằng `python -m unittest discover -s tests`.
+- **Kiểm chạy.** `python run.py` mở phiên dạy lại. `python run.py eval --try` kiểm đường đơn lượt chạy model. Chạy `python -m unittest discover -s tests` để kiểm trạng thái, vai trò và mã nguồn CP3.
 - **Số đo trên nhánh.** Giám khảo gắn đúng 37/38 lời giảng giả lập. 23/24 ca cần gợi mở đạt tiêu chí. Ca M34 bị xác nhận đủ ý quá sớm. Điểm lượt gốc đã nộp là 26/30 trên bộ CP2. [Báo cáo 15 ngày](../eval/study-15days-report.md)
 - **Phần chờ xác nhận.** Nhóm rà học liệu và chấm người trên mẫu gợi mở. Sau đó dùng [kịch bản A4](../validation/log.md) để đo học viên tự sửa được phần nào, và đo chi phí theo phiên trước khi chốt kết luận.
 

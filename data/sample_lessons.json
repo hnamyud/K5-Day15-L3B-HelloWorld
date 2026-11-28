@@ -1,0 +1,226 @@
+{
+  "version": "1.0-cp2",
+  "description": "Học liệu chuẩn tóm tắt (bản tự viết lại cô đọng, không chép nguyên tài liệu khoá) cho 6 khái niệm cốt lõi AI20K L3 để chạy thử công cụ search_lesson và get_key_points.",
+  "concepts": [
+    {
+      "concept_id": "chatbot_vs_model",
+      "title": "Chatbot là ứng dụng bọc quanh mô hình ngôn ngữ (LLM)",
+      "aliases": [
+        "chatbot",
+        "chatbot vs llm",
+        "chatbot khac llm",
+        "ung dung boc quanh model",
+        "ung dung boc quanh llm",
+        "chatbot_is_app_around_model",
+        "chatgpt khac llm"
+      ],
+      "passages": [
+        {
+          "code": "D01-P01",
+          "text": "Mô hình ngôn ngữ lớn (LLM) chỉ là lõi tính toán nhận chuỗi token đầu vào và dự đoán token tiếp theo; bản thân LLM không có giao diện, không tự lưu lịch sử hội thoại giữa các lần gọi và không tự truy cập internet."
+        },
+        {
+          "code": "D01-P02",
+          "text": "Sản phẩm chatbot (như ChatGPT hay trợ giảng trên web) là một ứng dụng phần mềm bọc quanh LLM: tầng ứng dụng bổ sung system prompt, quản lý bộ nhớ lịch sử hội thoại, gọi công cụ bên ngoài (tìm kiếm, đọc file) và lọc an toàn trước khi trả lời người dùng."
+        }
+      ],
+      "key_points": [
+        {
+          "code": "D01-P01",
+          "point": "LLM là lõi dự đoán token, không tự có bộ nhớ phiên hay khả năng truy cập internet."
+        },
+        {
+          "code": "D01-P02",
+          "point": "Chatbot là tầng ứng dụng bọc quanh LLM để thêm system prompt, lưu lịch sử và gọi công cụ."
+        },
+        {
+          "code": "D01-P02",
+          "point": "Lỗi ở chatbot có thể đến từ tầng ứng dụng (prompt, lịch sử, công cụ) chứ không chỉ do bản thân LLM."
+        }
+      ]
+    },
+    {
+      "concept_id": "temperature_sampling",
+      "title": "Vòng lặp sinh token và tham số Temperature",
+      "aliases": [
+        "temperature",
+        "nhiet do",
+        "sinh token",
+        "next token",
+        "sampling",
+        "token_generation_loop_and_temperature"
+      ],
+      "passages": [
+        {
+          "code": "D01-P03",
+          "text": "LLM sinh câu trả lời theo vòng lặp từng token một: ở mỗi bước, mô hình tính phân phối xác suất cho token kế tiếp dựa trên toàn bộ ngữ cảnh trước đó, chọn một token rồi nối vào đầu vào để dự đoán tiếp cho đến khi gặp token kết thúc."
+        },
+        {
+          "code": "D01-P04",
+          "text": "Tham số temperature điều chỉnh độ trải của phân phối xác suất khi lấy mẫu token: temperature thấp (gần 0) ưu tiên token có xác suất cao nhất nên đầu ra ổn định và ít biến thiên hơn; temperature cao làm phẳng phân phối khiến đầu ra đa dạng hơn nhưng tăng rủi ro sai lệch, không làm tăng độ chính xác kiến thức."
+        }
+      ],
+      "key_points": [
+        {
+          "code": "D01-P03",
+          "point": "LLM sinh từng token tuần tự theo xác suất có điều kiện dựa trên ngữ cảnh trước đó."
+        },
+        {
+          "code": "D01-P04",
+          "point": "Temperature thấp giúp đầu ra ổn định, lặp lại hơn; temperature cao tăng độ đa dạng nhưng cũng tăng nguy cơ lạc đề/bịa."
+        },
+        {
+          "code": "D01-P04",
+          "point": "Temperature chỉ chỉnh cách lấy mẫu xác suất, không bổ sung tri thức mới và không đảm bảo câu trả lời đúng sự thật."
+        }
+      ]
+    },
+    {
+      "concept_id": "workflow_vs_agent",
+      "title": "Phân biệt Workflow cố định và AI Agent",
+      "aliases": [
+        "workflow",
+        "agent",
+        "workflow co dinh",
+        "ai agent",
+        "multi agent",
+        "vong lap agent",
+        "khac nhau giua workflow va agent"
+      ],
+      "passages": [
+        {
+          "code": "D03-P01",
+          "text": "Workflow cố định là quy trình trong đó lập trình viên định sẵn thứ tự các bước và nhánh rẽ bằng mã nguồn; LLM chỉ thực hiện các tác vụ cục bộ ở những bước được chỉ định, nên dễ kiểm thử, dễ kiểm soát chi phí và ổn định."
+        },
+        {
+          "code": "D03-P02",
+          "text": "AI Agent là hệ thống trong đó LLM tự quyết định bước tiếp theo, tự chọn công cụ cần gọi và lặp quan sát kết quả cho tới khi đạt mục tiêu (có giới hạn số bước tối đa MAX_STEPS). Agent linh hoạt với bài toán mở nhưng tốn nhiều token hơn và khó kiểm soát lỗi hơn workflow."
+        }
+      ],
+      "key_points": [
+        {
+          "code": "D03-P01",
+          "point": "Trong workflow cố định, mã nguồn điều khiển luồng chạy; LLM chỉ xử lý tại bước định sẵn."
+        },
+        {
+          "code": "D03-P02",
+          "point": "Trong AI Agent, LLM tự quyết định bước tiếp theo và công cụ cần gọi theo vòng lặp có giới hạn MAX_STEPS."
+        },
+        {
+          "code": "D03-P01",
+          "point": "Nên ưu tiên hình dạng đơn giản nhất giải được bài toán (workflow trước khi dùng agent) để giảm chi phí và dễ kiểm thử."
+        }
+      ]
+    },
+    {
+      "concept_id": "tool_calling",
+      "title": "Tool Calling (Gọi công cụ) và ranh giới tác động ra ngoài",
+      "aliases": [
+        "tool calling",
+        "function calling",
+        "goi cong cu",
+        "tac dong ra ngoai",
+        "human in the loop",
+        "nguoi duyet"
+      ],
+      "passages": [
+        {
+          "code": "D03-P03",
+          "text": "Khi dùng Tool Calling, LLM không trực tiếp thực thi hàm hay truy cập cơ sở dữ liệu; mô hình chỉ sinh ra yêu cầu có cấu trúc gồm tên công cụ và tham số, còn mã ứng dụng mới là bên chạy hàm đó và trả kết quả lại cho mô hình."
+        },
+        {
+          "code": "D03-P04",
+          "text": "Công cụ chia làm hai nhóm: công cụ chỉ đọc (tra cứu tài liệu, xem lịch) và công cụ có tác động ra ngoài (gửi tin nhắn, sửa dữ liệu, chấm điểm). Với công cụ có tác động ra ngoài, hệ thống cần tạo bản nháp và có bước người duyệt thay vì để AI tự thực thi."
+        }
+      ],
+      "key_points": [
+        {
+          "code": "D03-P03",
+          "point": "LLM chỉ đề xuất tên hàm và tham số; ứng dụng mới là bên thực thi công cụ và đưa kết quả vào lại ngữ cảnh."
+        },
+        {
+          "code": "D03-P04",
+          "point": "Phân biệt rõ công cụ chỉ đọc với công cụ có tác động ra ngoài."
+        },
+        {
+          "code": "D03-P04",
+          "point": "Tác vụ có tác động ra ngoài cần bước tạo bản nháp để người dùng duyệt trước khi thực hiện."
+        }
+      ]
+    },
+    {
+      "concept_id": "rag_grounding",
+      "title": "RAG (Retrieval-Augmented Generation) và bám nguồn",
+      "aliases": [
+        "rag",
+        "retrieval augmented generation",
+        "bam nguon",
+        "grounding",
+        "trich dan",
+        "hallucination",
+        "bia nguon"
+      ],
+      "passages": [
+        {
+          "code": "D07-P01",
+          "text": "RAG (Retrieval-Augmented Generation) kết hợp bước truy xuất đoạn tài liệu liên quan từ kho dữ liệu ngoài rồi đưa vào ngữ cảnh (prompt) để LLM sinh câu trả lời. RAG không cập nhật hay huấn luyện lại trọng số của mô hình."
+        },
+        {
+          "code": "D07-P02",
+          "text": "Để giảm bịa đặt (hallucination), câu trả lời trong RAG phải trích dẫn đúng mã đoạn nguồn đã truy xuất; khi kho tài liệu không chứa căn cứ liên quan, hệ thống phải từ chối đoán và thông báo rõ không có thông tin trong tài liệu."
+        }
+      ],
+      "key_points": [
+        {
+          "code": "D07-P01",
+          "point": "RAG truy xuất tài liệu ngoài và chèn vào prompt lúc suy luận, không thay đổi trọng số mô hình."
+        },
+        {
+          "code": "D07-P02",
+          "point": "Mọi khẳng định cần gắn mã đoạn nguồn đã truy xuất để người dùng tự kiểm chứng."
+        },
+        {
+          "code": "D07-P02",
+          "point": "Khi truy xuất không tìm thấy căn cứ, hệ thống phải nói rõ không đủ căn cứ thay vì suy đoán từ trí nhớ model."
+        }
+      ]
+    },
+    {
+      "concept_id": "eval_and_metrics",
+      "title": "Đánh giá hệ thống AI (Eval), bộ câu thử và Metric",
+      "aliases": [
+        "eval",
+        "metric",
+        "benchmark",
+        "bo cau thu",
+        "danh gia ai",
+        "chuan dat",
+        "pass criterion"
+      ],
+      "passages": [
+        {
+          "code": "D09-P01",
+          "text": "Đánh giá hệ thống AI cần bộ câu thử đại diện gồm trường hợp thường, trường hợp khó và trường hợp phải từ chối/tấn công, kèm tiêu chí đạt kiểm chứng được (ví dụ: trích đúng mã nguồn) thay vì nhận xét cảm tính như 'trả lời hay'."
+        },
+        {
+          "code": "D09-P02",
+          "text": "Chuẩn đạt và bộ câu thử phải được chốt trước khi cải tiến hệ thống; không xoá câu thử trượt hay sửa đáp án mong đợi cho khớp với đầu ra, mà cần gom lỗi theo nhóm rồi chạy lại trọn bộ câu thử để đo tiến bộ thực chất."
+        }
+      ],
+      "key_points": [
+        {
+          "code": "D09-P01",
+          "point": "Bộ câu thử phải phủ cả câu thường, câu khó và câu từ chối/tấn công với tiêu chí chấm kiểm chứng được."
+        },
+        {
+          "code": "D09-P02",
+          "point": "Chuẩn đạt chốt cố định; không xoá câu trượt hay sửa expected cho khớp output."
+        },
+        {
+          "code": "D09-P02",
+          "point": "Cải tiến phải chạy lại trên trọn bộ câu thử để phát hiện lỗi phát sinh ở câu khác."
+        }
+      ]
+    }
+  ]
+}

@@ -8,6 +8,7 @@ from unittest.mock import Mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "codebase"))
 
+from session import StudySession, load_lessons
 from teachback import TeachbackSession
 from tools import load_days
 
@@ -27,6 +28,13 @@ class TeachbackTest(unittest.TestCase):
     def test_can_choose_each_day(self):
         self.assertEqual(len(self.days), 15)
         self.assertEqual(sum(len(day["items"]) for day in self.days), 52)
+
+    def test_cp3_session_still_uses_cp3_citations(self):
+        lessons = load_lessons()
+        self.assertEqual(sum(map(len, lessons.values())), 6)
+        session = StudySession(lessons["D01"])
+        self.assertIn("[D01-P01]", session.review())
+        self.assertIn("[D01-P51]", self.session.reveal())
 
     def test_learner_receives_questions_without_judge_answers(self):
         model = Mock(side_effect=[verdict("sai", "sai"), {"text": "2"}])

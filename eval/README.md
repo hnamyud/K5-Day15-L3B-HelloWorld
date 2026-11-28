@@ -9,7 +9,7 @@
 
 ## 1. Dataset → xử lý
 
-- **Học liệu CP2** (`synthetic`, bản `1.0-cp2` trong lịch sử Git): 6 khái niệm, 12 đoạn và 18 ý chính chuẩn. Để dùng phiên hai vai, xem [học liệu 15 ngày](../data/teachback_lessons.json).
+- **[Học liệu của lượt CP3](../data/sample_lessons.json)** (`synthetic`, bản `1.0-cp2`): 6 khái niệm, 12 đoạn và 18 ý chính chuẩn. Phiên hai vai dùng [học liệu 15 ngày](../data/teachback_lessons.json).
 - **`data/preclass/`** (thật, đã ẩn danh do BTC cấp, không commit nguyên file): lọc qua `evidence/count_preclass.py` trên **436 học viên hoạt động / 721 tài khoản** để trích xuất chủ đề hay sai lần đầu (`pre_post_post`, `video_quiz`) và hành vi nhắn ngắn (`rubric_y_moi = 0`) đưa vào bộ câu thử.
 
 ## 2. Bộ câu thử dựng ra sao
