@@ -104,8 +104,6 @@ Nhóm dùng coding agent và LLM để hỗ trợ code, biên soạn học liệ
 
 ## File mẫu — điền ở bước nào
 
-[Bàn giao CP3 và CP4](docs/checkpoint-handoff.md) ghi từng đầu việc, người phụ trách, bằng chứng đã có và phần cần cập nhật để nộp.
-
 | File | Điền ở bước guide | Mốc |
 |---|---|---|
 | `TEAMS.md` | 1.0 | CP1 · **đúng format**, BTC quét khi chấm |

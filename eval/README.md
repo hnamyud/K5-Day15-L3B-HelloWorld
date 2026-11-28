@@ -2,8 +2,6 @@
 
 **CP3 đã nộp từ `main`. CP4 dùng luồng hai vai trên `15-day`.** Bên dưới lưu các lượt của luồng cũ để truy vết. [Đối chiếu CP3 đến CP4](teachback-cp3-cp4.md) · [Kết quả phiên hai vai](study-15days-report.md)
 
-[Bàn giao CP3 và CP4](../docs/checkpoint-handoff.md) ghi trạng thái hồ sơ, gồm video, chi phí, kiểm thử phiên và chỉ số học A4.
-
 > Điền ở guide bước 2.4 (mục 1–4, trước CP2) và 4.1 (mục 5–6, trước CP4). Ôn lại: ngày 9, ngày 14 · lab ngày 9. Chấm ở rubric R4, R5.
 > Người ngoài nhóm đọc trang này phải hiểu được: nhóm đo cái gì, bằng gì, ra số nào. Trang slide "Đánh giá thế nào" lấy từ đây.
 

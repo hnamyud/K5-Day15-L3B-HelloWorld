@@ -49,4 +49,4 @@ Trên bộ **38 lời giảng mới**, giám khảo gắn đúng **37/38 nhãn**
 | 1 | **Khôi phục ý về người duyệt** và rà các ý bắt buộc chuyển từ học liệu CP3 sang CP4. Bắt đầu từ B18. | Hai lời giảng có và thiếu bước người duyệt phải dẫn tới hai trạng thái khác nhau. Người dạy rà mục và mã nguồn. |
 | 2 | **Giảm xác nhận đủ ý quá sớm.** Dùng M34 và B06 làm ca hồi quy. | Thử cả lời khẳng định sai, lời giải thích thiếu và lời tự sửa. Ghi nhãn, câu hỏi và thời điểm ứng dụng chuyển mục. |
 | 3 | **Kiểm giữ đúng chỗ vướng qua nhiều lượt.** Bắt đầu bằng ca trộn khái niệm B08. | Ghi lời giảng đầu, câu hỏi, lời học viên tự sửa và trạng thái cuối. Chấm người để kiểm câu hỏi có tiết lộ đáp án hay hỏi sang ý khác. |
-| 4 | **Đo học và chi phí theo phiên.** | Cập nhật A4 từ học viên ngoài nhóm, ghi token API theo trọn phiên, chốt slide và video dự phòng. [Bàn giao CP4](../docs/checkpoint-handoff.md) |
+| 4 | **Đo học và chi phí theo phiên.** | Cập nhật A4 từ học viên ngoài nhóm, ghi token API theo trọn phiên, chốt slide và video dự phòng. [Nhật ký dùng thử](../validation/log.md) · [Chi phí](../cost/cost-estimate.md) · [Slide](../slides/outline.md) |
