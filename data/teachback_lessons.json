@@ -1,0 +1,236 @@
+{
+  "version": "teachback-outline-v1",
+  "origin": "Học liệu mô phỏng do nhóm biên soạn từ đề cương công khai, không phải bản học liệu gốc của pre-class 5.",
+  "days": [
+    { "day": "D01", "title": "AI & LLM Foundation", "source": "https://e-learning-production.vercel.app/ngay/ngay-01", "items": [
+      { "code": "D01-P51", "title": "Bản đồ AI và LLM", "section": "1.1–1.2", "aliases": ["bản đồ ai","ai vs ml","machine learning và deep learning","generative ai"], "checkpoints": [
+        {"answer":"ML là cách học quy luật từ dữ liệu trong AI; deep learning dùng mạng nơ-ron nhiều tầng.","question":"Một bộ lọc thư rác học từ email cũ nằm ở đâu trên bản đồ AI?"},
+        {"answer":"GenAI tạo nội dung như ảnh và văn bản; LLM chuyên về ngôn ngữ, nên một công cụ tạo ảnh có thể là GenAI mà không phải LLM.","question":"Bạn xếp một công cụ chỉ tạo ảnh vào đâu trong bản đồ này?"}
+      ] },
+      { "code": "D01-P52", "title": "Chatbot và mô hình", "section": "2.1, 5.3", "aliases": ["chatbot vs llm","chatbot là ứng dụng","chatbot_is_app_around_model","chatbot và llm"], "checkpoints": [
+        {"answer":"Mô hình dự đoán token dựa trên thông tin được cấp trong lần gọi.","question":"Trong chatbot, model làm phần việc nào khi nhận câu hỏi?"},
+        {"answer":"Ứng dụng chatbot quản lý lịch sử, gửi chỉ dẫn và thực hiện công cụ nếu có.","question":"Nếu mở lại đoạn chat cũ, thông tin ấy quay lại cuộc trò chuyện bằng cách nào?"}
+      ] },
+      { "code": "D01-P53", "title": "Sinh văn bản và Temperature", "section": "2.1–2.2, 3.4", "aliases": ["temperature","temperature sampling","sinh token"], "checkpoints": [
+        {"answer":"Mô hình tính phân phối cho token kế tiếp, chọn một token, nối vào ngữ cảnh rồi lặp.","question":"Sau khi chọn được một token, model làm gì tiếp?"},
+        {"answer":"Temperature ảnh hưởng cách lấy mẫu và độ đa dạng, không bổ sung kiến thức hay bảo đảm trả lời đúng.","question":"Với cùng một câu hỏi, bạn chờ đợi điều gì thay đổi khi chỉnh Temperature?"}
+      ] },
+      { "code": "D01-P54", "title": "Token và tokenizer", "section": "2.1", "aliases": ["tokenizer","tokenization","token hóa"], "checkpoints": [
+        {"answer":"Tokenizer chuyển văn bản thành đơn vị xử lý; một token có thể là từ, một phần từ hoặc dấu câu.","question":"Bạn giúp mình hiểu vì sao mười từ chưa chắc bằng mười token được không?"},
+        {"answer":"Số token phụ thuộc cách tách của model; có thể đọc usage để biết lượng đã dùng cho một lần gọi.","question":"Nếu muốn biết một lần gọi thực sự dùng bao nhiêu token, bạn kiểm ở đâu?"}
+      ] },
+      { "code": "D01-P55", "title": "Transformer và attention", "section": "1.4, 2.3", "aliases": ["transformer","attention"], "checkpoints": [
+        {"answer":"Attention giúp tổng hợp thông tin từ các token liên quan mà vị trí hiện tại được phép thấy.","question":"Khi gặp một đại từ, model có thể dựa vào phần nào của câu?"},
+        {"answer":"Đổi ngữ cảnh có thể đổi cách hiểu một đại từ dù chính từ đó giữ nguyên.","question":"Nếu đổi mấy chữ quanh từ ‘nó’, bạn nghĩ cách hiểu từ đó có thể đổi ra sao?"}
+      ] },
+      { "code": "D01-P56", "title": "Cửa sổ ngữ cảnh", "section": "2.1, 3.3, 3.5", "aliases": ["cửa sổ ngữ cảnh","context window"], "checkpoints": [
+        {"answer":"Cửa sổ ngữ cảnh giới hạn lượng token của lần gọi; câu hỏi, chỉ dẫn, tài liệu và lịch sử gửi lại đều chiếm chỗ.","question":"Trong một lần gọi có lịch sử và tệp đính kèm, những phần nào chiếm chỗ trong cửa sổ ngữ cảnh?"},
+        {"answer":"Có thể chọn đoạn liên quan hoặc tóm tắt lịch sử và dự trù chỗ cho đầu ra theo API.","question":"Nếu tài liệu dài quá, bạn sẽ giữ lại phần nào để model vẫn trả lời được?"}
+      ] },
+      { "code": "D01-P57", "title": "Huấn luyện và giới hạn của LLM", "section": "3.1, 3.3", "aliases": ["rlhf","pre-training"], "checkpoints": [
+        {"answer":"Pre-training học mẫu ngôn ngữ, tinh chỉnh có giám sát học từ ví dụ, còn RLHF dùng phản hồi của người như tín hiệu huấn luyện.","question":"Người đánh giá tham gia ở đâu khi một model được huấn luyện để thành trợ lý?"},
+        {"answer":"Mô hình có thể nói tự tin khi sai hoặc dùng thông tin đã lỗi thời; dữ kiện ngoài ngữ cảnh của lần gọi có thể không sẵn có.","question":"Nếu phản hồi nghe rất chắc chắn, bạn dựa vào đâu để quyết định có tin không?"}
+      ] },
+      { "code": "D01-P58", "title": "Top-p, top-k và giới hạn đầu ra", "section": "3.4, 5.3", "aliases": ["top-p","top-k","max_tokens"], "checkpoints": [
+        {"answer":"Top-k giới hạn số ứng viên; top-p giới hạn theo tổng xác suất; Temperature điều chỉnh phân phối lấy mẫu.","question":"Top-k và top-p khác nhau thế nào khi rút bớt ứng viên?"},
+        {"answer":"Giới hạn đầu ra đặt mức trần số token sinh và có thể làm câu bị ngắt.","question":"Nếu câu trả lời bị ngắt giữa chừng, bạn sẽ kiểm tham số nào trước?"}
+      ] },
+      { "code": "D01-P59", "title": "Một lần gọi LLM API", "section": "5.3", "aliases": ["llm api","gọi api llm"], "checkpoints": [
+        {"answer":"Yêu cầu gửi model, messages và tham số; phản hồi thường có nội dung, lý do dừng và usage.","question":"Khi gửi một yêu cầu, bạn gửi gì và dự kiến nhận gì về?"},
+        {"answer":"Nếu cần tiếp tục hội thoại, ứng dụng phải cung cấp lại phần lịch sử liên quan.","question":"Nếu hỏi tiếp ‘còn trường hợp kia’, ứng dụng cần làm gì để model hiểu bạn đang nhắc đến cái nào?"}
+      ] },
+      { "code": "D01-P60", "title": "Chọn model và chi phí", "section": "5.1–5.2", "aliases": ["model tier selection","model_tier_selection","chi phí token","chọn tầng model"], "checkpoints": [
+        {"answer":"Chọn model dựa trên chất lượng, độ trễ và chi phí đo trên tác vụ thực tế.","question":"Nếu hai model đều trả lời được, bạn sẽ so sánh chúng bằng những gì?"},
+        {"answer":"Tính chi phí đầu vào và đầu ra bằng số token nhân đơn giá tương ứng, quy đổi theo đơn vị bảng giá, rồi cộng lại.","question":"Một lượt có prompt rất dài nhưng câu trả lời ngắn thì bạn tính chi phí từ những phần nào?"}
+      ] }
+    ] },
+    { "day": "D02", "title": "Xác định bài toán cho AI", "source": "https://e-learning-production.vercel.app/ngay/ngay-02.html", "items": [
+      { "code": "D02-P51", "title": "Tìm đúng vấn đề", "section": "Module 1", "checkpoints": [
+        {"answer":"Yêu cầu xây chatbot mô tả một giải pháp khả dĩ, chưa xác định người dùng và trở ngại.","question":"Nếu ai đó bảo ‘làm chatbot cho lớp’, bạn hỏi gì trước khi bắt đầu?"},
+        {"answer":"Double Diamond khám phá và thu hẹp vấn đề trước khi tìm rồi chọn giải pháp.","question":"Bạn làm gì để biết mình đang xử lý đúng trở ngại của học viên?"}
+      ] },
+      { "code": "D02-P52", "title": "Định lượng pain", "section": "Module 2", "checkpoints": [
+        {"answer":"Hiện trạng đo điểm xuất phát, mục tiêu là thay đổi mong muốn.","question":"Nếu mục tiêu chỉ ghi ‘tiết kiệm thời gian’, bạn còn cần biết gì về hiện trạng?"},
+        {"answer":"Cách đo phải nêu chỉ số và cách thu thập để kiểm tra thay đổi.","question":"Bạn sẽ đo thế nào để biết công cụ làm người dùng bớt mất thời gian?"}
+      ] },
+      { "code": "D02-P53", "title": "Chọn mức tự động hóa", "section": "Mục tiêu ngày 2", "checkpoints": [
+        {"answer":"Tách hỗ trợ người khỏi tự động hóa theo chi phí khi sai và nhu cầu giám sát.","question":"Khi kết quả sai có hậu quả lớn, bạn sẽ để hệ thống tham gia đến đâu?"},
+        {"answer":"Chọn Rule, Workflow hay Agent theo mức linh hoạt cần thiết và chọn cách đơn giản đủ dùng.","question":"Bạn dựa vào đặc điểm nào của việc cần làm để chọn Rule, Workflow hay Agent?"}
+      ] }
+    ] },
+    { "day": "D03", "title": "Từ chatbot đến agentic agent", "source": "https://e-learning-production.vercel.app/ngay/ngay-03.html", "items": [
+      { "code": "D03-P51", "title": "Workflow và agent", "section": "Module 1", "aliases": ["workflow","ai agent","workflow cố định","agent"], "checkpoints": [
+        {"answer":"Workflow để mã điều khiển luồng và nhánh; agent dùng model chọn hành động tùy tình huống.","question":"Điều gì quyết định bước kế tiếp trong hai cách xây hệ thống này?"},
+        {"answer":"Bắt đầu bằng cách đơn giản đáp ứng yêu cầu trước khi tăng mức tự chủ.","question":"Với công việc có quy trình ổn định, bạn chọn mức tự chủ dựa vào điều gì?"}
+      ] },
+      { "code": "D03-P52", "title": "Vòng lặp ReAct", "section": "Mục tiêu ngày 3", "checkpoints": [
+        {"answer":"Vòng lặp chọn hành động, gọi công cụ, quan sát kết quả rồi cập nhật bước kế tiếp.","question":"Sau khi nhận kết quả công cụ, agent quyết định gì tiếp theo?"},
+        {"answer":"Đặt điều kiện hoàn thành hoặc giới hạn số bước để tránh lặp vô hạn.","question":"Bạn sẽ thiết kế lúc nào vòng lặp dừng?"}
+      ] },
+      { "code": "D03-P53", "title": "Function calling và trace", "section": "Mục tiêu ngày 3", "checkpoints": [
+        {"answer":"Function calling chuyển đề xuất gọi công cụ có cấu trúc; vòng điều phối có thể dùng kết quả đó để chọn bước sau.","question":"Một lần gọi hàm nằm ở đâu trong quá trình agent làm việc?"},
+        {"answer":"Trace ghi diễn tiến để truy ra lần gọi công cụ hoặc quyết định làm hệ thống đi lệch.","question":"Nếu kết quả cuối sai, bạn tìm dấu vết lỗi ở đâu?"}
+      ] }
+    ] },
+    { "day": "D04", "title": "Prompt Engineering & Tool Calling", "source": "https://e-learning-production.vercel.app/ngay/ngay-04.html", "items": [
+      { "code": "D04-P51", "title": "Prompt rõ nhiệm vụ", "section": "Module 1", "checkpoints": [
+        {"answer":"Nêu vai trò, nhiệm vụ, bối cảnh và hình thức đầu ra cần thiết.","question":"Bạn bổ sung gì vào câu ‘tóm tắt cái này’ để người nhận biết phải làm ra gì?"},
+        {"answer":"Ví dụ few-shot giúp minh họa một khuôn cần tuân theo khi chỉ dẫn chữ vẫn mơ hồ.","question":"Khi nào bạn sẽ thêm ví dụ vào prompt?"}
+      ] },
+      { "code": "D04-P52", "title": "Vòng gọi công cụ", "section": "Mục tiêu ngày 4", "aliases": ["tool calling","function calling","gọi công cụ"], "checkpoints": [
+        {"answer":"Model đề xuất tên và tham số công cụ; ứng dụng kiểm tra và thực thi.","question":"Sau khi model đưa ra tên hàm và tham số, điều gì xảy ra trước khi có kết quả?"},
+        {"answer":"Ứng dụng gửi kết quả công cụ lại để model tiếp tục xử lý.","question":"Làm cách nào model biết công cụ đã trả về dữ liệu gì?"}
+      ] },
+      { "code": "D04-P53", "title": "Tin cậy và quyền thực thi", "section": "Mục tiêu ngày 4", "checkpoints": [
+        {"answer":"Văn bản lấy từ bên ngoài là dữ liệu và không có quyền đổi vai hay chỉ dẫn hệ thống.","question":"Nếu tài liệu đọc được chứa câu yêu cầu đổi hướng làm việc thì bạn xử lý thế nào?"},
+        {"answer":"Kiểm tham số và quyền ở ứng dụng trước khi cho công cụ thực hiện hành động.","question":"Trước khi công cụ thực hiện yêu cầu, ứng dụng nên kiểm những gì?"}
+      ] }
+    ] },
+    { "day": "D05", "title": "Thiết kế sản phẩm AI", "source": "https://e-learning-production.vercel.app/ngay/ngay-05.html", "items": [
+      { "code": "D05-P51", "title": "Từ giả thuyết đến MVP", "section": "Module 1", "checkpoints": [
+        {"answer":"Nêu giả thuyết về việc người dùng đang gặp khó và hành vi kỳ vọng thay đổi.","question":"Trước khi làm prototype, bạn muốn học được gì về người dùng?"},
+        {"answer":"Dùng cách thử ít tốn kém nhất thu đủ bằng chứng rồi mới xây thêm.","question":"Bạn có thể thử giả thuyết ấy bằng cách nào với ít công sức nhất?"}
+      ] },
+      { "code": "D05-P52", "title": "Kỳ vọng và quyền kiểm soát", "section": "Module 3", "checkpoints": [
+        {"answer":"Nêu phạm vi, giới hạn và mức tin cậy ở thời điểm người dùng cần quyết định.","question":"Bạn nói gì với người mới dùng để họ biết lúc nào nên kiểm lại kết quả?"},
+        {"answer":"Cho người dùng xem, sửa, xác nhận hoặc bỏ qua kết quả theo mức rủi ro.","question":"Người dùng cần quyền gì khi AI đưa một đề xuất chưa phù hợp?"}
+      ] },
+      { "code": "D05-P53", "title": "Lỗi và phục hồi", "section": "Mục tiêu ngày 5", "checkpoints": [
+        {"answer":"Báo nhầm là báo lỗi/đối tượng không có, còn bỏ sót là không báo trường hợp thật.","question":"Bạn phân biệt thế nào hai kiểu sai của bộ lọc cảnh báo?"},
+        {"answer":"Thiết kế nhánh phục hồi và ưu tiên loại lỗi theo hậu quả thực tế.","question":"Nếu AI sai, giao diện cần giúp người dùng làm gì tiếp theo?"}
+      ] }
+    ] },
+    { "day": "D06", "title": "AI Product Hackathon", "source": "https://e-learning-production.vercel.app/ngay/ngay-06.html", "items": [
+      { "code": "D06-P51", "title": "Pain và lát cắt", "section": "Module 1–2", "checkpoints": [
+        {"answer":"Dùng bằng chứng quan sát hoặc dữ liệu để mô tả trở ngại của nhóm người dùng cụ thể.","question":"Bạn lấy bằng chứng ở đâu để biết vấn đề xảy ra thật?"},
+        {"answer":"Thu hẹp prototype về một luồng đủ đo được giá trị.","question":"Nếu chỉ kịp làm một luồng, bạn chọn luồng nào để kiểm giả thuyết?"}
+      ] },
+      { "code": "D06-P52", "title": "Golden set và lặp", "section": "Module 2", "checkpoints": [
+        {"answer":"Dùng bộ ca đã chốt và tiêu chí quan sát được để so sánh các phiên bản.","question":"Bạn sẽ chọn những tình huống nào để kiểm phiên bản đầu?"},
+        {"answer":"Giữ ca trượt làm dữ liệu để sửa và chạy lại trên cùng bộ.","question":"Khi bản mới cho kết quả kém ở một ca, bạn xử lý ca ấy thế nào?"}
+      ] },
+      { "code": "D06-P53", "title": "Kiểm chứng người dùng", "section": "Mục tiêu ngày 6", "checkpoints": [
+        {"answer":"Cho người ngoài nhóm thực hiện tác vụ thật và quan sát họ hoàn thành hay vướng ở đâu.","question":"Khi mời một người dùng thử, bạn sẽ giao họ việc gì và quan sát điều gì?"},
+        {"answer":"Bộ kiểm kỹ thuật và quan sát người dùng cung cấp bằng chứng khác nhau.","question":"Bộ câu thử đã qua cho bạn biết gì, và bạn còn phải quan sát gì ở người dùng?"}
+      ] }
+    ] },
+    { "day": "D07", "title": "Data Foundations — Embedding & Vector Store", "source": "https://e-learning-production.vercel.app/ngay/ngay-07.html", "items": [
+      { "code": "D07-P51", "title": "Chia đoạn tài liệu", "section": "Mục tiêu ngày 7", "checkpoints": [
+        {"answer":"Chia theo đơn vị ý hoặc cấu trúc để giữ ngữ cảnh đủ và dễ truy xuất.","question":"Bạn sẽ chia một tài liệu có phần định nghĩa và ví dụ như thế nào để tìm lại vẫn hiểu được?"},
+        {"answer":"Đoạn quá lớn mang nhiễu, đoạn quá nhỏ có thể mất điều kiện đứng cạnh.","question":"Điều gì có thể xảy ra nếu đoạn quá nhỏ hoặc quá lớn?"}
+      ] },
+      { "code": "D07-P52", "title": "Embedding và cosine", "section": "Mục tiêu ngày 7", "checkpoints": [
+        {"answer":"Embedding biểu diễn nội dung bằng vector để so sánh độ gần.","question":"Làm sao hai câu ít trùng chữ vẫn có thể được tìm thấy gần nhau?"},
+        {"answer":"Cosine gần cho thấy tương đồng theo biểu diễn, không bảo đảm tài liệu đúng hoặc được phép dùng.","question":"Điểm cosine cao cho bạn biết điều gì về một đoạn văn?"}
+      ] },
+      { "code": "D07-P53", "title": "Vector store và metadata", "section": "Mục tiêu ngày 7", "checkpoints": [
+        {"answer":"Vector store gắn vector với đoạn, mã nguồn, phiên bản hoặc metadata cần thiết.","question":"Khi lưu một vector, bạn cần giữ thêm thông tin gì để dùng lại được?"},
+        {"answer":"Lọc theo metadata khi cần giới hạn quyền, ngày hoặc nhóm tài liệu.","question":"Nếu chỉ được tìm trong tài liệu thuộc một lớp, bạn sẽ áp ràng buộc đó ở đâu?"}
+      ] }
+    ] },
+    { "day": "D08", "title": "RAG Pipeline", "source": "https://e-learning-production.vercel.app/ngay/ngay-08.html", "items": [
+      { "code": "D08-P51", "title": "Nạp, truy xuất và sinh", "section": "Module 1", "aliases": ["rag","rag là gì","retrieval augmented generation"], "checkpoints": [
+        {"answer":"Tài liệu được xử lý và đưa vào chỉ mục để truy xuất đoạn liên quan lúc hỏi.","question":"Bạn kể lại đường đi của tài liệu từ lúc nhập kho đến lúc có câu trả lời được không?"},
+        {"answer":"Đoạn truy xuất đi vào ngữ cảnh lúc sinh câu trả lời; quá trình đó không cập nhật trọng số.","question":"Tài liệu tìm ra được dùng ở thời điểm nào của một lời gọi?"}
+      ] },
+      { "code": "D08-P52", "title": "Tìm kiếm và xếp hạng", "section": "Module 2–3", "checkpoints": [
+        {"answer":"Tìm theo từ khóa phù hợp tên/mã cụ thể; tìm theo embedding hỗ trợ diễn đạt tương đương; có thể kết hợp hai nguồn.","question":"Bạn dựa vào dấu hiệu nào để chọn giữa tìm theo từ khóa và tìm theo độ gần về nghĩa?"},
+        {"answer":"Rerank sắp xếp lại tập ứng viên trước khi đóng gói ngữ cảnh.","question":"Sau khi đã tìm ra vài ứng viên, tại sao vẫn có bước chọn lại thứ tự?"}
+      ] },
+      { "code": "D08-P53", "title": "Bám nguồn và thiếu chứng cứ", "section": "Module 5–6", "aliases": ["rag và bám nguồn","rag_grounding","rag grounding","dẫn nguồn rag"], "checkpoints": [
+        {"answer":"Trích đúng đoạn hỗ trợ mỗi khẳng định cần kiểm chứng.","question":"Bạn làm gì để người đọc kiểm được một khẳng định trong câu trả lời?"},
+        {"answer":"Nếu thiếu đoạn hỗ trợ hoặc nguồn mâu thuẫn chưa giải quyết được, báo giới hạn và tránh đoán.","question":"Nếu không tìm đủ chứng cứ cho câu hỏi, bạn sẽ để hệ thống phản hồi thế nào?"}
+      ] }
+    ] },
+    { "day": "D09", "title": "Multi-agent và kết nối hệ thống", "source": "https://e-learning-production.vercel.app/ngay/ngay-09.html", "items": [
+      { "code": "D09-P51", "title": "Quyết định tách vai", "section": "Module 1", "checkpoints": [
+        {"answer":"Chỉ tách khi có nhu cầu rõ như phân công chuyên môn, phạm vi công cụ hoặc ngữ cảnh.","question":"Khi nào bạn biết việc giao hết cho một agent đang gây vấn đề?"},
+        {"answer":"Đánh đổi chi phí phối hợp và độ khó quan sát với lợi ích phân vai.","question":"Thêm một agent sẽ làm quy trình khó hơn ở chỗ nào?"}
+      ] },
+      { "code": "D09-P52", "title": "Supervisor, worker và trạng thái", "section": "Mục tiêu ngày 9", "checkpoints": [
+        {"answer":"Supervisor giao mục tiêu và xác định điều kiện hoàn thành; worker trả kết quả theo hợp đồng.","question":"Nếu hai worker làm hai phần khác nhau, bạn giao việc và ghép kết quả thế nào?"},
+        {"answer":"Trạng thái chung ghi rõ tiến độ và đầu ra đã hoàn thành để tránh lặp việc hoặc mất thông tin giữa người giao và người làm.","question":"Nếu một worker làm xong nhưng tiến trình bị tạm dừng, phần còn lại biết điều gì đã hoàn thành bằng cách nào?"}
+      ] },
+      { "code": "D09-P53", "title": "MCP, A2A và trace", "section": "Mục tiêu ngày 9", "checkpoints": [
+        {"answer":"MCP kết nối ứng dụng hoặc agent với công cụ hay dữ liệu; A2A hướng đến giao việc giữa các agent.","question":"Bạn dùng kết nối với một công cụ khác gì giao việc cho một agent khác?"},
+        {"answer":"Trace theo bước giúp quy trách nhiệm khi điều phối đi sai.","question":"Khi hệ thống nhiều agent cho kết quả sai, bạn tìm bước gây lỗi bằng cách nào?"}
+      ] }
+    ] },
+    { "day": "D10", "title": "Data Pipeline & Data Observability", "source": "https://e-learning-production.vercel.app/ngay/ngay-10.html", "items": [
+      { "code": "D10-P51", "title": "Ingest theo nguồn", "section": "Module 1", "checkpoints": [
+        {"answer":"Chọn cơ chế nạp theo nhịp cập nhật, độ trễ cần thiết và khả năng truy cập nguồn.","question":"Nếu một nguồn đổi liên tục còn một nguồn chỉ cập nhật cuối tuần, bạn nạp chúng theo cách nào?"}
+      ] },
+      { "code": "D10-P52", "title": "Hợp lệ và đúng thực tế", "section": "Mục tiêu ngày 10", "checkpoints": [
+        {"answer":"Schema chỉ kiểm kiểu và hình dạng; luật nghiệp vụ kiểm quan hệ, phạm vi hoặc tính hợp lý.","question":"Ngày giao trước ngày đặt nhưng vẫn đúng định dạng thì bạn kiểm lỗi ấy bằng cách nào?"}
+      ] },
+      { "code": "D10-P53", "title": "Quan sát và xử lý dữ liệu lỗi", "section": "Mục tiêu ngày 10", "checkpoints": [
+        {"answer":"Theo dõi độ mới, lượng bản ghi và tỷ lệ lỗi để khoanh vùng vấn đề.","question":"Khi agent bắt đầu trả lời từ dữ liệu cũ, bạn xem dấu hiệu gì trước?"},
+        {"answer":"Chọn dừng, cách ly bản ghi hay tiếp tục theo mức ảnh hưởng và khả năng phục hồi.","question":"Một số bản ghi lỗi còn phần còn lại tốt thì khi nào bạn tách riêng thay vì dừng hết?"}
+      ] }
+    ] },
+    { "day": "D11", "title": "Guardrails, HITL và Responsible AI", "source": "https://e-learning-production.vercel.app/ngay/ngay-11.html", "items": [
+      { "code": "D11-P51", "title": "Phòng vệ theo tầng", "section": "Module 1–2", "checkpoints": [
+        {"answer":"Kiểm đầu vào, quyền thực hiện và đầu ra ở những điểm khác nhau của luồng.","question":"Bạn đặt bước kiểm ở đâu trước và sau khi hệ thống xử lý một yêu cầu?"}
+      ] },
+      { "code": "D11-P52", "title": "Người duyệt theo rủi ro", "section": "Mục tiêu ngày 11", "checkpoints": [
+        {"answer":"Hành động có hậu quả lớn hoặc khó đảo ngược cần phê duyệt rõ ràng trước khi thực hiện.","question":"Bạn sẽ chọn thao tác nào bắt buộc phải qua người duyệt?"},
+        {"answer":"Người duyệt cần thấy hành động dự kiến và hậu quả để quyết định.","question":"Người duyệt cần thấy gì trước khi đồng ý?"}
+      ] },
+      { "code": "D11-P53", "title": "Kiểm thử và trách nhiệm", "section": "Mục tiêu ngày 11", "checkpoints": [
+        {"answer":"Dùng tình huống giả lập để kiểm phòng vệ và ghi lỗi quan sát được.","question":"Bạn sẽ thử và ghi nhận một lỗi phòng vệ bằng chứng gì?"},
+        {"answer":"Xác định ai có quyền quyết định, cách ghi dấu và cách phục hồi khi có sự cố.","question":"Khi hệ thống xử lý sai một yêu cầu, ai cần quyết định và dựa vào dấu vết nào?"}
+      ] }
+    ] },
+    { "day": "D12", "title": "Hạ tầng Cloud & Deployment", "source": "https://e-learning-production.vercel.app/ngay/ngay-12.html", "items": [
+      { "code": "D12-P51", "title": "Đóng gói dịch vụ", "section": "Module 1–2", "checkpoints": [
+        {"answer":"Container đóng gói ứng dụng và môi trường chạy; cấu hình đưa từ môi trường triển khai.","question":"Bản chạy được trên máy bạn cần thêm gì để người khác triển khai?"},
+        {"answer":"Health check giúp nền tảng biết dịch vụ sẵn sàng nhận yêu cầu.","question":"Nền tảng biết lúc nào có thể gửi yêu cầu vào dịch vụ bằng cách nào?"}
+      ] },
+      { "code": "D12-P52", "title": "Endpoint và giới hạn", "section": "Mục tiêu ngày 12", "checkpoints": [
+        {"answer":"Xác thực xác định ai được gọi; giới hạn tần suất và ngân sách giảm quá tải hoặc chi phí vượt dự kiến.","question":"Bạn sẽ bảo vệ một endpoint gọi model công khai bằng những lớp nào?"}
+      ] },
+      { "code": "D12-P53", "title": "Stateless và cập nhật", "section": "Mục tiêu ngày 12", "checkpoints": [
+        {"answer":"Các bản sao stateless không dựa vào bộ nhớ riêng để tiếp tục phiên; trạng thái cần có thể nằm ở kho dùng chung.","question":"Nếu lượt tiếp theo vào một tiến trình khác, làm sao nó biết trạng thái cần cho phiên?"}
+      ] }
+    ] },
+    { "day": "D13", "title": "Monitoring, Logging, Observability & LLMOps", "source": "https://e-learning-production.vercel.app/ngay/ngay-13.html", "items": [
+      { "code": "D13-P51", "title": "Metrics, logs, traces và chất lượng", "section": "Module 1", "checkpoints": [
+        {"answer":"Metrics cho biết xu hướng, logs ghi sự kiện, trace nối các bước của một yêu cầu.","question":"Nếu một yêu cầu chậm ở đúng một bước, bạn dùng dữ liệu nào để tìm ra bước đó?"},
+        {"answer":"Cần theo dõi chất lượng phản hồi cùng độ trễ, lỗi và chi phí.","question":"Một dịch vụ nhanh và ít lỗi kỹ thuật còn cần đo gì để biết nó hữu ích?"}
+      ] },
+      { "code": "D13-P52", "title": "Correlation ID và dữ liệu log", "section": "Mục tiêu ngày 13", "checkpoints": [
+        {"answer":"Đưa cùng ID yêu cầu vào log các bước để nối chúng.","question":"Làm sao bạn ghép log của ba bước thuộc cùng một yêu cầu?"},
+        {"answer":"Chỉ ghi dữ liệu cần thiết và che thông tin cá nhân khi ghi log.","question":"Bạn xử lý phần thông tin cá nhân trong log thế nào?"}
+      ] },
+      { "code": "D13-P53", "title": "Percentile, mục tiêu và cảnh báo", "section": "Mục tiêu ngày 13", "checkpoints": [
+        {"answer":"Percentile cho thấy nhóm chậm mà số trung bình có thể che mất.","question":"Nếu đa số lượt nhanh nhưng một nhóm rất chậm, bạn cần xem thêm số nào?"},
+        {"answer":"Thiết kế cảnh báo dựa trên mục tiêu dịch vụ và tín hiệu có thể hành động.","question":"Khi nào thì cảnh báo về độ trễ thực sự đáng để đội vận hành phản ứng?"}
+      ] }
+    ] },
+    { "day": "D14", "title": "AI Evaluation & Benchmarking", "source": "https://e-learning-production.vercel.app/ngay/ngay-14.html", "items": [
+      { "code": "D14-P51", "title": "Golden set và chuẩn trước khi sửa", "section": "Mục tiêu ngày 14", "aliases": ["eval và metric","eval_and_metrics","đánh giá ai","bộ câu thử"], "checkpoints": [
+        {"answer":"Bộ ca đại diện có ca thường, khó và giới hạn kèm tiêu chí rõ.","question":"Bạn chọn tình huống nào để bộ kiểm phản ánh việc sử dụng thật?"},
+        {"answer":"Giữ bộ thử và chuẩn để so sánh qua phiên bản; phân tích ca hỏng thay vì xóa.","question":"Nếu bản mới không qua một ca, bạn làm gì để so sánh vẫn công bằng?"}
+      ] },
+      { "code": "D14-P52", "title": "Đo truy xuất và sinh", "section": "Mục tiêu ngày 14", "checkpoints": [
+        {"answer":"Hit Rate cho biết có mục liên quan trong nhóm đầu; MRR tính vị trí mục đúng đầu tiên qua nghịch đảo thứ hạng.","question":"Nếu hai hệ thống đều tìm ra tài liệu đúng nhưng xếp ở vị trí khác, bạn dùng số nào để phân biệt?"},
+        {"answer":"Đánh giá câu trả lời còn cần kiểm nội dung và mức được nguồn hỗ trợ.","question":"Tìm đúng tài liệu rồi có đủ để kết luận câu trả lời tốt không, bạn còn kiểm gì?"}
+      ] },
+      { "code": "D14-P53", "title": "LLM chấm và cổng phát hành", "section": "Module 6, mục tiêu ngày 14", "checkpoints": [
+        {"answer":"Chấm theo tiêu chí tách bạch, hiệu chuẩn bằng người và theo dõi thiên lệch.","question":"Nếu LLM chấm thích câu dài hơn, bạn kiểm điểm ấy bằng cách nào?"},
+        {"answer":"Cổng phát hành so kết quả với ngưỡng đặt trước để phát hiện lỗi hoặc giảm chất lượng trước khi triển khai.","question":"Bạn dựa vào tín hiệu nào để quyết định một bản sửa được phép phát hành?"}
+      ] }
+    ] },
+    { "day": "D15", "title": "Retrospective & Track Decision", "source": "https://e-learning-production.vercel.app/ngay/ngay-15.html", "items": [
+      { "code": "D15-P51", "title": "Nhìn lại bằng chứng", "section": "Module 1", "checkpoints": [
+        {"answer":"Dùng việc đã làm, trở ngại và kết quả để rút điều nên lặp hay thay đổi.","question":"Bạn sẽ chọn hai bằng chứng nào để giải thích mình đã tiến bộ ở đâu?"}
+      ] },
+      { "code": "D15-P52", "title": "Đối chiếu yêu cầu vai trò", "section": "Module 2–3", "checkpoints": [
+        {"answer":"Dựa trên yêu cầu công việc cụ thể để phân biệt năng lực đã có với khoảng trống cần luyện.","question":"Nếu có mô tả một công việc muốn làm, bạn đối chiếu nó với những gì mình đã làm ra sao?"}
+      ] },
+      { "code": "D15-P53", "title": "Quyết định track và bước tiếp", "section": "Module 3", "checkpoints": [
+        {"answer":"Chọn track dựa trên mục tiêu, năng lực và khoảng trống; đưa ra bước tiếp theo có thể kiểm tra.","question":"Bạn sẽ giải thích quyết định chọn track và bước kiểm chứng lựa chọn đó như thế nào?"}
+      ] }
+    ] }
+  ]
+}

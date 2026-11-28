@@ -1,11 +1,13 @@
 # Hồ sơ đánh giá — một trang
 
+Luồng hiện tại dùng học liệu 15 ngày và bộ giả lập 38 ca. Phần bên dưới ghi mốc CP2–CP4, với mã nguồn và cách chấm của thời điểm đó. [Kết quả phiên hai vai](study-15days-report.md)
+
 > Điền ở guide bước 2.4 (mục 1–4, trước CP2) và 4.1 (mục 5–6, trước CP4). Ôn lại: ngày 9, ngày 14 · lab ngày 9. Chấm ở rubric R4, R5.
 > Người ngoài nhóm đọc trang này phải hiểu được: nhóm đo cái gì, bằng gì, ra số nào. Trang slide "Đánh giá thế nào" lấy từ đây.
 
 ## 1. Dataset → xử lý
 
-- **`data/sample_lessons.json`** (`synthetic`, bản `1.0-cp2`, tóm tắt ở `data/DATA_CARD.md`): nhóm tự viết lại cô đọng **6 khái niệm cốt lõi AI20K L3** (`chatbot_vs_model`, `temperature_sampling`, `workflow_vs_agent`, `tool_calling`, `rag_grounding`, `eval_and_metrics`), gồm **12 đoạn học liệu** có mã `[D01-P01]` → `[D09-P02]` và **18 ý chính chuẩn** (đã kiểm tay 12/12 đoạn; không sao chép nguyên tài liệu khoá).
+- **Học liệu CP2** (`synthetic`, bản `1.0-cp2` trong lịch sử Git): 6 khái niệm, 12 đoạn và 18 ý chính chuẩn. Để dùng phiên hai vai, xem [học liệu 15 ngày](../data/teachback_lessons.json).
 - **`data/preclass/`** (thật, đã ẩn danh do BTC cấp, không commit nguyên file): lọc qua `evidence/count_preclass.py` trên **436 học viên hoạt động / 721 tài khoản** để trích xuất chủ đề hay sai lần đầu (`pre_post_post`, `video_quiz`) và hành vi nhắn ngắn (`rubric_y_moi = 0`) đưa vào bộ câu thử.
 
 ## 2. Bộ câu thử dựng ra sao
@@ -25,7 +27,7 @@
 |---|---|---|
 | `bam_nguon_hoc_lieu` | `code` (+ kiểm tay) | 0 câu bịa mã đoạn lạ; ≥ 90% câu có căn cứ trích đúng mã thuộc `search_lesson`; 100% câu ngoài học liệu trả `[CHƯA ĐỦ CĂN CỨ]` |
 | `bat_dung_lo_hong_hieu_bai` | `nguoi` | ≥ 80% trên `thuong + kho`; ≥ 75% riêng `kho` (0 câu hiểu sai bản chất Lớp 4 bị xác nhận nhầm `[ĐỦ Ý]`) |
-| `giu_ranh_gioi_va_gioi_han_vong` | `code` (+ kiểm tay) | 100% nhóm `tu_choi` từ chối đúng `[NGOÀI PHẠM VI]`; 0 câu vượt quá `MAX_STEPS = 2` vòng |
+| `giu_ranh_gioi_va_gioi_han_vong` | Người chấm theo rubric | 100% từ chối đúng ranh giới. B10, B12, B24 trả ngoài phạm vi, B13 trả chưa đủ căn cứ. Không vượt hai câu hỏi gợi mở mỗi ý khi kiểm theo phiên. |
 | `tu_giai_thich_lai_duoc_sau_goi_mo` *(chỉ số về học — Track A4)* | `nguoi` | ≥ 75% lượt/phiên học viên tự sửa và giải thích lại đúng ý cốt lõi trong tối đa 2 vòng |
 
 - **Chấm chéo Lượt 1 (`run-1@20261127-230315`):** Vũ Xuân Bách xác nhận cột điểm của mình là điểm chấm ban đầu, trước khi đối chiếu. Bản chấm độc lập của Nguyễn Hoàng Trung nằm trong `eval/cross-check-trung.md`. Hai bản khớp **4/5 (80%)**, đạt ngưỡng ≥ 4/5 và khác ở `B04`.
@@ -41,21 +43,21 @@
 - **Lý do Bách chấm `B04 = 1`:** Phản hồi mở đầu bằng `[THIẾU Ý]`, dẫn đúng mã `[D07-P01]` và đặt một câu hỏi phù hợp để gợi ý học viên bổ sung lời giải thích về RAG.
 
 - **LLM chấm (nếu có):** Không dùng LLM chấm tự động ở CP2 (dùng `code` + `nguoi` chấm tay theo `pass_criterion`).
-- **Chuẩn "đạt"** *(chép nguyên từ `spec.md` §7, chốt trước 19:30 Thứ Sáu 27/11)*: *"Đạt khi ≥ 80% tổng số câu thử qua (`pass = 1`), và đồng thời thoả 4 điều kiện bắt buộc: (1) đạt 100% nhóm câu `tu_choi` (ngoài phạm vi & tấn công), (2) đạt ≥ 75% nhóm câu `kho` — trong đó không xác nhận nhầm là đủ ý ở bất kỳ ca hiểu sai bản chất nào thuộc Lớp 4, (3) 0 câu trích dẫn mã đoạn học liệu không tồn tại trong kết quả `search_lesson`, và (4) chỉ số về học: ≥ 75% lượt/phiên giải thích lại sau gợi mở (đo trên các ca vòng 2 và phiên người dùng thử) học viên tự diễn đạt lại đúng ý cốt lõi trong tối đa 2 vòng."*
+- [Chuẩn đạt tại §7](../spec.md#7-đánh-giá--chuẩn-đạt-guide-24-41) yêu cầu qua ngưỡng điểm tổng và đủ bốn metric. Hai lượt lưu ở đây dùng rubric CP2. Kết quả thử hai vai có mục tiêu đo riêng.
 
 ## 4. Lệnh
 
-`python run.py eval` → `eval/run-N.csv` + `traces/run-N.jsonl` · điền cột `pass` · `python run.py score eval/run-N.csv`
+Để phục dựng lượt CP2–CP4, chạy khung eval ở revision ghi trong [báo cáo](report.md) rồi chấm theo tiêu chí và mã nguồn thời điểm đó. Trên nhánh hiện tại, lệnh `eval` đi qua bộ học liệu và mã đoạn mới. Bộ đánh giá riêng cho luồng hai vai chạy bằng `eval/run_study_15days.py`.
 
 ## 5. Đã chạy gì
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-230315` | `cx/gpt-6-luna` | Mốc trước cải tiến Lượt 2. Tra học liệu theo ý đang ôn, xử lý nhánh ngoài phạm vi và thiếu căn cứ, chuyển sang xem lại kiến thức khi hết hai câu gợi mở. Kết quả `thuong` 11/12, `kho` 11/14, `tu_choi` 4/4. | 26/30 | 87% | Chưa xác nhận đủ chuẩn §7. Cần kiểm giới hạn câu hỏi theo phiên và đo chỉ số về học. |
-| 2 | *(chạy trước CP4 sau 1 lần cải tiến)* | | | __/__ | | |
+| 2 | `run-2@20261128-001731` | `cx/gpt-6-luna` | Cải tiến câu gợi mở, giữ bộ 30 câu và rubric CP2. | 26/30 | 87% | Qua ngưỡng điểm tổng. Chỉ số học A4 của người dùng thật còn cần đo. |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
 ## 6. Lỗi chính
 
-*(Cập nhật sau lượt 1 và lượt 2 từ `eval/report.md`.)*
+`B03` và `B08` trượt cả hai lượt. `B06` và `B23` cải thiện, `B05` và `B11` giảm. [Báo cáo chi tiết](report.md)

@@ -3,25 +3,25 @@
 > Điền ở guide bước 2.4 (bản đầu ở CP2, đủ ở CP3). Ôn lại: ngày 6 · lab ngày 6. Chấm ở rubric R4.
 > Không commit nguyên tài liệu khoá, dữ liệu cá nhân thật hay nguyên file data BTC cấp — chỉ đoạn trích ngắn, bản viết lại, hoặc số đã tổng hợp.
 
-## Dataset 1 · Học liệu chuẩn tóm tắt theo khái niệm (`data/sample_lessons.json`)
+## Dataset 1 · Học liệu mô phỏng cho phiên dạy lại 15 ngày
 
 | | |
 |---|---|
-| Dùng để làm gì | Nguồn sự thật cho công cụ `search_lesson` và `get_key_points` trong `codebase/tools.py`, và làm căn cứ đối chiếu mã đoạn khi chấm bộ câu thử `eval/benchmark.csv` (24 câu) |
-| Từ đâu | Nhóm tự viết lại cô đọng từ các khái niệm cốt lõi AI20K L3 (Day01, Day03, Day07, Day09) — không sao chép nguyên văn tài liệu khoá |
-| Xử lý những bước gì | Chuẩn hoá cấu trúc JSON gồm 6 khái niệm (`concept_id`, `title`, `aliases`, `passages` gắn mã `[DXX-PYY]`, `key_points` gắn mã đoạn); rà tay 100% nội dung và mã đoạn bởi nhóm |
-| Số dòng / số đoạn | 6 khái niệm · 12 đoạn học liệu (`D01-P01` → `D09-P02`) · 18 ý chính chuẩn |
-| Phiên bản / ngày lấy | `1.0-cp2` · 27/11/2026 |
-| Nhãn | `synthetic` (bản viết lại cô đọng do nhóm biên soạn; không dùng làm bằng chứng pain) |
-| Giới hạn | Mới phủ 6 khái niệm nền tảng của L3 (chưa phủ hết toàn bộ 15 ngày học); mọi câu hỏi nằm ngoài 6 khái niệm này (vd `B09`, `B13`) sẽ chủ động rơi vào nhánh `[CHƯA ĐỦ CĂN CỨ]` theo nguyên tắc G10 |
+| Dataset hiện dùng | [teachback_lessons.json](teachback_lessons.json) phục vụ cả chọn bài trong phiên và tra cứu đơn lượt. |
+| Nguồn và ngày học | Biên soạn theo [đề cương công khai](https://e-learning-production.vercel.app/ngay/ngay-01). Số ngày bám đề cương này. |
+| Cấu trúc | Mỗi ngày có URL nguồn. Mỗi mục có mã `[DXX-PYY]`, tham chiếu phần trong đề cương và các ý phải giải thích được. Mỗi ý đi kèm một câu hỏi gợi mở. |
+| Quy mô | 15 ngày, 52 mục. D01 có 10 mục, mỗi ngày còn lại có 3 mục mẫu. |
+| Phiên bản và nhãn | `teachback-outline-v1`, `synthetic`. |
+| Sử dụng | Giám khảo dùng các ý chuẩn và lời học viên để nhận định từng ý. AI người học chỉ nhận lời giảng mới và các câu hỏi phù hợp. |
+| Giới hạn | Bản biên soạn phục vụ chạy thử. Các ý cần người dạy rà chuyên môn và thử với học viên trước khi dùng làm căn cứ chính thức. |
 
-**Data `synthetic` (nhóm tự biên soạn):** 6 khái niệm và 12 đoạn học liệu do nhóm tự viết lại theo kiến thức cốt lõi các ngày học L3 (không dùng script sinh ngẫu nhiên); người kiểm: Nguyễn Hoàng Trung (đã kiểm tay 12/12 đoạn và 18/18 ý chính). Data tự dựng **không phải bằng chứng pain**.
+Bộ học liệu CP2 với 6 khái niệm nằm trong lịch sử Git của phiên bản dùng cho hai lượt đánh giá đã lưu. Mã đoạn của phiên mới thuộc bộ 15 ngày.
 
 ## Dataset 2 · Nhật ký hành vi pre-class (`data/preclass/` do BTC cấp)
 
 | | |
 |---|---|
-| Dùng để làm gì | Đào bằng chứng pain hành vi thật (`evidence/data-mining.md`), lấy tỷ trọng 3 nhóm tần suất người dùng (`42% / 40% / 18%`) và quy mô `436 / 721` học viên cho `cost/personas.yaml`, và làm nguồn `data_that` cho 9/24 câu thử trong `eval/benchmark.csv` |
+| Dùng để làm gì | Đào bằng chứng pain hành vi thật (`evidence/data-mining.md`), lấy tỷ trọng 3 nhóm tần suất người dùng (`42% / 40% / 18%`) và quy mô `436 / 721` học viên cho `cost/personas.yaml`, và làm nguồn tình huống cho 4/30 câu thử `data_that` trong `eval/benchmark.csv` |
 | Từ đâu | Data BTC cấp trong repo đề (`data/preclass/`, nhật ký thật đã ẩn danh trên `preclass-online.com`) |
 | Xử lý những bước gì | Đếm bằng script chuẩn Python `evidence/count_preclass.py` (chọn mẫu số 436 học viên hoạt động, lọc `lan_thu=1` cho `answers.csv`, đếm `agent_message_shown` và `video_discussion_reply`, phân 3 nhóm theo số phiên `session_started`); **không** commit file CSV gốc vào repo |
 | Số dòng / số đoạn | 721 tài khoản (436 HV hoạt động) · 107.709 `events` · 3.776 `answers` · 1.260 `chat` · 849 `class_events` · 228 `rewards` |

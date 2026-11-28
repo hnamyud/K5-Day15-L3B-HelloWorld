@@ -69,7 +69,8 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | File | Viết gì | Bước guide |
 |---|---|---|
-| `codebase/agent.py` | `answer(text)` — luồng chính, đúng hình dạng ở `spec.md` §4. Khung có sẵn một workflow 2 bước *ví dụ* | 3.2 |
+| `codebase/teachback.py` | Luồng phiên dạy lại và cách hai vai phối hợp | 3.2 |
+| `codebase/agent.py` | `answer(text)` — đường đơn lượt của khung eval và simulate, dùng luồng dạy lại | 3.2 |
 | `codebase/tools.py` | Công cụ của bài toán, mỗi công cụ một hàm có `@tool` | 2.2, 3.2 |
 | `codebase/ai.py` | `call_model(system, user)` — chỗ duy nhất gọi model. Chưa điền `.env` thì chạy **chế độ giả** | 3.3 |
 
@@ -77,19 +78,27 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 - **Trước CP3:** nối model thật theo [docs/connect-model.md](docs/connect-model.md), `eval --try` thấy token > 0 rồi mới `eval`.
 - Bộ chạy gửi **nguyên ô `input`** của câu thử vào `answer(text)`. Dữ liệu nền (bài học, thông báo, lịch…) để trong `data/`, đọc qua công cụ.
 
+Để **dạy lại cho AI**, chạy `python run.py`, rồi nhập số ngày hoặc gõ `ôn lại ngày 4`. Phiên có 52 mục ôn trên 15 ngày theo đề cương công khai. D01 có 10 mục, mỗi ngày còn lại có 3 mục mẫu. [Nguồn học liệu mô phỏng](data/DATA_CARD.md)
+
+AI người học mở đầu bằng một câu tò mò. Mỗi khi bạn giải thích, giám khảo đối chiếu từng ý ở hậu trường. Nếu còn thiếu hoặc sai, AI người học chọn một câu hỏi trong các câu đã biên soạn cho đúng chỗ vướng. Ở bước đối chiếu, giám khảo hiện đánh giá từng ý, phần giải thích chuẩn, mã đoạn và liên kết tới đề cương. Bước này xuất hiện khi bạn đã giải thích đủ, vẫn vướng sau hai câu gợi mở, hoặc gõ `/xem`. Dùng `/sau` để chuyển mục và `/thoat` để xem tổng hợp.
+
+Model thật lấy từ cấu hình hiện có. Nếu cấu hình từ chối tên model, có thể thử `MODEL_NAME=gpt-4.1-mini python run.py` với endpoint tương thích. Chế độ giả vẫn cho thử chọn bài và xem học liệu.
+
+Để đo luồng mới, dùng bộ giả lập 38 ca có mã mục học liệu hiện tại. Kết quả CP2–CP4 dùng bộ cũ và ghi nhận riêng trong báo cáo. [Cách chạy và kết quả 15 ngày](eval/study-15days-report.md)
+
 ## Phần nào thật, phần nào giả
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm | **Thật** (đã nối từ CP3) | Model: `cx/gpt-6-luna` (OpenAI-compatible qua `.env`; mặc định fallback `fake` nếu chưa tạo `.env`). Video 30s chạy thật: [Google Drive](https://drive.google.com/file/d/103SH3vI9oHgr-xipk7X_N-tLoN23WWxd/view?usp=sharing) |
-| Luồng ôn nhiều ý (`codebase/session.py`, `codebase/app.py`) | **Thật** | Giữ trạng thái từng ý, giới hạn 2 câu hỏi/ý, *Xem lại kiến thức*, *Để ôn sau*, tự nhắc lại cuối phiên |
-| Công cụ `search_lesson`, `get_key_points` | **Thật trên học liệu mẫu** | Đọc `data/sample_lessons.json` (6 khái niệm, 12 đoạn tự viết lại cô đọng — xem `data/DATA_CARD.md`) |
+| Lời gọi AI ở quyết định trung tâm | **Thật** | Luồng hai vai đã thử với `gpt-4.1-mini`. Model lấy từ cấu hình hiện có. |
+| Luồng dạy lại (`codebase/teachback.py`, `codebase/app.py`) | **Thật** | Giám khảo đối chiếu từng ý bằng model, AI người học chỉ phát câu hỏi trong danh sách của mục đang ôn, rồi học viên tự nhắc lại cuối phiên |
+| Công cụ `search_lesson`, `get_key_points` | **Thật trên học liệu mô phỏng** | Cả phiên chọn bài và đường đơn lượt đọc `data/teachback_lessons.json`. [Data card](data/DATA_CARD.md) |
 | Chỗ chặn Lớp 1 (`[CHƯA ĐỦ CĂN CỨ]`) & Lớp 3 (`[NGOÀI PHẠM VI]`) | **Thật** | Chạy bằng code cố định trong `codebase/agent.py` |
 | Bằng chứng pain (`evidence/data-mining.md`, `evidence/KhaoSat.csv`) | **Thật** | 107.709 dòng log `data/preclass/` (BTC cấp, không commit nguyên file) + 25 phiếu khảo sát ngoài nhóm (22 L3) |
 
 ## Dùng AI vào việc gì
 
-Nhóm dùng coding agent / LLM để hỗ trợ viết script đếm `evidence/count_preclass.py`, khung code `codebase/tools.py` & `codebase/agent.py`, tóm tắt học liệu mẫu `data/sample_lessons.json`, nháp cấu trúc `spec.md` và biến thể câu thử `eval/benchmark.csv`. Thành viên nhóm tự kiểm chứng toàn bộ số liệu trên `data/preclass/` và `evidence/KhaoSat.csv`, kiểm tay 12/12 đoạn học liệu và toàn bộ bộ câu thử/metric, không dùng AI bịa bằng chứng hay sửa kết quả chạy. Chi tiết: [docs/ai-usage.md](docs/ai-usage.md). Coding agent đọc [AGENTS.md](AGENTS.md).
+Nhóm dùng coding agent và LLM để hỗ trợ code, biên soạn học liệu mô phỏng, thiết kế câu thử và chấm bổ sung phiên dạy lại. Kiểm tay 12 đoạn ghi nhận trong hồ sơ CP2 áp dụng cho học liệu khi đó. Bộ 52 mục hiện tại cần nhóm rà trước khi dùng làm căn cứ chính thức. [Nhật ký dùng AI](docs/ai-usage.md) · [Quy ước repo](AGENTS.md)
 
 ## File mẫu — điền ở bước nào
 

@@ -1,113 +1,87 @@
-"""Giao diện dòng lệnh cho phiên tự ôn. Chạy bằng `python run.py`."""
-from collections import Counter
-import os
+"""Giao diện phiên học viên dạy lại. Chạy bằng python run.py."""
+
+import re
 import sys
 
-for _stream in (sys.stdout, sys.stderr, sys.stdin):
-    try:
-        _stream.reconfigure(encoding="utf-8", errors="replace")
-    except Exception:
-        pass
-
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ai import MODEL_PROVIDER, call_model
+from guardrails import normalize_input
+from teachback import TeachbackSession
+from tools import load_days
+import tracing
 
 
-def _where(e):
-    """File (trong codebase/) gây lỗi khi nạp: SyntaxError có e.filename, lỗi khác lấy khung cuối của traceback."""
-    import traceback
-    path = getattr(e, "filename", None) or (traceback.extract_tb(e.__traceback__)[-1].filename if e.__traceback__ else "")
-    if not path:
-        return "codebase/"
-    p = os.path.abspath(path)
-    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    return os.path.relpath(p, base).replace(os.sep, "/") if p.startswith(base) else path
-
-def _choose_lesson(lessons):
-    choices = dict(enumerate(lessons.items(), start=1))
-    print("Chọn bài pre-class để tự ôn:")
-    for number, (day, items) in choices.items():
-        print(f"  {number}. {day} · " + " / ".join(item.title for item in items))
+def _choose_lesson(days):
+    print("Chọn bài để dạy lại cho AI")
+    for lesson in days:
+        print(f'  {lesson["day"]} · {lesson["title"]} ({len(lesson["items"])} mục)')
     while True:
-        selected = input("Số bài (Enter để thoát): ").strip()
-        if not selected:
+        selection = input('Nhập số ngày hoặc gõ “ôn lại ngày 4” (Enter để thoát)\n> ').strip()
+        if not selection:
             return None
-        for number, lesson in choices.items():
-            if selected == str(number):
-                return lesson
-        print("Chọn một số trong danh sách.")
+        selected = re.search(
+            r"(?:^|\bngay\s+|\bd\s*)(\d{1,2})\s*$", normalize_input(selection)
+        )
+        if selected and 1 <= int(selected.group(1)) <= len(days):
+            return days[int(selected.group(1)) - 1]
+        print("Chọn một ngày từ 1 đến 15.")
 
 
-def _run_session(day, session, answer, tracing):
-    totals = Counter()
-    models = set()
-    last_item = None
+def _run_session(lesson):
+    session = TeachbackSession(lesson)
+    print("Bạn là người dạy. AI sẽ hỏi để hiểu bài.")
+    print("Dùng /xem để đối chiếu, /sau để chuyển mục, /thoat để kết thúc.")
+    tracing.begin("app-teachback")
     try:
-        while (item := session.current) is not None:
-            if item is not last_item:
-                print(f"\nÝ {session.index + 1}/{len(session.items)} · {item.title}")
-                last_item = item
-            commands = "/sau: để ôn sau · /thoat: kết thúc phiên"
-            if not session.reviewed:
-                commands = f"/xem: xem lại kiến thức · {commands}"
-            print(f"Nhập lời giải thích bằng lời của bạn. {commands}")
-            text = input("> ").strip()
-            if text == "/thoat":
-                break
-            if text == "/sau":
-                session.defer()
-            elif text == "/xem":
-                print("Bạn có thể diễn đạt lại hoặc để ôn sau." if session.reviewed else session.review())
-            elif text:
-                tracing.begin("app")
-                try:
-                    print(session.explain(text, answer))
-                except Exception as e:  # giữ nguyên ý hiện tại để học viên có thể thử lại
-                    print(f"Lỗi khi đối chiếu ({type(e).__name__}). Bạn có thể thử lại hoặc chọn xem học liệu.")
-                finally:
-                    stats, _ = tracing.end()
-                    for key in ("model_calls", "tool_calls", "tokens_in", "tokens_out"):
-                        totals[key] += stats[key]
-                    models.update(stats["models"])
-
-        if session.current is None:
-            print("\nTự nhắc lại. Ý nào bạn vừa làm rõ? Bạn sẽ áp dụng nó thế nào trong lab?")
-            input("Tự trả lời hoặc nhấn Enter để bỏ qua: ")
+        while session.current is not None:
+            index = session.index
+            print(f'\nMục {index + 1}/{len(lesson["items"])} · {session.current["title"]}')
+            print("AI người học · " + session.opening())
+            while session.index == index:
+                text = input("> ").strip()
+                if text == "/thoat":
+                    return
+                if text == "/sau":
+                    session.skip()
+                    continue
+                if text == "/xem":
+                    if session.revealed:
+                        print("Bạn có thể dạy lại một lần hoặc chọn /sau.")
+                    else:
+                        print(session.reveal())
+                elif text:
+                    try:
+                        print(session.explain(text, call_model))
+                    except Exception:
+                        print("Chưa đối chiếu được lời giải thích. Thử lại hoặc dùng /xem để mở học liệu.")
+        print("\nBạn áp dụng điều vừa làm rõ vào tình huống nào trong lab?")
+        input("Nhập để tự nhắc lại hoặc Enter để bỏ qua\n> ")
     except (EOFError, KeyboardInterrupt):
         print()
+    finally:
+        stats, _ = tracing.end()
+        print(f'\nTổng hợp phiên {lesson["day"]}')
+        for item, status in zip(lesson["items"], session.statuses):
+            print(f'- {item["title"]} · {status} · [{item["code"]}]')
+        models = ", ".join(stats["models"]) or "—"
+        print(
+            f'Model {models} · {stats["model_calls"]} lượt gọi · '
+            f'token vào {stats["tokens_in"]} / ra {stats["tokens_out"]}'
+        )
 
-    print(f"\nTổng hợp phiên ôn {day}")
-    for item in session.items:
-        codes = ", ".join(f"[{code}]" for code in item.source_codes)
-        print(f"- {item.title} · {item.status} · {codes}")
-    print("Bạn tự quyết định ôn thêm hay sang lab.")
-    print("Model: %s · gọi model %d lần · công cụ %d lần · token vào %d / ra %d" % (
-        ", ".join(sorted(models)) or "—", totals["model_calls"], totals["tool_calls"],
-        totals["tokens_in"], totals["tokens_out"],
-    ))
 
-
-def main() -> int:
+def main():
     try:
-        import tracing
-        from agent import answer
-        from session import StudySession, load_lessons
-
-        lessons = load_lessons()
-    except Exception as e:
-        print("Không nạp được học liệu hoặc code ở %s: %s: %s" % (_where(e), type(e).__name__, e))
-        return 1
-
-    if not lessons:
-        print("Chưa có bài pre-class với ý cốt lõi để tự ôn.")
-        return 1
-    try:
+        lessons = load_days()
         selected = _choose_lesson(lessons)
     except (EOFError, KeyboardInterrupt):
-        print()
         return 0
+    except (OSError, ValueError, KeyError) as error:
+        print(f"Không nạp được học liệu mô phỏng: {error}")
+        return 1
     if selected:
-        day, items = selected
-        _run_session(day, StudySession(items), answer, tracing)
+        if MODEL_PROVIDER == "fake":
+            print("Chế độ mô phỏng. /xem mở học liệu; giám khảo cần model thật để đối chiếu.")
+        _run_session(selected)
     return 0
 
 
