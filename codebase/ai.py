@@ -47,6 +47,10 @@ MODEL_NAME = (os.environ.get("MODEL_NAME") or "").strip()
 API_KEY = (os.environ.get("API_KEY") or "").strip()
 API_BASE_URL = (os.environ.get("API_BASE_URL") or "").strip()
 MODEL_BASE_URL = (os.environ.get("MODEL_BASE_URL") or "").strip().rstrip("/")
+# Temperature cho provider OpenAI-compatible (gemini/anthropic đã cố định 0.2 bên dưới).
+# Để trống MODEL_TEMPERATURE= trong .env nếu model không nhận tham số này (vd một số model suy luận).
+_TEMP = os.environ.get("MODEL_TEMPERATURE", "0.2").strip()
+MODEL_TEMPERATURE = float(_TEMP) if _TEMP else None
 
 URL_OPENAI = "https://api.openai.com/v1/chat/completions"
 URL_CLAUDE = "https://api.anthropic.com/v1/messages"
@@ -111,7 +115,10 @@ def call_openai(system: str, user: str) -> dict:
     url = f"{MODEL_BASE_URL}/chat/completions" if MODEL_BASE_URL else API_BASE_URL or URL_OPENAI
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
     headers = {"Authorization": f"Bearer {API_KEY}"} if API_KEY else {}
-    data = post_json(url, headers, {"model": MODEL_NAME, "messages": messages})
+    body = {"model": MODEL_NAME, "messages": messages}
+    if MODEL_TEMPERATURE is not None:
+        body["temperature"] = MODEL_TEMPERATURE
+    data = post_json(url, headers, body)
     usage = data.get("usage")
     if not isinstance(usage, dict) or "prompt_tokens" not in usage or "completion_tokens" not in usage:
         raise RuntimeError("Provider phải trả usage.prompt_tokens và usage.completion_tokens")
