@@ -733,48 +733,57 @@
 <!-- ==================== SLIDE 6: CHI PHÍ KHI DÙNG THẬT ==================== -->
 <section class="slide">
   <div class="topbar">
-    <span class="badge">Slide 6 · Chi phí khi dùng thật (R6)</span>
-    <span class="meta-right">50 phiên · seed 42 · Giá trả phí Gemini API (xem 27/11/2026)</span>
+    <span class="badge badge-emerald">Slide 6 · Chi phí khi dùng thật (R6 — Đo thật 50 phiên)</span>
+    <span class="meta-right">simulate-1@20261128-134208 · 50 phiên · seed 42 · cx/gpt-6-luna</span>
   </div>
-  <h1>Chi phí API chỉ $0.0115–$0.0864 / học viên / tháng ở quy mô 436 HV</h1>
+  <h1>Đo thật 50 phiên: chỉ $0.0055–$0.0831 / học viên / tháng (436 HV)</h1>
   <div class="subtitle"><strong>Persona (<span class="code">cost/personas.yaml</span>):</strong> Dùng ít 42.2% (2 phiên × 3 lượt) · Dùng vừa 39.7% (5 × 6) · Dùng nhiều 18.1% (10 × 10) — tỷ trọng từ 436 HV hoạt động (<span class="code">evidence/data-mining.md</span>).</div>
 
   <div class="content">
     <div class="card" style="padding:12px 14px;">
-      <div class="card-title" style="margin-bottom:6px;">Bảng chi phí quy mô thật — Đối chiếu Mốc Lượt 2 (26/30) &amp; Bản Lượt 3 (28/30)</div>
+      <div class="card-title" style="margin-bottom:6px;">Kết quả chạy thật python run.py simulate (49/50 phiên hợp lệ · tỷ lệ đạt 28/30 = 93%)</div>
       <table>
         <thead>
           <tr>
-            <th style="width:27%;">Phiên bản &amp; Đơn giá áp dụng (USD / 1M in · out)</th>
+            <th style="width:29%;">Model &amp; Đơn giá trả phí (USD / 1M in · out)</th>
             <th class="num" style="width:11%;">Chi phí / phiên</th>
             <th class="num" style="width:13%;">/ task thành công</th>
-            <th class="num" style="width:12%;">Thấp (250 HV)</th>
+            <th class="num" style="width:11%;">Thấp (250 HV)</th>
             <th class="num" style="width:12%;">Cơ sở (436 HV)</th>
-            <th class="num" style="width:12%;">Cao (721 HV)</th>
+            <th class="num" style="width:11%;">Cao (721 HV)</th>
             <th class="num" style="width:13%;">/ người / tháng (cơ sở)</th>
           </tr>
         </thead>
         <tbody>
           <tr class="row-win">
-            <td><strong>Lượt 3 (28/30) · gemini-3.1-flash-lite</strong> ($0.25 / $1.50)</td>
-            <td class="num">$0.0024</td>
-            <td class="num"><strong>$0.0025</strong></td>
-            <td class="num">$3.75</td>
-            <td class="num"><strong>$6.54</strong></td>
-            <td class="num">$10.82</td>
-            <td class="num"><strong>$0.0150</strong></td>
+            <td><strong>gpt-6-luna (model đang dùng)</strong> ($0.10 / $0.50)</td>
+            <td class="num">$0.00086</td>
+            <td class="num"><strong>$0.00092</strong></td>
+            <td class="num">$1.39</td>
+            <td class="num"><strong>$2.42</strong></td>
+            <td class="num">$3.99</td>
+            <td class="num"><strong>$0.0055</strong></td>
           </tr>
           <tr>
-            <td><strong>Lượt 3 (28/30) · gemini-4-hydrogen</strong> ($1.50 / $7.50)</td>
-            <td class="num">$0.0136</td>
-            <td class="num"><strong>$0.0146</strong></td>
-            <td class="num">$21.60</td>
-            <td class="num"><strong>$37.66</strong></td>
-            <td class="num">$62.28</td>
-            <td class="num"><strong>$0.0864</strong></td>
+            <td><strong>gemini-3.1-flash-lite</strong> ($0.25 / $1.50 · giá Gemini)</td>
+            <td class="num">$0.0022</td>
+            <td class="num"><strong>$0.0024</strong></td>
+            <td class="num">$3.60</td>
+            <td class="num"><strong>$6.28</strong></td>
+            <td class="num">$10.39</td>
+            <td class="num"><strong>$0.0144</strong></td>
+          </tr>
+          <tr>
+            <td><strong>gemini-4-hydrogen</strong> ($1.50 / $7.50 · giá Gemini)</td>
+            <td class="num">$0.0129</td>
+            <td class="num"><strong>$0.0138</strong></td>
+            <td class="num">$20.78</td>
+            <td class="num"><strong>$36.24</strong></td>
+            <td class="num">$59.92</td>
+            <td class="num"><strong>$0.0831</strong></td>
           </tr>
           <tr class="row-muted">
-            <td>Mốc Lượt 2 (26/30) · gemini-3.1-flash-lite ($0.25 / $1.50)</td>
+            <td>Đối chiếu ước tính Mốc Lượt 2 (26/30) · Flash-Lite</td>
             <td class="num">$0.0018</td>
             <td class="num">$0.0021</td>
             <td class="num">$2.86</td>
@@ -782,43 +791,34 @@
             <td class="num">$8.26</td>
             <td class="num">$0.0115</td>
           </tr>
-          <tr class="row-muted">
-            <td>Mốc Lượt 2 (26/30) · gemini-4-hydrogen ($1.50 / $7.50)</td>
-            <td class="num">$0.0102</td>
-            <td class="num">$0.0118</td>
-            <td class="num">$16.41</td>
-            <td class="num">$28.61</td>
-            <td class="num">$47.32</td>
-            <td class="num">$0.0656</td>
-          </tr>
         </tbody>
       </table>
       <div style="font-size:11.5px; color:#475569; margin-top:7px;">
-        <strong>Công thức:</strong> Chi phí / task thành công = Chi phí TB mỗi phiên ÷ tỷ lệ đạt thật (26/30 hoặc 28/30 — không giả định 100%). Lịch 50 phiên (<span class="code">plan_sessions</span>, 253 lượt gửi): Lượt 2 dùng 180 lần gọi (261.519 in / 15.934 out); Lượt 3 dùng 192 lần gọi (357.308 in / 19.524 out).
+        <strong>Log đo thật (<span class="code">cost/simulate-1.csv</span>):</strong> 49 phiên hợp lệ (1 lỗi <span class="code">S001 TimeoutError</span> loại khỏi TB) · <strong>247 lượt gửi · 180 lần gọi model · 333.943 token vào / 17.261 token ra</strong>. Chi phí/task = Chi phí/phiên ÷ (28/30).
       </div>
     </div>
 
     <div class="grid-2" style="flex:1;">
       <div class="card-emerald">
-        <div style="font-size:13.5px; font-weight:800; color:#065f46; margin-bottom:6px;">So sánh Chi phí vs Impact / người / tháng (§2)</div>
+        <div style="font-size:13.5px; font-weight:800; color:#065f46; margin-bottom:6px;">So sánh Chi phí đo thật vs Impact / người / tháng (§2)</div>
         <ul>
           <li><strong>Impact mục tiêu (§2):</strong> ~<strong>60 phút mất thêm/người/tháng</strong> ở nhóm học viên gặp ảo tưởng hiểu bài (14/22 phiếu khảo sát L3).</li>
-          <li><strong>Chi phí cơ sở (436 HV):</strong> Chỉ <strong>$0.0150/người/tháng</strong> với Flash-Lite hoặc <strong>$0.0864/người/tháng</strong> với Hydrogen — kể cả toàn bộ 721 tài khoản cũng chỉ <strong>$10.82–$62.28/tháng</strong>.</li>
-          <li><strong>Đánh đổi Lượt 2 → Lượt 3:</strong> Tăng +2 câu đạt (+6.6 điểm %) nhưng token tăng ~31–32% do JSON có kiểm tra và retry 1 lần.</li>
+          <li><strong>Chi phí cơ sở đo thật (436 HV):</strong> Chỉ <strong>$0.0055/người/tháng ($2.42/tháng)</strong> với <span class="code">gpt-6-luna</span>, hoặc <strong>$0.0144–$0.0831/người/tháng</strong> nếu dùng Gemini — toàn khoá 721 HV chỉ <strong>$3.99–$59.92/tháng</strong>.</li>
+          <li><strong>Số đo thật thấp hơn ~4%</strong> so với ước tính ghép eval trước đó.</li>
         </ul>
       </div>
       <div class="card-amber">
-        <div style="font-size:13.5px; font-weight:800; color:#92400e; margin-bottom:6px;">Giới hạn đo lường ghi minh bạch (cost/cost-estimate.md)</div>
+        <div style="font-size:13.5px; font-weight:800; color:#92400e; margin-bottom:6px;">Lưu ý minh bạch khi áp dụng (cost/cost-estimate.md)</div>
         <ul>
-          <li><strong>Ước tính từ dữ liệu eval:</strong> Dùng token đo từ <span class="code">eval/run-2.csv</span> và <span class="code">eval/run-3.csv</span> (model <span class="code">cx/gpt-6-luna</span>) ghép lịch 50 phiên và áp đơn giá Gemini Standard; <strong>chưa chạy lượt gọi API mới riêng cho cả 50 phiên</strong> (<span class="code">cost/simulate-1.csv</span>).</li>
-          <li><strong>Lượt độc lập vs phiên dài:</strong> Phiên D01 2 ý thực tế trên <span class="code">gpt-4.1-mini</span> dùng <strong>8 lần gọi · 10.005 token vào / 774 token ra</strong> — cần đo trực tiếp trên phiên dài khi chạy pilot.</li>
+          <li><strong>Đo token trên <span class="code">cx/gpt-6-luna</span>:</strong> dòng <span class="code">gpt-6-luna</span> đo token &amp; giá cùng model (OpenAI Standard, xem 28/11/2026); 2 dòng Gemini là kịch bản áp đơn giá Gemini lên token đo từ <span class="code">cx/gpt-6-luna</span>.</li>
+          <li><strong>Lượt độc lập vs phiên dài:</strong> Phiên D01 2 ý thực tế trên <span class="code">gpt-4.1-mini</span> dùng <strong>8 lần gọi · 10.005 token vào / 774 token ra</strong> — cần đối chiếu thêm khi chạy pilot.</li>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="footer">
-    <span>Nguồn đối chiếu: cost/cost-estimate.md · cost/personas.yaml · spec.md §8 · Bảng giá Gemini API (xem 27/11/2026)</span>
+    <span>Nguồn đối chiếu: cost/simulate-1.csv · cost/simulate-1-summary.md · cost/cost-estimate.md · spec.md §8</span>
     <span>6 / 8</span>
   </div>
 </section>
@@ -863,22 +863,22 @@
       </div>
 
       <div class="card" style="border-top: 4px solid #059669;">
-        <div class="card-title">3. Kinh tế rất đáng đầu tư (Trang 6)</div>
-        <div class="kpi-num emerald" style="font-size:26px; margin:6px 0;">$6.54 – $37.66 / tháng</div>
+        <div class="card-title">3. Kinh tế đo thật rất nhẹ (Trang 6)</div>
+        <div class="kpi-num emerald" style="font-size:26px; margin:6px 0;">$2.42 – $36.24 / tháng</div>
         <ul>
-          <li>Ở quy mô cơ sở <strong>436 HV</strong>, chỉ tốn <strong>$0.0150–$0.0864/người/tháng</strong> (Lượt 3) đổi lấy cơ hội giảm hàng chục phút sửa lab.</li>
-          <li>Chi phí rất thấp → hoàn toàn xứng đáng mở vòng pilot đo hiệu quả học thật trước khi quyết định GO toàn khoá.</li>
+          <li>Đo thật 50 phiên (<span class="code">simulate-1</span>): ở quy mô cơ sở <strong>436 HV</strong>, chỉ tốn <strong>$0.0055/HV/tháng</strong> (<span class="code">gpt-6-luna</span>) hoặc <strong>$0.0144–$0.0831</strong> (Gemini).</li>
+          <li>Chi phí cực thấp → hoàn toàn xứng đáng mở vòng pilot đo hiệu quả học thật trước khi quyết định GO toàn khoá.</li>
         </ul>
       </div>
     </div>
 
     <div class="card-accent" style="font-size:13.5px; line-height:1.45;">
-      <strong>Điều kiện chốt GO sau vòng ITERATE:</strong> (1) Đo trực tiếp ≥15 phiên học viên L3 thật đạt chỉ số tự giải thích lại đúng <strong>≥ 75%</strong>; (2) Chạy đủ <strong>50 phiên <span class="code">simulate</span></strong> gọi API thật trên model đích Gemini để chốt bảng giá; (3) Sửa dứt điểm lỗi lộ gợi ý ở <span class="code">B11, B23</span> mà không gây hồi quy.
+      <strong>Điều kiện chốt GO sau vòng ITERATE:</strong> (1) Đo trực tiếp ≥15 phiên học viên L3 thật đạt chỉ số tự giải thích lại đúng <strong>≥ 75%</strong>; (2) Sửa dứt điểm lỗi lộ gợi ý ở <span class="code">B11, B23</span> mà không gây hồi quy; (3) Mở rộng học liệu 15 ngày L3 có giảng viên duyệt.
     </div>
   </div>
 
   <div class="footer">
-    <span>Nguồn đối chiếu: spec.md §1–§2, §7–§8 · eval/report.md · cost/cost-estimate.md · validation/log.md</span>
+    <span>Nguồn đối chiếu: spec.md §1–§2, §7–§8 · eval/report.md · cost/simulate-1-summary.md · validation/log.md</span>
     <span>7 / 8</span>
   </div>
 </section>
@@ -890,7 +890,7 @@
     <span class="meta-right">Nhóm HelloWorld · Kế hoạch hành động trỏ về lỗi &amp; khoảng trống còn lại</span>
   </div>
   <h1>Ba ưu tiên tuần tới để khép kín chuẩn §7 và mở rộng toàn khoá L3</h1>
-  <div class="subtitle">Mỗi hạng mục bám trực tiếp vào lỗi còn lại trong <span class="code">eval/report.md</span>, <span class="code">cost/cost-estimate.md</span> và khoảng trống đo lường ở <span class="code">validation/log.md</span>.</div>
+  <div class="subtitle">Mỗi hạng mục bám trực tiếp vào lỗi còn lại trong <span class="code">eval/report.md</span>, <span class="code">cost/simulate-1.csv</span> và khoảng trống đo lường ở <span class="code">validation/log.md</span>.</div>
 
   <div class="content">
     <div class="grid-3" style="flex:1;">
@@ -898,15 +898,15 @@
         <div>
           <div style="display:flex; align-items:center; margin-bottom:10px;">
             <span class="step-num">1</span>
-            <div class="card-title" style="margin:0;">Đo A4 trên học viên thật &amp; Simulate API thật</div>
+            <div class="card-title" style="margin:0;">Đo A4 trên học viên thật &amp; Xử lý Timeout</div>
           </div>
           <ul>
             <li>Tổ chức <strong>15–20 phiên dùng thử thực tế</strong> với học viên L3 ngoài nhóm ngay trước buổi lab thật theo 5 nhịp <span class="code">validation/log.md</span>.</li>
             <li>Đo 2 số quyết định GO: tỷ lệ học viên tự giải thích lại đúng (mục tiêu <strong>≥ 75%</strong> ở §7) và số phút sửa lab giảm so với trung vị <strong>20 phút/lần</strong>.</li>
-            <li>Chạy thật <span class="code">python run.py simulate</span> đủ 50 phiên trên đúng model mục tiêu Gemini để thay số ước tính ghép eval.</li>
+            <li>Thêm retry nhẹ cho lỗi mạng (<span class="code">S001 TimeoutError</span> — 1/50 phiên ở <span class="code">simulate-1</span>) và đo trực tiếp trên phiên nhiều ý dài.</li>
           </ul>
         </div>
-        <div class="kpi-src" style="border-top:1px solid #e2e8f0; padding-top:6px;">Trỏ về: validation/log.md · cost/cost-estimate.md</div>
+        <div class="kpi-src" style="border-top:1px solid #e2e8f0; padding-top:6px;">Trỏ về: validation/log.md · cost/simulate-1.csv</div>
       </div>
 
       <div class="card" style="display:flex; flex-direction:column; justify-content:space-between;">
