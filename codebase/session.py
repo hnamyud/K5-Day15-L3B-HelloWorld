@@ -10,10 +10,20 @@ EXPLAINED = "Đã giải thích được"
 REVISIT = "Nên ôn lại"
 UNCHECKED = "Chưa kiểm tra"
 _UNVERIFIED = (
-    "[CHƯA ĐỦ CĂN CỨ] Chưa nhận được phản hồi đối chiếu hợp lệ cho ý đang ôn."
+    "[CHƯA ĐỦ CĂN CỨ] Chưa nhận được phản hồi đối chiếu hợp lệ cho ý đang ôn.\n"
+    "Bạn có thể diễn đạt lại, chọn xem lại kiến thức (/xem) hoặc để ôn sau (/sau)."
 )
 _SOURCE_CODE = re.compile(r"\[([A-Za-z]\d{2}-P\d{2})\]")
 _MAX_HINTS = 2
+
+
+def _revisit_summary(item, cited):
+    """Nêu rõ các ý cốt lõi kèm mã đoạn cần ôn lại khi học viên vẫn còn thiếu sau /xem."""
+    relevant = [p for p in item.points if p["code"] in cited] or item.points
+    lines = ["Ý này vẫn còn điểm cần ôn (đã đánh dấu Nên ôn lại):"]
+    lines.extend(f"- [{p['code']}] {p['point']}" for p in relevant)
+    lines.append("Xem đầy đủ mã đoạn trong phần tổng hợp cuối phiên.")
+    return "\n".join(lines)
 
 
 @dataclass
@@ -85,7 +95,7 @@ class StudySession:
         if output.startswith(NEEDS_WORK):
             if self.reviewed:
                 self._advance(REVISIT)
-                return "Ý này vẫn còn điểm cần ôn. Xem mã đoạn ở phần tổng hợp."
+                return _revisit_summary(item, cited)
             if self.hints >= _MAX_HINTS:
                 return self.review()
             self.hints += 1

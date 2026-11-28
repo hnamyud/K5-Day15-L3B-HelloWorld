@@ -245,4 +245,4 @@ flowchart TD
 
 | Thời điểm | Đổi gì | Vì sao |
 |---|---|---|
-| *(Chờ cập nhật sau phiên demo CP4)* | | |
+| 28/11 17:55 | Hoàn thiện hồ sơ người dùng thử trong `validation/log.md` (`S1–S3`, bảng A4 và tổng hợp) và cập nhật 2 thông báo UX trong `codebase/session.py`: (1) nêu rõ các ý cốt lõi kèm mã đoạn `[DXX-PYY]` cần ôn lại khi vẫn còn thiếu sau `/xem` (`_revisit_summary`), và (2) thêm gợi ý bước tiếp theo (diễn đạt lại / `/xem` / `/sau`) vào thông báo `_UNVERIFIED`. | Phản hồi trực tiếp từ phiên dùng thử ở `validation/log.md`: `S1` vướng vì không biết thiếu điểm nào sau thông báo "vẫn còn điểm cần ôn" (*"Mình thiếu điểm nào?"*, mức Vừa); `S3` bị khựng và dừng sau thông báo `[CHƯA ĐỦ CĂN CỨ]` không nêu bước tiếp theo (*"Giờ mình làm gì tiếp?"*, mức Vừa). Không sửa `codebase/agent.py`, chuẩn "đạt" §7, `eval/benchmark.csv`, `eval/metric_spec.yaml`, `evidence/`, hay các kết quả `eval/run-*.csv` và `cost/simulate-1.csv` đã chạy. |
